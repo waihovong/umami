@@ -1,22 +1,229 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+/* ----------------------------------------- body code ----------------------------------------- */
+
 body {
   width: 100%;
-  background-image: url("jakub-kapusnak-296881-unsplash.jpg");
-  background-size: cover;
-  background-attachment: fixed;
   font-family: 'Karla', sans-serif, serif, Arial;
   margin: 0;
   padding: 0;
 }
 
+@media (max-width: 560px) 
+{
+  .register-form-box-container {
+    width: 80%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ----------------------------------------- background images ----------------------------------------- */
+
+.background-image {
+  background-image: url("jakub-kapusnak-296881-unsplash.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.background-image-index {
+  /* background-image: url("kyle-296856-unsplash.jpg"); */
+  background-image: url("main.jpg");
+  /* background-image: url(bowl-chopsticks-cuisine-2133989.jpg); */
+  /* background-image: url("jakub-kapusnak-296881-unsplash.jpg"); */
+  height:100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* ----------------------------------------- header styling ----------------------------------------- */
+
+h1 {
+  color: white;
+  font-size: 12em;
+  border: 10px solid black;
+  /* background-color: rgba(255,255,255,0.3); */
+  background-color: rgba(0,0,0,0.3);
+}
+
 h2 {
   font-family: 'Raleway', sans-serif, serif;
+  color: rgb(66, 66, 66);
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: rgb(50,50,50); /* old IE */
+  background-color: rgb(78, 78, 78); /* Modern Browsers */
+  margin-top: 30px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+/* ----------------------------------------- index page ----------------------------------------- */
+
+.main-content hr {
+  border: none;
+  margin-top: 30px;
+  height: 2px;
+  color: white;
+  background-color: white;
+}
+
+.header-styling {
+  padding: 0 ;
+  margin-top: 100px;
+  margin-bottom: 0px;
+}
+
+.header-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  color: white;
+  justify-content: right;
+  align-content: flex-end;
+}
+
+.main-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  align-content: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main-container span {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.content-text {
+  color: white;
+  /* color: black; */
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.top-nav-container li{
+  padding: 10px;
+}
+
+.top-nav-container a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.content-text:hover {
+  font-weight: bold;
+}
+
+.wrapper-account {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  /* justify-content: flex-end;
+  align-content: flex-end; */
+  padding-top: 20px;
+  padding-right: 30px;
+}
+
+.wrapper-account i {
+  padding-right: 5px;
+}
+
+.hover-action a:hover {
+  font-weight: bold;
+}
+
+.secondary-container {
+  /* position: relative; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.restaurant-container {
+  display: flex; /* DELETE THIS TO DISPLAY HR FOR POPULAR AND CUISINES */
+  margin: auto;
+  padding-left: 18%;
+  padding-right: 18%;
+}
+
+.secondary-container-images {
+  margin-left: 190px;
+  overflow-y: hidden;
+  /* overflow: auto; */
+  white-space: nowrap;
+  max-width: 67.5em;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* flex-flow: row wrap; */
+  align-content: flex-end;
+  overflow-x: scroll;
+}
+
+.scroll-image {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  transition: 0.8s;
+}
+
+.scroll-image:hover{
+  transform: scale(1.1);
+}
+
+.secondary-container-images img {
+  padding: 10px;
+}
+
+.restaurant-container h1{
+  color: black;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  align-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ----------------------------------------- sign up and sign in ----------------------------------------- */
 
 .register-form-box-container {
   border-radius: 10px;
-  background-color: #FAF7F2;
-
-  padding: 0px 50px 20px 50px;
+  background-color: rgba(250,247,247,0.95);  
+  width: 350px;
+  padding: 0;
   text-align: center;
   margin-top: 50px;
 }
@@ -28,13 +235,13 @@ h2 {
 
 .register-form-container h2 {
   font-size: 40px;
-
   margin-top: none;
   margin-bottom: 20px;
   text-decoration: none;
 }
 
 .register-input {
+  display: flex;
   margin: auto;
   margin-bottom: 20px;
   box-shadow: none;
@@ -42,18 +249,20 @@ h2 {
   box-sizing: border-box;
 }
 
+
 .form-control {
+  display: flex;
   margin: auto;
   font-size: 15px;
   padding: 15px;
   border-radius: 5px;
-  /* background-color: #FAF7F2; */
+  width: 61%;
   background-color: white;
   border: 1px solid transparent;
 }
 
 .sign-up-button {
-  width: 225px;
+  width: 100%;
   margin: auto;
 }
 
@@ -64,7 +273,7 @@ h2 {
   display: inline-block;
   border: 1px solid transparent;
   background-color: #559AD1;
-  width: 225px;
+  width: 70%;
   height: 40px;
   cursor: pointer;
 
@@ -73,6 +282,8 @@ h2 {
 #primary-style-button:hover {
   background-color: rgb(65, 143, 206);
 }
+
+/* ----------------------------------------- icons ----------------------------------------- */
 
 .fa-icons-login {
   font-size: 18px;
@@ -84,16 +295,32 @@ h2 {
   width: 20px;
   text-align: center;
   text-decoration: none;
-  margin: 5px 2px;
   border-radius: 50%;
 }
 
+.fas {
+  font-size: 25px;
+  padding-top: 10px;
+  padding-right: 0px;
+  padding-left: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa-user-circle {
+  color: white;
+}
+
 .fa-facebook {
+  margin: 5px 2px;
   background: #3B5998;
   color: white;
 }
 
 .fa-google {
+  margin: 5px 2px;
   background: #dd4b39;
   color: white;
 }
