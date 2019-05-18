@@ -5,7 +5,7 @@
 
 body {
   width: 100%;
-  font-family: 'Karla', sans-serif, serif, Arial;
+  font-family: 'Oxygen', sans-serif, serif, Arial;
   margin: 0;
   padding: 0;
 }
@@ -186,11 +186,35 @@ p {
   padding-right: 5px;
 }
 
+.search-container {
+  margin: auto;
+  padding: 30px;
+  padding-right: 5px;
+  text-align: center;
+}
+
+#search-bar {
+  width: 300px;
+  height: 30px;
+  transition: width 0.4s ease-in-out;
+  border:none;
+  border-bottom: 1px solid black;
+  text-align: center;
+
+  font-size: 16px;
+}
+
+#search-bar:focus {
+  width: 60%;
+  outline:none;
+  border-bottom: 2px solid dodgerblue;
+}
 
 .secondary-container {
   /* position: relative; */
   margin-left: auto;
   margin-right: auto;
+  text-align:center;
 }
 
 .restaurant-container {
@@ -221,10 +245,22 @@ p {
   width: 300px;
   height: 200px;
   transition: 0.5s;
+  cursor: pointer;
+}
+
+.scroll-image-secondary {
+  display: inline-block;
+  width: 270px;
+  height: 200px;
+  transition: 0.5s;
 }
 
 .scroll-image:hover{
   transform: scale(1.1);
+}
+
+.scroll-image-secondary:hover {
+  transform: scale(1.02);
 }
 
 .secondary-container-images img {
@@ -279,7 +315,6 @@ p {
   padding-bottom: 16%;
 }
 
-
 /* ----------------------------------------- sign up and sign in ----------------------------------------- */
 
 .register-form-box-container {
@@ -312,7 +347,6 @@ p {
   box-sizing: border-box;
 }
 
-
 .form-control {
   display: flex;
   margin: auto;
@@ -327,6 +361,14 @@ p {
 .sign-up-button {
   width: 100%;
   margin: auto;
+}
+.sign-in-container {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.split-style{
+  margin-top: 20px;
 }
 
 #primary-style-button {
@@ -396,10 +438,17 @@ p {
   font-size: 19px;
   transition: 0.1s;
 }
-/* 
-.fa-chevron-circle-right:hover {
-  transition: 0.6s;
-  transform: rotate(90deg);
-} */
 
+.fa-search {
+  font-size: 16px;
+  color: red;
+  padding: 0;
+  margin: 0;
+}
 
+/* user profile page  */
+/* restarunt accounts page */
+/* booking page */
+
+/* search page */
+/* sign up and log in modal box */

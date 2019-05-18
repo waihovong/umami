@@ -34,6 +34,7 @@
 //   );
 // }
 
+
 function toNextDiv() {
   var scrolling = document.getElementById("second-content");
   scrolling.scrollIntoView();
@@ -42,4 +43,13 @@ function toNextDiv() {
 function scrollToTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
+}
+
+function searchBarFunction(event){
+	address=document.getElementById("search-bar").value;
+    if(event.keyCode == 13){
+      alert("You are searching: " + address);
+      console.log(keyCode);
+    }
+	return false;
 }
