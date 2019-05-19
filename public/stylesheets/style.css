@@ -1,0 +1,539 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=Oxygen|Ubuntu');
+
+/* ----------------------------------------- body code ----------------------------------------- */
+
+body {
+  width: 100%;
+  font-family: 'Oxygen', sans-serif, serif, Arial;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 560px) 
+{
+  .register-form-box-container {
+    width: 80%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ----------------------------------------- background images ----------------------------------------- */
+
+.background-image {
+  background-image: url("../images/jakub-kapusnak-296881-unsplash.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.background-image-index {
+  background-image: url("../images/main.jpg");
+  height:100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+}
+
+.background-image-accounts {
+  background-image: url("../images/brooke-lark-230140-unsplash.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+/* ----------------------------------------- header styling ----------------------------------------- */
+
+h1 {
+  color: white;
+  font-size: 25vw;
+  font-size: 25vh;
+  /* background-color: rgba(255,255,255,0.3); */
+  background-color: rgba(0,0,0,0.6);
+
+
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 100;
+}
+
+h2 {
+  font-family: 'Raleway', sans-serif, serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: rgb(50,50,50); /* old IE */
+  background-color: rgb(78, 78, 78); /* Modern Browsers */
+  margin-top: 30px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color:inherit;
+}
+
+th {
+  text-align: left;
+  background-color: goldenrod;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  border: 1px solid black;
+}
+td {
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width:100%;
+}
+/* ----------------------------------------- index page ----------------------------------------- */
+
+/* 
+.main-content hr {
+  border: none;
+  margin-top: 30px;
+  height: 2px;
+  color: white;
+  background-color: white;
+  width: 190%;
+} */
+
+.header-styling {
+  padding: 0 ;
+  margin-top: 100px;
+  margin-bottom: 0px;
+}
+
+.header-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  color: white;
+  justify-content: right;
+  align-content: flex-end;
+}
+
+.main-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  align-content: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main-container span {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  display: -webkit-flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#content-text {
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding-right: 6px;
+}
+
+.text-align-icon{
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hover-action:hover i{
+  transition: 0.2s;
+  transform: rotate(90deg);
+  transform-origin: center center;
+  cursor: pointer;
+}
+
+.hover-action:hover span{
+  text-shadow: 0.5px 0 0 white;
+}
+
+.hover-action a:hover {
+  text-shadow: 1px 0 0 white;
+}
+
+.top-nav-container span{
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  color:inherit;
+}
+
+.wrapper-account {
+  display: flex;
+  float:right;
+  /* justify-content: center; */
+  margin: 15px 15px 0px 0px;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.wrapper-account i {
+  padding-right: 5px;
+}
+
+.search-container {
+  margin: auto;
+  padding: 30px;
+  padding-right: 5px;
+  text-align: center;
+}
+
+#search-bar {
+  width: 300px;
+  height: 30px;
+  transition: width 0.4s ease-in-out;
+  border:none;
+  border-bottom: 1px solid black;
+  text-align: center;
+
+  font-size: 16px;
+}
+
+#search-bar:focus {
+  width: 60%;
+  outline:none;
+  border-bottom: 2px solid dodgerblue;
+}
+
+.secondary-container {
+  /* position: relative; */
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+}
+
+.restaurant-container {
+  display: flex; /*DELETE THIS TO DISPLAY HR FOR POPULAR AND CUISINES*/
+  margin: auto;
+  padding-left: 18%;
+  padding-right: 18%;
+}
+
+.secondary-container-images {
+  margin-left: 190px;
+  overflow-y: hidden;
+  /* overflow: auto; */
+  white-space: nowrap;
+  max-width: 62em;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  /* flex-flow: row wrap; */
+  align-content: flex-end;
+  overflow-x: scroll;
+}
+
+.scroll-image {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.scroll-image-secondary {
+  display: inline-block;
+  width: 270px;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.scroll-image:hover{
+  transform: scale(1.1);
+}
+
+.scroll-image-secondary:hover {
+  transform: scale(1.02);
+}
+
+.secondary-container-images img {
+  padding: 10px;
+}
+
+.restaurant-container h1{
+  color: black;
+}
+
+.spacer {
+  padding: 60px;
+}
+
+.footer-section {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(10,10,10);
+  color: white;
+  padding-top: 15px;
+}
+
+.footer-section-two ul {
+  display: inline-block;
+  padding: 20px;
+}
+
+.footer-section-two p {
+  padding-left: 100px;
+}
+
+.footer-section-one {
+  float:left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-section-two {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-section-three {
+  float:right;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-section-three p {
+  padding-bottom: 16%;
+}
+
+/* ----------------------------------------- sign up and sign in ----------------------------------------- */
+
+.register-form-box-container {
+  border-radius: 10px;
+  background-color: rgba(250,247,247,0.95);  
+  width: 350px;
+  padding: 0;
+  text-align: center;
+  margin-top: 50px;
+}
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.register-form-container h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.register-input {
+  display: flex;
+  margin: auto;
+  margin-bottom: 20px;
+  box-shadow: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.form-control {
+  display: flex;
+  margin: auto;
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  width: 61%;
+  background-color: white;
+  border: 1px solid transparent;
+}
+
+.sign-up-button {
+  width: 100%;
+  margin: auto;
+}
+.sign-in-container {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.split-style{
+  margin-top: 20px;
+}
+
+#primary-style-button {
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
+  border: 1px solid transparent;
+  background-color: #559AD1;
+  width: 70%;
+  height: 40px;
+  cursor: pointer;
+
+}
+
+#primary-style-button:hover {
+  background-color: rgb(65, 143, 206);
+}
+
+/* ----------------------------------------- icons ----------------------------------------- */
+
+.fa-icons-login {
+  font-size: 18px;
+  color: white;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fas {
+  /* padding-top: 10px;
+  padding-right: 0px;
+  padding-left: 20px;
+  width: 20px; */
+  /* text-align: center; */
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa-user-circle {
+  font-size: 1.5em;
+  text-align: center;
+  color: white;
+}
+
+.fa-facebook {
+  margin: 5px 2px;
+  background: #3B5998;
+  color: white;
+}
+
+
+.fa-google {
+  margin: 5px 2px;
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-chevron-circle-right {
+  padding: 0;
+  text-align: center;
+  margin: 8px 3px 8px 3px;
+  color: white;
+  font-size: 19px;
+  transition: 0.1s;
+}
+
+.fa-search {
+  font-size: 16px;
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+
+.fa-meh {
+  font-size: 7em;
+}
+
+/* user profile page  */
+/* restarunt accounts page */
+
+/* booking page */
+/* search page */
+/* sign up and log in modal box */
+
+/* -----------------------------------------accounts page ----------------------------------------- */
+
+.middle-container {
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 70%;
+  background-color: cornsilk;
+  /* height: 100%; */
+  border-radius: 5px;
+}
+
+.middle-container-content {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 90%;
+  height: 100%;
+}
+
+.edit-profle-button {
+  background-color: dodgerblue;
+  padding: 12px 28px;
+  border: none;
+  color: white;
+  text-align: right;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.username-header-container {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  float: left;
+}
+
+.username-header-container p {
+  padding: 10px;
+}
+
+.username-icon {
+  float:left;
+  text-align: center;
+}
+
+.username-contents {
+  float:right;
+  margin-left: 40px
+}
+
+.booking-history {
+  padding-top: 20px;
+  padding-bottom: 5px;
+  height: 100%;
+}
