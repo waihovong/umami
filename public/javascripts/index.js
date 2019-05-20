@@ -13,8 +13,12 @@ function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("slides");
     var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    if (n > slides.length) { 
+      slideIndex = 1; 
+    }
+    if (n < 1) { 
+      slideIndex = slides.length;
+    }
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
@@ -35,11 +39,11 @@ function scrollToTop() {
   document.documentElement.scrollTop = 0;
 }
 
+var address;
 function searchBarFunction(event){
 	address=document.getElementById("search-bar").value;
     if(event.keyCode == 13){
     window.location.href = "booking.html";
-      console.log(keyCode);
     }
 	return false;
 }
