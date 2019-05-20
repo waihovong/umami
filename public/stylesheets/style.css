@@ -38,7 +38,8 @@ html {
 }
 
 .background-image-accounts {
-  background-image: url("../images/brooke-lark-230140-unsplash.jpg");
+  /* background-image: url("../images/brooke-lark-230140-unsplash.jpg"); */
+  background-image: url("../images/main.jpg");
   background-size: cover;
   height: 100vh;
 }
@@ -88,11 +89,12 @@ a, a:visited, a:hover, a:active {
 
 th {
   text-align: left;
-  background-color: goldenrod;
+  background-color: black;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
   border: 1px solid black;
+  color: white;
 }
 td {
   border: 1px solid black;
@@ -247,7 +249,7 @@ table {
   margin-left: 190px;
   overflow-y: hidden;
   /* overflow: auto; */
-  white-space: nowrap;
+  /* white-space: nowrap; */
   max-width: 62em;
   display: flex;
   /* align-items: center; */
@@ -257,7 +259,13 @@ table {
   /* flex-flow: row wrap; */
   align-content: flex-end;
   overflow-x: scroll;
+  text-align: center;
 }
+
+.text-image-container {
+  text-align: center;
+}
+
 
 .scroll-image {
   display: inline-block;
@@ -480,22 +488,25 @@ table {
 /* -----------------------------------------accounts page ----------------------------------------- */
 
 .middle-container {
-  margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
   width: 70%;
-  background-color: cornsilk;
+  background-color: white;
   /* height: 100%; */
-  border-radius: 5px;
+  padding-top: 20px;
 }
 
 .middle-container-content {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
   width: 90%;
   height: 100%;
+  padding-bottom: 40px;
+}
+
+.center-container {
+  padding-top:80px;
 }
 
 .edit-profle-button {

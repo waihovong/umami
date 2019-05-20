@@ -1,39 +1,29 @@
-// var imageSlider = 0;
-// var images = ["jakub-kapusnak-296881-unsplash.jpg", "kyle-296856-unsplash.jpg", "qu-c-trung-689159-unsplash.jpg"];
+var slideIndex = 1;
+showSlides(slideIndex);
 
-// function displayImage() {
-//   for(imageSlider = 0; imageSlider < images.length; imageSlider++) {
-//     var img = document.createElement(images[imageSlider]);
-//     img.setAttribute("width", "250");
-//     img.setAttribute("height", "250");
-//     document.getElementById("image-next").appendChild(img);
-//   }
-// }
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-// function nextImage() {
-//   if(imageSlider < images.length) {
-//     imageSlider++;
-//   } else {
-//     imageSlider = 0;
-//   }
-//   // document.getElementsByClassName("scroll-image").src = images[i];
-//   document.getElementById("image-next").src = images[imageSlider];
-//   console.log("next");
-// }
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-// function prevImage() {
-//   if(imageSlider > 0) {
-//     imageSlider--;
-//   } else {
-//     imageSlider = images.length - 1;
-//   }
-//   // document.getElementsByClassName("scroll-image").src = images[i];
-//   document.getElementById("image-previous").src = images[imageSlider];
-//   console.log("previous")
-//   console.log(  document.getElementById("image-previous").src = images[imageSlider]
-//   );
-// }
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("slides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
 
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
 
 function toNextDiv() {
   var scrolling = document.getElementById("second-content");
@@ -48,7 +38,7 @@ function scrollToTop() {
 function searchBarFunction(event){
 	address=document.getElementById("search-bar").value;
     if(event.keyCode == 13){
-      alert("You are searching: " + address);
+    window.location.href = "booking.html";
       console.log(keyCode);
     }
 	return false;

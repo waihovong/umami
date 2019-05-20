@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./stylesheets/booking.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Restaurant</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="banner-img">
+        <div id="header">
+            <div id="header-left">
+                <a href="index.html">
+                    <h1 id="logo">U M A M I</h1>
+                </a>
+            </div>
+            <div id="header-right">
+                <a href="signin.html"><i class="fas fa-user-circle"></i></a>
+                <span id="sign-in"><a href="signin.html">Sign In</a></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="left-container">
+            <h2 id="rest-name">Restaurant</h2>
+            <p>tags: #japanese #ramen</p>
+            <br>
+            <!-- IMAGES -->
+            <div class="images">
+                <div class="slideshow-container">
+
+                    <div class="slides fade">
+                        <img src="./images/ramen1.jpg" alt="img1">
+                    </div>
+
+                    <div class="slides fade">
+                        <img src="./images/ramen2.jpg" alt="img1">
+                    </div>
+
+                    <div class="slides fade">
+                        <img src="./images/ramen3.jpg" alt="img1">
+                    </div>
+
+                    <div class="slides fade">
+                        <img src="./images/ramen4.jpg" alt="img1">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right-container">
+            <h3>Rating:</h3>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span>3/5</span>
+            <button class="book-now">Book Now</button>
+            <br>
+            <br>
+            <h3>Opening Hours:</h3>
+            <table>
+                <tr>
+                    <th>Sunday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+                <tr>
+                    <th>Monday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+                <tr>
+                    <th>Tuesday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+                <tr>
+                    <th>Wednesday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+                <tr>
+                    <th>Thursday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+                <tr>
+                    <th>Friday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+                <tr>
+                    <th>Saturday</th>
+                    <td>11am - 9pm</td>
+                </tr>
+            </table>
+            <br>
+
+            <div class="reviews">
+                <h3>Reviews:</h3>
+                <q>AWESOME!</q> <span> - John</span> <br>
+                <q>I rate, ask for Bin Yuan to be your server, super nice!</q> <span> - Jen</span> <br>
+                <q>Why is this even a restuarant?</q> <span> - Wai Ed</span> <br>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="./javascripts/index.js"></script>
+</body>
+
+</html>
