@@ -127,7 +127,7 @@ table {
   margin-bottom: 0px;
 }
 
-.header-container {
+/* .header-container {
   display: -webkit-box;
   display: -moz-box;
   display: flex;
@@ -135,7 +135,7 @@ table {
   color: white;
   justify-content: right;
   align-content: flex-end;
-}
+} */
 
 .main-container {
   margin-top: auto;
@@ -172,7 +172,7 @@ table {
   align-items: center;
 }
 
-.hover-action:hover i{
+.hover-action:hover icon-rotate{
   transition: 0.2s;
   transform: rotate(90deg);
   transform-origin: center center;
@@ -183,16 +183,6 @@ table {
   text-shadow: 0.5px 0 0 white;
 }
 
-.hover-action a:hover {
-  text-shadow: 1px 0 0 white;
-}
-
-.top-nav-container span{
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
-  color:inherit;
-}
 
 .wrapper-account {
   display: flex;
@@ -200,11 +190,11 @@ table {
   /* justify-content: center; */
   margin: 15px 15px 0px 0px;
   align-items: center;
-  font-size: 1.1em;
 }
 
-.wrapper-account i {
-  padding-right: 5px;
+.wrapper-account span {
+  color: white;
+  font-size: 1.2em;
 }
 
 .search-container {
@@ -440,9 +430,10 @@ table {
 }
 
 .fa-user-circle {
+  margin-right: 5px;
+  color: white;
   font-size: 1.5em;
   text-align: center;
-  color: white;
 }
 
 .fa-facebook {
