@@ -172,7 +172,7 @@ table {
   align-items: center;
 }
 
-.hover-action:hover icon-rotate{
+.hover-action:hover .icon-rotate{
   transition: 0.2s;
   transform: rotate(90deg);
   transform-origin: center center;
