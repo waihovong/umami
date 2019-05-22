@@ -238,7 +238,8 @@ table {
 }
 
 .secondary-container-images {
-  margin-left: 190px;
+  /* margin-left: 190px; */
+  margin: auto;
   overflow-y: hidden;
   /* overflow: auto; */
   /* white-space: nowrap; */
