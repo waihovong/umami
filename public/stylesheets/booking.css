@@ -8,6 +8,7 @@
 body {
     font-family: 'Oxygen', sans-serif, serif, Arial;
     background-color: rgb(230, 230, 230);
+    /* overflow: hidden;  */
 }
 
 a, a:visited, a:hover, a:active {
@@ -21,12 +22,13 @@ a, a:visited, a:hover, a:active {
     background-image: url("../images/bowl-chopsticks-cuisine-2133989.jpg");
     /* z-index: -1; */
     position: relative;
-    height: 40vh;
+    height: 30vh;
     opacity: 0.90;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    transition: margin-right 0.5s;
 }
 
 #header {
@@ -75,9 +77,10 @@ a, a:visited, a:hover, a:active {
 
 .main-container {
     box-sizing: border-box;
-    max-width: 100vw;
-    float: left;
+    /* max-width: 100vw; */
+    /* float: left; */
     margin: 40px;
+    transition: margin-right 0.5s;
 }
 
 .main-container * {
@@ -96,6 +99,7 @@ a, a:visited, a:hover, a:active {
     padding-left: 40px;
     width: 50%;
     float: right;
+    margin-top: 75px;
 }
 
 #rest-name {
@@ -172,9 +176,19 @@ a, a:visited, a:hover, a:active {
 
 /* -----------------------RIGHT CONTAINER ---------------------- */
 
-.right-container {
-    margin-top: 75px;
-    ;
+#rating-book {
+    width: 450px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+#rating-book-left {
+    float: left;
+}
+
+#rating-book-right {
+    padding: 5px;
+    float: right;
 }
 
 .checked {
@@ -182,7 +196,6 @@ a, a:visited, a:hover, a:active {
 }
 
 .book-now {
-    margin-left: 200px;
     background-color: dodgerblue;
     padding: 12px 28px;
     border: none;
@@ -214,4 +227,42 @@ a, a:visited, a:hover, a:active {
 
 .reviews {
     line-height: 2em;
+}
+
+/* ------------------------SIDE BAR ----------------------------- */
+
+.sm-wrapper {
+    margin-top: 100px;
+}
+
+.sidemenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-color: #f4f4f4;
+}
+
+.sidemenu a {
+    padding: 5px 5px 5px 32px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.sidemenu .close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 50px;
+}
+
+.close:hover {
+    text-shadow: 1px 0 0 black;
 }

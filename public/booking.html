@@ -28,7 +28,7 @@
         </div>
     </header>
 
-    <div class="main-container">
+    <div class="main-container" onclick="test()">
         <div class="left-container">
             <h2 id="rest-name">Restaurant</h2>
             <p>tags: #japanese #ramen</p>
@@ -69,16 +69,20 @@
         </div>
 
         <div class="right-container">
-            <h3>Rating:</h3>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span>3/5</span>
-            <button class="book-now">Book Now</button>
-            <br>
-            <br>
+            <div id="rating-book">
+                <div id="rating-book-left">
+                    <h3>Rating:</h3>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span>3/5</span>
+                </div>
+                <div id="rating-book-right">
+                    <button class="book-now" onclick="openSM()">Book Now</button>
+                </div>
+            </div>
             <h3>Opening Hours:</h3>
             <table>
                 <tr>
@@ -118,10 +122,15 @@
                 <q>I rate, ask for Bin Yuan to be your server, super nice!</q> <span> - Jen</span> <br>
                 <q>Why is this even a restuarant?</q> <span> - Wai Ed</span> <br>
             </div>
-
-
         </div>
+    </div>
 
+    <!-- nav bar -->
+    <div id="mySidemenu" class="sidemenu">
+        <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
+        <div class="sm-wrapper">
+            HELLO
+        </div>
     </div>
 
     <script src="./javascripts/index.js"></script>
