@@ -31,12 +31,12 @@ function showSlides(n) {
 
 function openSM() {
   document.getElementById("mySidemenu").style.width = "450px";
-  document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
+  // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
 }
 
 function closeSM() {
   document.getElementById("mySidemenu").style.width = "0";
-  document.getElementsByClassName("banner-img")[0].style.marginRight = "0";
+  // document.getElementsByClassName("banner-img")[0].style.marginRight = "0";
 }
 
 function toNextDiv() {
