@@ -129,7 +129,16 @@
     <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
         <div class="sm-wrapper">
-            HELLO
+            <form>
+                <div>
+                  <label for="resDate">Enter a date:</label>
+                  <input type="date" id="resDate" name="reDate" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                  <span class="validity"></span>
+                </div>
+                <div>
+                  <input type="submit">
+                </div>
+              </form>
         </div>
     </div>
 

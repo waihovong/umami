@@ -40,6 +40,7 @@ function closeSM() {
   // document.getElementsByClassName("banner-img")[0].style.marginRight = "0";
 }
 
+
 function toNextDiv() {
   var scrolling = document.getElementById("second-content");
   scrolling.scrollIntoView();
