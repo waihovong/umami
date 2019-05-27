@@ -29,6 +29,7 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
 }
 
+var bookSide = document.getElementById("mySidemenu");
 function openSM() {
   document.getElementById("mySidemenu").style.width = "450px";
   // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
