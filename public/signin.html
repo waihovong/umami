@@ -9,7 +9,9 @@
   <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="510586587365-jihommpocb0pjl5drm39l91cleeh444k.apps.googleusercontent.com">
   <script src="./javascripts/index.js"></script>
 </head>
 <body class="background-image">
@@ -28,8 +30,9 @@
       <div class="seperator-div">
         <p class="split-style">OR</p>
       </div>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <div class="fa-icons-login">
-          <a href="https://google.com" class="fa fa-google"></a>
+          <a data-onsuccess="onSignIn" class="fa fa-google"></a>
           <a href="https://facebook.com" class="fa fa-facebook"></a>
       </div>
 
