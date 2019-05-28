@@ -59,3 +59,5 @@ function searchBarFunction(event) {
   }
   return false;
 }
+
+document.getElementById('datePicker').valueAsDate = new Date();

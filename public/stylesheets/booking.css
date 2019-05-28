@@ -22,7 +22,7 @@ a, a:visited, a:hover, a:active {
     background-image: url("../images/bowl-chopsticks-cuisine-2133989.jpg");
     /* z-index: -1; */
     position: relative;
-    height: 30vh;
+    height: 60vh;
     opacity: 0.90;
     background-position: center;
     background-size: cover;
@@ -75,7 +75,7 @@ a, a:visited, a:hover, a:active {
 
 /*-------------------------- MAIN CONTAINER----------------------- */
 
-.main-container {
+.main-container-booking {
     box-sizing: border-box;
     /* max-width: 100vw; */
     /* float: left; */
@@ -99,11 +99,18 @@ a, a:visited, a:hover, a:active {
     padding-left: 40px;
     width: 50%;
     float: right;
-    margin-top: 75px;
+    margin-top: 80px;
 }
 
-#rest-name {
+#address {
+    color: #444;
     text-decoration: underline;
+}
+
+.fa-map-marker-alt {
+    color: crimson;
+    padding: 5px 10px 5px 0px;
+    margin: 3px 0px 5px 0px;
 }
 
 /* Slideshow container */
@@ -210,6 +217,7 @@ a, a:visited, a:hover, a:active {
 .right-container table {
     text-align: left;
     margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .right-container table th {
@@ -218,6 +226,18 @@ a, a:visited, a:hover, a:active {
 
 .right-container table td {
     font-style: italic;
+}
+
+.fa-phone {
+    color: rgb(49, 149, 199);
+    padding: 5px 10px 0px 0px;
+    margin: 3px 0px 5px 0px;
+}
+
+.fa-envelope {
+    color: rgb(46, 46, 46);
+    padding: 5px 10px 5px 0px;
+    margin: 3px 0px 20px 0px;
 }
 
 .reviews span {
@@ -230,10 +250,6 @@ a, a:visited, a:hover, a:active {
 }
 
 /* ------------------------SIDE BAR ----------------------------- */
-
-.sm-wrapper {
-    margin-top: 100px;
-}
 
 .sidemenu {
     height: 100%;
@@ -266,3 +282,90 @@ a, a:visited, a:hover, a:active {
 .close:hover {
     text-shadow: 1px 0 0 black;
 }
+
+.sm-wrapper {
+    margin: 40px;
+    width: 450px;
+}
+
+form * {
+    font-size: 1.2em;
+    height: 1.4em;
+    font-family: 'Oxygen', sans-serif, serif, Arial;
+    align-items: center;
+    padding-left: 10px;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #333;
+}
+
+.sidemenu h1 {
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background-color: dodgerblue;
+    margin-left: 5px;
+    padding: 0px 10px;
+    height: 1.6em;
+    border: none;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 2px;
+}
+
+
+.footer-section {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(10,10,10);
+    color: white;
+    padding-top: 15px;
+  }
+  
+  .footer-section-two ul {
+    display: inline-block;
+    padding: 20px;
+  }
+  
+  .footer-section-two p {
+    padding-left: 100px;
+  }
+  
+  .footer-section-one {
+    float:left;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-section-two {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-section-three {
+    float:right;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-section-three p {
+    padding-bottom: 16%;
+  }
+  .spacer {
+    padding: 60px;
+  }
