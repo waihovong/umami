@@ -247,6 +247,7 @@ a, a:visited, a:hover, a:active {
 
 .reviews {
     line-height: 2em;
+    padding-bottom: 10px;
 }
 
 /* ------------------------SIDE BAR ----------------------------- */
@@ -335,6 +336,7 @@ input[type="submit"] {
     background-color: rgb(10,10,10);
     color: white;
     padding-top: 15px;
+    width: 100%;
   }
   
   .footer-section-two ul {
@@ -366,6 +368,7 @@ input[type="submit"] {
   .footer-section-three p {
     padding-bottom: 16%;
   }
+
   .spacer {
     padding: 60px;
   }
