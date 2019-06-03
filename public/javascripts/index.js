@@ -1,3 +1,11 @@
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -40,7 +48,6 @@ function closeSM() {
   // document.getElementsByClassName("banner-img")[0].style.marginRight = "0";
 }
 
-
 function toNextDiv() {
   var scrolling = document.getElementById("second-content");
   scrolling.scrollIntoView();
@@ -60,4 +67,27 @@ function searchBarFunction(event) {
   return false;
 }
 
-document.getElementById('datePicker').valueAsDate = new Date();
+function loadTimes() {
+  var xhttp = new XMLHttpRequest(); 
+  xhttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(xhttp.responseText);
+      // document.getElementById("openTime1").innerHTML = data.openingTimes;
+      myFunction(data);
+    }
+  }
+  xhttp.open("GET", "restaurants.txt");
+  xhttp.send();
+}
+
+function myFunction(data) {
+  var string = "";
+  var i;
+
+  // var data = document.getElementsByClassName("openTime");
+  for(i = 0; i < data.length; i++) {
+    string += '<tr>' + '<th>' + data[i].day + '</th>' + '<td>' + data[i].openingTimes + '</td>' + '</tr>';
+  }
+  // document.getElementsByClassName("openTime")[1].innerHTML = string;
+  document.getElementById("openingHours").innerHTML = string;
+}

@@ -342,6 +342,7 @@ input[type="submit"] {
   .footer-section-two ul {
     display: inline-block;
     padding: 20px;
+    list-style: none;
   }
   
   .footer-section-two p {

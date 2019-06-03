@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./javascripts/index.js"></script>
     <title>Restaurant</title>
 </head>
 
@@ -52,7 +53,7 @@
                         <img src="./images/ramen4.jpg" alt="img1">
                     </div>
 
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="prev" onclick="plusSlides(-1); loadTimes()" >&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
                 <br>
@@ -87,38 +88,39 @@
             <table id="openingHours">
                 <tr>
                     <th>Sunday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Monday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Tuesday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Wednesday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Thursday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Friday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Saturday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
             </table>
 
             <div>
                 <h3>Contact Info:</h3>
+                <button>Get Times</button><br>
                 <a id="contact" href="tel: +61 1234 5678"><i class="fas fa-phone"></i>1234 5678</a> <br>
-                <a id="contact" href="mailto: example@gmail.com"><i class="fas fa-envelope"></i>example@gmail.com</a>
+                <a id="contact" href="mailto: example@example.com"><i class="fas fa-envelope"></i>example@example.com</a>
 
             </div>
 
@@ -126,7 +128,7 @@
                 <h3>Reviews:</h3>
                 <q>AWESOME!</q> <span> - John</span> <br>
                 <q>I rate, ask for Bin Yuan to be your server, super nice!</q> <span> - Jen</span> <br>
-                <q>Why is this even a restuarant?</q> <span> - Wai Ed</span> <br>
+                <q>Why is this even a restuarant?</q> <span> - Waldo </span> <br>
             </div>
         </div>
 
