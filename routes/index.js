@@ -9,16 +9,7 @@ router.get('/', function (req, res, next) {
 
 //user requests the login page
 //when successful make a query to the database
-router.post('/template', function(req, res, next) {
-  req.pool.getConnection( function(err, connection) {
-    if(err) {
-      res.sendStatus(402);
-    }
-    var query = "SELECT id, name FROM Users WHERE email = ? AND password_hash = SHA2(?, 256)";
-    connection.query(query, [req.body.email,req.body.pass], function(err, rows, fields) {
-      connection.release();
-      console.log(rows);
-      if(rows.length > 0) {
+
 router.get('/restaurantINFO', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
@@ -26,8 +17,6 @@ router.get('/restaurantINFO', function (req, res, next) {
       res.sendStatus(402);
       return;
     }
-
-
     var query = "SELECT * FROM restaurants WHERE restaurantID = 1;";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
@@ -37,7 +26,6 @@ router.get('/restaurantINFO', function (req, res, next) {
         res.json(rows); //send response
       }
     });
-
   });
 });
 
