@@ -91,3 +91,88 @@ function myFunction(data) {
   // document.getElementsByClassName("openTime")[1].innerHTML = string;
   document.getElementById("openingHours").innerHTML = string;
 }
+
+
+
+function restaurant() {
+  // Create new AJAX request
+  var xhttp = new XMLHttpRequest();
+
+  // Define function that runs on response
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var restDetails = JSON.parse(this.responseText);
+
+      restDetails.forEach(e => {
+        var resName = e.name;
+        var resAddress = e.address;
+        var resCuisine = e.cuisine;
+        var resPhone = e.phone;
+        var resEmail = e.email;
+
+        var vueinst = new Vue({
+          el: '.main-container-booking',
+          data: {
+            restaurant: resName,
+            address: resAddress,
+            linkAddress: "https://maps.google.com/?q=" + resAddress,
+            phone: resPhone,
+            linkPhone: 'tel:' + resPhone,
+            email: resEmail,
+            linkEmail: 'mailto:' + resEmail
+          },
+        });
+      });
+    }
+  };
+  // Open connection
+  xhttp.open("GET", "/restaurantINFO", true);
+
+  // Send request
+  xhttp.send();
+}
+
+
+// function getposts() {
+
+//   var xhttp = new XMLHttpRequest();
+//   xhttp.onreadystatechange = function () {
+//     if (this.readyState == 4 && this.status == 200) {
+
+//       var bposts = JSON.parse(this.responseText);
+
+//       console.log(bposts);
+
+//       var pdiv = document.getElementById('posts');
+//       pdiv.innerHTML = '';
+
+//       bposts.forEach(function (element) {
+//         pdiv.innerHTML += '<div class="blogpost">\n' +
+//           '   <span>' + element.timestamp + '</span>\n' +
+//           '   <h3>' + element.title + '</h3>\n' +
+//           '   <p>' + element.body + '</p>\n' +
+//           '<div>\n';
+//       });
+
+//     }
+//   };
+//   xhttp.open("GET", "/getallposts?q=" + encodeURIComponent(document.getElementById('blogpostsearch').value), true);
+//   xhttp.send();
+
+// }
+
+
+function onLogin() {
+  console.log(1);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      alert('Welcome ' + xhttp.responseText);
+    } else if (this.readyState == 4 && this.statue == 403) {
+      alert('Username or Password Incorrect');
+    }
+  };
+  xhttp.open("POST", "/template", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({ email: document.getElementById('email').value, pass: document.getElementById('pass').value }));
+}

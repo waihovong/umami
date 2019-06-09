@@ -12,7 +12,7 @@
     <title>Restaurant</title>
 </head>
 
-<body>
+<body onload="restaurant()">
     <!-- HEADER -->
     <header class="banner-img">
         <div id="header">
@@ -30,9 +30,9 @@
 
     <div class="main-container-booking">
         <div class="left-container">
-            <h2 id="rest-name">Restaurant</h2>
-            <a id="address" href="http://maps.google.com/?q=West Terrace, Adelaide SA 5000"><i
-                    class="fas fa-map-marker-alt"></i>West Terrace, Adelaide SA 5000</a>
+            <h2 id="rest-name" v-cloak> {{ restaurant }}</h2>
+            <a id="address" v-bind:href="linkAddress" target="_blank" v-cloak><i
+                    class="fas fa-map-marker-alt"></i>{{ address }}</a>
             <!-- IMAGES -->
             <div class="images">
                 <div class="slideshow-container">
@@ -119,8 +119,8 @@
             <div>
                 <h3>Contact Info:</h3>
                 <button>Get Times</button><br>
-                <a id="contact" href="tel: +61 1234 5678"><i class="fas fa-phone"></i>1234 5678</a> <br>
-                <a id="contact" href="mailto: example@example.com"><i class="fas fa-envelope"></i>example@example.com</a>
+                <a id="contact" v-bind:href="linkPhone" v-cloak><i class="fas fa-phone"></i>{{ phone }}</a> <br>
+                <a id="contact" v-bind:href="linkEmail" v-cloak><i class="fas fa-envelope"></i>{{ email }}</a>
 
             </div>
 
