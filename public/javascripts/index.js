@@ -168,11 +168,26 @@ function onLogin() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       alert('Welcome ' + xhttp.responseText);
-    } else if (this.readyState == 4 && this.statue == 403) {
+    } else if (this.readyState == 4 && this.status == 403) {
       alert('Username or Password Incorrect');
     }
   };
   xhttp.open("POST", "/template", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(JSON.stringify({ email: document.getElementById('email').value, pass: document.getElementById('pass').value }));
+}
+
+function onSignUp() {
+  console.log(2);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200) {
+      alert('You have Signed up to UMAMI');
+    } else if (this.readyState == 4 && this.status >= 400) {
+      alert('Email address already in use, please use another email!!!!!!!!!!!!!!');
+    }
+  };
+  xhttp.open("POST", "/templateUsers", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value}))
 }

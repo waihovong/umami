@@ -13,6 +13,7 @@ router.get('/restaurantINFO', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
+      console.log("fail");
       res.sendStatus(402);
       return;
     }
@@ -72,7 +73,7 @@ router.post('/template', function (req, res, next) {
     if (err) {
       res.sendStatus(402);
     }
-    var query = "SELECT id, name FROM Users WHERE email = ? AND password_hash = sha2(?, 256)";
+    var query = "SELECT id, name FROM Users WHERE email = ? AND password_hash = SHA2(?, 256)";
     connection.query(query, [req.body.email, req.body.pass], function (err, rows, fields) {
       connection.release();
       console.log(rows);
@@ -86,4 +87,24 @@ router.post('/template', function (req, res, next) {
   });
 });
 
+router.post('/templateUsers', function(req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if(err) {
+      res.sendStatus(402);
+    }
+    // var name = req.body.name;
+    // var email = req.body.email;
+    // var password = req.body.pass2;
+    // var pass = SHA2(password,256);
+      var insertQuery = "INSERT INTO Users VALUES (id, ?, ?, SHA2(?,256))";
+      connection.query(insertQuery, [req.body.name, req.body.email, req.body.pass ], function(err, rows, fields) {
+        connection.release();
+        if(err) {
+          res.sendStatus(402);
+        } else {
+          res.sendStatus(200);
+        }
+      });
+    });
+});
 module.exports = router;

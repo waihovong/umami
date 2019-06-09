@@ -53,9 +53,6 @@ LOCK TABLES `restaurants` WRITE;
 INSERT INTO `restaurants` VALUES (1,'res1','Japanese','134 Avenue, Adelaide',123456,'res1@gmail.com',9999999,5555555,50),(2,'res2','Chinese','43 Bridge Road, Adelaide',987654,'res2@outlook.com',8888888,9999999,30);
 /*!40000 ALTER TABLE `restaurants` ENABLE KEYS */;
 UNLOCK TABLES;
-<<<<<<< HEAD
-=======
-
 
 DROP TABLE IF EXISTS `Users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -79,7 +76,6 @@ LOCK TABLES `Users` WRITE;
 INSERT INTO `Users` VALUES (1,'admin','admin@example.example','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(2,'John','John@example.example','4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
->>>>>>> tyndall-branch
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

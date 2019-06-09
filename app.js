@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 
 var dbConnectionPool = mysql.createPool({
   host: 'localhost',
+  // socketPath: '/tmp/mysql.sock',
   database: 'UMAMI'
 });
 
@@ -19,6 +20,11 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+app.use(function (req, res, next) {
+  req.pool = dbConnectionPool;
+  next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,10 +37,6 @@ app.use(session({
   cookie: { secure: false }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(function (req, res, next) {
-  req.pool = dbConnectionPool;
-  next();
-});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
