@@ -59,10 +59,43 @@ function scrollToTop() {
 }
 
 var address;
-function searchBarFunction(event) {
-  address = document.getElementById("search-bar").value;
+function searchBarFunction() {
+  keyword = document.getElementById("search-bar").value;
   if (event.keyCode == 13) {
-    window.location.href = "booking.html";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+  
+        var resSearch = JSON.parse(this.responseText);
+  
+        console.log(resSearch);
+  
+        var pdiv = document.getElementById('searchResults');
+        pdiv.innerHTML = '';
+  
+        resSearch.forEach(function (element) {
+          pdiv.innerHTML += '<div class="sResult">\n' +
+            '   <span>' + element.name + '</span>\n' +
+            '   <h3>' + element.address + '</h3>\n' +
+            '   <p>' + element.email + '</p>\n' +
+            '<div>\n';
+        });
+  
+      }
+    };
+    xhttp.open("GET", "/getSearch?q=" + encodeURIComponent(keyword), true);
+    xhttp.send();
+
+    // window.location.href = "booking.html";
+    var main = document.getElementById("main");
+    var menu = document.getElementById("searchResults");
+    if (main.style.display === "none") {
+        main.style.display = "block";
+        searchResults.style.display = "none";
+    } else {
+        main.style.display = "none";
+        searchResults.style.display = "block";
+    }
   }
   return false;
 }
@@ -131,36 +164,6 @@ function restaurant() {
   // Send request
   xhttp.send();
 }
-
-
-// function getposts() {
-
-//   var xhttp = new XMLHttpRequest();
-//   xhttp.onreadystatechange = function () {
-//     if (this.readyState == 4 && this.status == 200) {
-
-//       var bposts = JSON.parse(this.responseText);
-
-//       console.log(bposts);
-
-//       var pdiv = document.getElementById('posts');
-//       pdiv.innerHTML = '';
-
-//       bposts.forEach(function (element) {
-//         pdiv.innerHTML += '<div class="blogpost">\n' +
-//           '   <span>' + element.timestamp + '</span>\n' +
-//           '   <h3>' + element.title + '</h3>\n' +
-//           '   <p>' + element.body + '</p>\n' +
-//           '<div>\n';
-//       });
-
-//     }
-//   };
-//   xhttp.open("GET", "/getallposts?q=" + encodeURIComponent(document.getElementById('blogpostsearch').value), true);
-//   xhttp.send();
-
-// }
-
 
 function onLogin() {
   console.log(1);

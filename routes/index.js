@@ -29,42 +29,43 @@ router.get('/restaurantINFO', function (req, res, next) {
 });
 
 
-// router.get('/getallposts', function (req, res, next) {
+router.get('/getSearch', function (req, res, next) {
 
-//   //Connect to the database
-//   req.pool.getConnection(function (err, connection) {
-//     if (err) {
-//       res.sendStatus(402);
-//       return;
-//     }
+  //Connect to the database
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      console.log("connection fail");
+      res.sendStatus(402);
+      return;
+    }
 
-//     if ('q' in req.query) {
+    if ('q' in req.query) {
 
-//       var query = "SELECT post_id AS id, title, content AS body, created_time AS timestamp FROM blogpost WHERE title LIKE ? OR content LIKE ?";
-//       connection.query(query, ['%' + req.query.q + '%', '%' + req.query.q + '%'], function (err, rows, fields) {
-//         connection.release(); // release connection
-//         if (err) {
-//           res.status(402).send(err);
-//         } else {
-//           res.json(rows);
-//         }
-//       });
+      var query = "SELECT * FROM restaurants WHERE name LIKE ?";
+      connection.query(query, ['%' + req.query.q + '%'], function (err, rows, fields) {
+        connection.release(); // release connection
+        if (err) {
+          res.status(402).send(err);
+        } else {
+          res.json(rows);
+        }
+      });
 
-//     } else {
-//       var query = "SELECT post_id AS id, title, content AS body, created_time AS timestamp FROM blogpost";
-//       connection.query(query, function (err, rows, fields) {
-//         connection.release(); // release connection
-//         if (err) {
-//           res.status(402).send(err);
-//         } else {
-//           res.json(rows);
-//         }
-//       });
-//     }
-//   });
+    } else {
+      var query = "SELECT * FROM restaurants";
+      connection.query(query, function (err, rows, fields) {
+        connection.release(); // release connection
+        if (err) {
+          res.status(402).send(err);
+        } else {
+          res.json(rows);
+        }
+      });
+    }
+  });
 
 
-// });
+});
 
 
 router.post('/template', function (req, res, next) {
