@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./javascripts/index.js"></script>
     <title>Restaurant</title>
 </head>
 
-<body>
+<body onload="restaurant()">
     <!-- HEADER -->
     <header class="banner-img">
         <div id="header">
@@ -28,11 +28,11 @@
         </div>
     </header>
 
-    <div class="main-container" onclick="test()">
+    <div class="main-container-booking">
         <div class="left-container">
-            <h2 id="rest-name">Restaurant</h2>
-            <p>tags: #japanese #ramen</p>
-            <br>
+            <h2 id="rest-name" v-cloak> {{ restaurant }}</h2>
+            <a id="address" v-bind:href="linkAddress" target="_blank" v-cloak><i
+                    class="fas fa-map-marker-alt"></i>{{ address }}</a>
             <!-- IMAGES -->
             <div class="images">
                 <div class="slideshow-container">
@@ -53,7 +53,7 @@
                         <img src="./images/ramen4.jpg" alt="img1">
                     </div>
 
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="prev" onclick="plusSlides(-1); loadTimes()" >&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
                 <br>
@@ -83,56 +83,94 @@
                     <button class="book-now" onclick="openSM()">Book Now</button>
                 </div>
             </div>
+
             <h3>Opening Hours:</h3>
-            <table>
+            <table id="openingHours">
                 <tr>
                     <th>Sunday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Monday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Tuesday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Wednesday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Thursday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Friday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
                 <tr>
                     <th>Saturday</th>
-                    <td>11am - 9pm</td>
+                    <td class="openTime">11am - 9pm</td>
                 </tr>
             </table>
-            <br>
+
+            <div>
+                <h3>Contact Info:</h3>
+                <button>Get Times</button><br>
+                <a id="contact" v-bind:href="linkPhone" v-cloak><i class="fas fa-phone"></i>{{ phone }}</a> <br>
+                <a id="contact" v-bind:href="linkEmail" v-cloak><i class="fas fa-envelope"></i>{{ email }}</a>
+
+            </div>
 
             <div class="reviews">
                 <h3>Reviews:</h3>
                 <q>AWESOME!</q> <span> - John</span> <br>
                 <q>I rate, ask for Bin Yuan to be your server, super nice!</q> <span> - Jen</span> <br>
-                <q>Why is this even a restuarant?</q> <span> - Wai Ed</span> <br>
+                <q>Why is this even a restuarant?</q> <span> - Waldo </span> <br>
             </div>
         </div>
+
     </div>
 
+    <div class="spacer">
+    </div>
+    <div class="footer-section">
+        <div class="footer-section-one">
+           <a href="index.html"><p>UMAMI</p></a>
+        </div>
+        <div class="footer-section-two">
+            <p>Contact</p>
+            <ul>
+                <li>Edward Tan</li>
+                <li>Tyndall Ye</li>
+            </ul>
+            <ul>
+                <li>Wai Ho Vong</li>
+                <li>Ben Zhu</li>
+            </ul>
+        </div>
+        <div class="footer-section-three">
+            <p>About</p>
+            <p>More</p>
+        </div>
+    </div>
     <!-- nav bar -->
     <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
         <div class="sm-wrapper">
-            HELLO
+            <div>
+                <h1>Please select a date and number of people:</h1>
+                <form>
+                    <input type="date" id="datePicker" required="required">
+                    <input type="number" name="quantity" min="1" max="20" value="1" required="required">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
         </div>
     </div>
-
     <script src="./javascripts/index.js"></script>
 </body>
 
