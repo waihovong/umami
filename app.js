@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql');
 
-var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -16,9 +15,6 @@ var dbConnectionPool = mysql.createPool({
 });
 
 var app = express();
-
-var dbConnectionPool = mysql.createPool({ host: 'localhost', database: 'webpage'});
-// var dbConnectionPool = mysql.createPool({ host: 'localhost', database: 'UMAMI'});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
