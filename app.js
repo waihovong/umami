@@ -6,17 +6,17 @@ var logger = require('morgan');
 var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var mysql = require('mysql');
+
 var dbConnectionPool = mysql.createPool({
   host: 'localhost',
   database: 'UMAMI'
 });
 
-var dbConnectionPool = mysql.createPool({
-  host: 'localhost',
-  database: 'webpage'
-});
+// var dbConnectionPool = mysql.createPool({
+//   host: 'localhost',
+//   database: 'webpage'
+// });
 
 var app = express();
 
