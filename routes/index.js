@@ -7,7 +7,6 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-<<<<<<< HEAD
 //user requests the login page
 //when successful make a query to the database
 router.post('/template', function(req, res, next) {
@@ -20,7 +19,6 @@ router.post('/template', function(req, res, next) {
       connection.release();
       console.log(rows);
       if(rows.length > 0) {
-=======
 router.get('/restaurantINFO', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
@@ -92,16 +90,11 @@ router.post('/template', function (req, res, next) {
       connection.release();
       console.log(rows);
       if (rows.length > 0) {
->>>>>>> tyndall-branch
         req.session.userid = rows[0].id;
         res.send(rows[0].name);
       } else {
         res.sendStatus(403);
-<<<<<<< HEAD
-        }
-=======
       }
->>>>>>> tyndall-branch
     });
   });
 });
