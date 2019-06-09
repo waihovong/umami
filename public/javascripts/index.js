@@ -67,3 +67,17 @@ function searchBarFunction(event) {
   return false;
 }
 
+function onLogin() {
+  console.log(1);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      alert('Welcome '+xhttp.responseText);
+    } else if (this.readyState == 4 && this.statue == 403) {
+      alert('Username or Password Incorrect');
+    }
+  };
+  xhttp.open("POST", "/template", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({email:document.getElementById('email').value, pass:document.getElementById('pass').value}));
+}
