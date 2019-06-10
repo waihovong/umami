@@ -354,12 +354,12 @@ table {
   width: 350px;
   padding: 0;
   text-align: center;
-  margin-top: 50px;
 }
 .register-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;  
+  width: 100vw;
 }
 
 .register-form-container h2 {
@@ -391,6 +391,7 @@ table {
 .sign-up-button {
   width: 100%;
   margin: auto;
+  padding-bottom: 50px;
 }
 .sign-in-container {
   padding-top: 5px;
@@ -490,6 +491,12 @@ table {
 /* booking page */
 /* search page */
 /* sign up and log in modal box */
+
+.g-signin2 {
+  padding-left: 110px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
 
 /* -----------------------------------------accounts page ----------------------------------------- */
 

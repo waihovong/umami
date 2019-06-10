@@ -187,11 +187,11 @@ function onSignUp() {
     if(this.readyState == 4 && this.status == 200) {
       // alert('You have Signed up to UMAMI');
       var success = document.getElementById("logSuccess").innerHTML = "Sign Up Successful";
-      success.color = "red";
     } else if (this.readyState == 4 && this.status >= 400) {
       alert('Email address already in use, please use another email!!!!!!!!!!!!!!');
     }
   };
+  
   xhttp.open("POST", "/signup", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(JSON.stringify({name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value}))
@@ -207,4 +207,23 @@ function checkPasswords() {
   } else {
     onSignUp();
   }
+}
+
+function managerSignIn() {
+  console.log(3);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      // alert('Welcome ' + xhttp.responseText);
+      window.location.pathname = "./accounts.html"
+      // document.getElementById("userSession").innerHTML = "My Account";
+      console.log("you're the manager");
+
+    } else if (this.readyState == 4 && this.status == 403) {
+      alert('Username or Password Incorrect');
+    }
+  };
+  xhttp.open("POST", "/managerlog", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({ email: document.getElementById('email').value, pass: document.getElementById('pass').value }));
 }

@@ -30,45 +30,7 @@ router.get('/restaurantINFO', function (req, res, next) {
 });
 
 
-// router.get('/getallposts', function (req, res, next) {
-
-//   //Connect to the database
-//   req.pool.getConnection(function (err, connection) {
-//     if (err) {
-//       res.sendStatus(402);
-//       return;
-//     }
-
-//     if ('q' in req.query) {
-
-//       var query = "SELECT post_id AS id, title, content AS body, created_time AS timestamp FROM blogpost WHERE title LIKE ? OR content LIKE ?";
-//       connection.query(query, ['%' + req.query.q + '%', '%' + req.query.q + '%'], function (err, rows, fields) {
-//         connection.release(); // release connection
-//         if (err) {
-//           res.status(402).send(err);
-//         } else {
-//           res.json(rows);
-//         }
-//       });
-
-//     } else {
-//       var query = "SELECT post_id AS id, title, content AS body, created_time AS timestamp FROM blogpost";
-//       connection.query(query, function (err, rows, fields) {
-//         connection.release(); // release connection
-//         if (err) {
-//           res.status(402).send(err);
-//         } else {
-//           res.json(rows);
-//         }
-//       });
-//     }
-//   });
-
-
-// });
-
-
-router.post('/template', function (req, res, next) {
+router.post('/signin', function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(402);
@@ -87,7 +49,25 @@ router.post('/template', function (req, res, next) {
   });
 });
 
-router.post('/templateUsers', function(req, res, next) {
+router.post('/managerlog', function(req, res, next) {
+  req.pool.getConnection(function(err, connection) {
+    if(err) {
+      res.sendStatus(402);
+    }
+    var query = "SELECT res_id, res_name FROM res_account WHERE email = ? AND password = SHA2(?, 256)";
+    connection.query(query, [req.body.email, req.body.pass], function(err, rows, fields) {
+      connection.release();
+      if(rows.length > 0) {
+        req.session.managerid = rows[0].id;
+        res.send(rows[0].name);
+      } else {
+        res.sendStatus(403);
+      }
+    });
+  });
+});
+
+router.post('/signup', function(req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if(err) {
       res.sendStatus(402);
@@ -107,4 +87,6 @@ router.post('/templateUsers', function(req, res, next) {
       });
     });
 });
+
+
 module.exports = router;

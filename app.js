@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var dbConnectionPool = mysql.createPool({
   host: 'localhost',
   // socketPath: '/tmp/mysql.sock',
-  database: 'UMAMI'
+  database: 'website'
 });
 
 var app = express();
