@@ -64,15 +64,17 @@ router.get('/postreview', function(req, res, next) {
   });
 });
 
+//user requests the login page
+//when successful make a query to the database
 
 router.get('/restaurantINFO', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
+      console.log("fail");
       res.sendStatus(402);
       return;
     }
-
 
     var query = "SELECT * FROM restaurants WHERE restaurantID = 8;";
     connection.query(query, function (err, rows, fields) {
@@ -83,7 +85,6 @@ router.get('/restaurantINFO', function (req, res, next) {
         res.json(rows); //send response
       }
     });
-
   });
 });
 
@@ -122,17 +123,14 @@ router.get('/getSearch', function (req, res, next) {
       });
     }
   });
-
-
 });
 
-
-router.post('/template', function (req, res, next) {
+router.post('/signin', function (req, res, next) {
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(402);
     }
-    var query = "SELECT id, name FROM Users WHERE email = ? AND password_hash = sha2(?, 256)";
+    var query = "SELECT id, name FROM Users WHERE email = ? AND password_hash = SHA2(?, 256)";
     connection.query(query, [req.body.email, req.body.pass], function (err, rows, fields) {
       connection.release();
       console.log(rows);
@@ -144,6 +142,45 @@ router.post('/template', function (req, res, next) {
       }
     });
   });
+});
+
+router.post('/managerlog', function(req, res, next) {
+  req.pool.getConnection(function(err, connection) {
+    if(err) {
+      res.sendStatus(402);
+    }
+    var query = "SELECT res_id, res_name FROM res_account WHERE email = ? AND password = SHA2(?, 256)";
+    connection.query(query, [req.body.email, req.body.pass], function(err, rows, fields) {
+      connection.release();
+      if(rows.length > 0) {
+        req.session.managerid = rows[0].id;
+        res.send(rows[0].name);
+      } else {
+        res.sendStatus(403);
+      }
+    });
+  });
+});
+
+router.post('/signup', function(req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if(err) {
+      res.sendStatus(402);
+    }
+    // var name = req.body.name;
+    // var email = req.body.email;
+    // var password = req.body.pass2;
+    // var pass = SHA2(password,256);
+      var insertQuery = "INSERT INTO Users VALUES (id, ?, ?, SHA2(?,256))";
+      connection.query(insertQuery, [req.body.name, req.body.email, req.body.pass ], function(err, rows, fields) {
+        connection.release();
+        if(err) {
+          res.sendStatus(402);
+        } else {
+          res.sendStatus(200);
+        }
+      });
+    });
 });
 
 module.exports = router;

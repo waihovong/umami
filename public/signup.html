@@ -22,29 +22,24 @@
     <div class="register-form-box-container">
     <h2>Register</h2>
       <div class="register-input username-input">
-        <input type="text" class="form-control" name="name" placeholder="Name" required="required">
+        <input type="text" class="form-control" id="name2" name="name" placeholder="Name" required="required">
       </div>
       <div class="register-input email-input">
-        <input type="text" class="form-control" name="email" placeholder="Email" required="required">
+        <input type="text" class="form-control" id="email2" name="email" placeholder="Email" required="required">
       </div>
       <div class="register-input password-input">
-          <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+          <input type="password" class="form-control" id="pass2" name="password" placeholder="Password" required="required">
       </div>
       <div class="register-input password-input">
-          <input type="password" class="form-control" name="password-confirm" placeholder="Confirm Password" required="required">
+          <input type="password" class="form-control" id="pass3" name="password-confirm" placeholder="Confirm Password" required="required">
       </div>
       <div class="sign-up-button">
-        <button type="submit" id="primary-style-button">Sign Up</button>
+        <button type="submit" id="primary-style-button" onclick="checkPasswords()">Sign Up</button>
       </div>
       <div class="seperator-div">
+        <p id="logSuccess"> </p>
         <p class="split-style">OR</p>
       </div>
-
-      <div class="fa-icons-login">
-          <a href="https://google.com" class="fa fa-google"></a>
-          <a href="https://facebook.com" class="fa fa-facebook"></a>
-      </div>
-
       <div class="sign-in-container">
         <!--Add link to Login page afterwards-->
         <p>Already have an account? <u><a href="signin.html">Login Here</a></u></p>
