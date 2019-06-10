@@ -52,27 +52,29 @@ UNLOCK TABLES;
 -- Table structure for table `restaurant`
 --
 
-DROP TABLE IF EXISTS `restaurant`;
+DROP TABLE IF EXISTS `restaurants`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `restaurant` (
-  `res_name` varchar(30) DEFAULT NULL,
-  `Location` varchar(30) DEFAULT NULL,
-  `Phone` int(11) DEFAULT NULL,
+CREATE TABLE `restaurants` (
+  `restaurantID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `address` varchar(30) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
   `openhours` varchar(30) DEFAULT NULL,
-  `Rating` varchar(30) DEFAULT NULL,
-  `Cusine` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `rating` varchar(30) DEFAULT NULL,
+  `cusine` varchar(30) DEFAULT NULL,
+  UNIQUE KEY `restaurantID` (`restaurantID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `restaurant`
+-- Dumping data for table `restaurants`
 --
 
-LOCK TABLES `restaurant` WRITE;
-/*!40000 ALTER TABLE `restaurant` DISABLE KEYS */;
-INSERT INTO `restaurant` VALUES ('Hawker Walker','Francis St, Adelaide SA 5000',870017778,'11AM-6PM','5/5','Malaysian'),('Dumpling King','Gouger St, Adelaide SA 5000',870017778,'11AM-6PM','3/5','Chinese'),('Shujinko Ramen','Gouger St, Adelaide SA 5000',38912012,'24 Hours','5/5','Japanese'),('Danny\'s Thai','Franklin St, Adelaide SA 5000',1451200,'11AM-11PM','5/5','Thai'),('Chicco Palms','Adam St, Adelaide SA 5000',131312331,'11AM-10PM','5/5','Italian'),('PHO SA','Gouger St, Adelaide SA 5000',121415151,'10AM-10PM','4/5','Vietnamese'),('BBQ City','Gouger St, Adelaide SA 5000',125151,'10AM-12PM','4/5','Chinese'),('82 Pocha','Grenfell St, Adelaide SA 5000',72611141,'3PM-1AM','5/5','Korean'),('Mandoo','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Korean'),('Sit-Lo','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Vietnamese');
-/*!40000 ALTER TABLE `restaurant` ENABLE KEYS */;
+LOCK TABLES `restaurants` WRITE;
+/*!40000 ALTER TABLE `restaurants` DISABLE KEYS */;
+INSERT INTO `restaurants` VALUES (1,'Hawker Walker','Francis St, Adelaide SA 5000',870017778,'11AM-6PM','5/5','Malaysian'),(2,'Dumpling King','Gouger St, Adelaide SA 5000',870017778,'11AM-6PM','3/5','Chinese'),(3,'Shujinko Ramen','Gouger St, Adelaide SA 5000',38912012,'24 Hours','5/5','Japanese'),(4,'Danny\'s Thai','Franklin St, Adelaide SA 5000',1451200,'11AM-11PM','5/5','Thai'),(5,'Chicco Palms','Adam St, Adelaide SA 5000',131312331,'11AM-10PM','5/5','Italian'),(6,'PHO SA','Gouger St, Adelaide SA 5000',121415151,'10AM-10PM','4/5','Vietnamese'),(7,'BBQ City','Gouger St, Adelaide SA 5000',125151,'10AM-12PM','4/5','Chinese'),(8,'82 Pocha','Grenfell St, Adelaide SA 5000',72611141,'3PM-1AM','5/5','Korean'),(9,'Mandoo','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Korean'),(10,'Sit-Lo','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Vietnamese');
+/*!40000 ALTER TABLE `restaurants` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

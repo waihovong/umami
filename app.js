@@ -10,7 +10,7 @@ var mysql = require('mysql');
 
 var dbConnectionPool = mysql.createPool({
   host: 'localhost',
-  database: 'UMAMI'
+  database: 'website'
 });
 
 // var dbConnectionPool = mysql.createPool({

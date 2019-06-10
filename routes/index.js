@@ -6,6 +6,65 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+//Review functions and stuff
+//post request to send reviews to the database
+router.post('/addreview', function(req, res, next) {
+
+  req.pool.getConnection(function(err, connection) {
+    if (err) {
+      res.sendStatus(402);
+      return;
+    }
+    var query = "INSERT INTO reviews (review_title, content, post_time) VALUES (?, ?, NOW())";
+    connection.query(query, [req.body.title, req.body.content], function(err, rows, fields) {
+      connection.release();
+      if (err) {
+        res.sendStatus(402);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  });
+});
+
+//get request to retrieve the posted review from the database
+router.get('/postreview', function(req, res, next) {
+
+
+  req.pool.getConnection(function(err, connection) {
+    if (err) {
+      res.sendStatus(402);
+      return;
+    }
+
+    if ('q' in req.query) {
+
+      var query = "SELECT review_id AS id, review_title, content AS body, post_time AS timestamp FROM reviews WHERE review_title LIKE ? OR content LIKE ?";
+      connection.query(query, ['%'+req.query.q+'%','%'+req.query.q+'%'], function(err, rows, fields) {
+          connection.release(); // release connection
+          if (err) {
+              res.status(402).send(err);
+          } else {
+              res.json(rows);
+          }
+      });
+
+    } else {
+        var query = "SELECT review_id AS id, review_title, content AS body, post_time AS timestamp FROM reviews";
+        connection.query(query, function(err, rows, fields) {
+            connection.release(); // release connection
+            if (err) {
+                res.status(402).send(err);
+            } else {
+                res.json(rows);
+            }
+        });
+    }
+  });
+});
+
+
 router.get('/restaurantINFO', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
