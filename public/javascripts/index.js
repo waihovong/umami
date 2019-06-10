@@ -161,18 +161,21 @@ function restaurant() {
 
 // }
 
-
 function onLogin() {
   console.log(1);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      alert('Welcome ' + xhttp.responseText);
+      // alert('Welcome ' + xhttp.responseText);
+      window.location.pathname = "./index.html"
+      // document.getElementById("userSession").innerHTML = "My Account";
+      console.log("account");
+
     } else if (this.readyState == 4 && this.status == 403) {
       alert('Username or Password Incorrect');
     }
   };
-  xhttp.open("POST", "/template", true);
+  xhttp.open("POST", "/signin", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(JSON.stringify({ email: document.getElementById('email').value, pass: document.getElementById('pass').value }));
 }
@@ -182,12 +185,26 @@ function onSignUp() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
-      alert('You have Signed up to UMAMI');
+      // alert('You have Signed up to UMAMI');
+      var success = document.getElementById("logSuccess").innerHTML = "Sign Up Successful";
+      success.color = "red";
     } else if (this.readyState == 4 && this.status >= 400) {
       alert('Email address already in use, please use another email!!!!!!!!!!!!!!');
     }
   };
-  xhttp.open("POST", "/templateUsers", true);
+  xhttp.open("POST", "/signup", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(JSON.stringify({name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value}))
+}
+
+function checkPasswords() {
+  var passCheck2 = document.getElementById("pass2").value;
+  var passCheck3 = document.getElementById("pass3").value;
+
+  if(passCheck2 !== passCheck3) {
+    alert("Password does not match");
+    return false;
+  } else {
+    onSignUp();
+  }
 }
