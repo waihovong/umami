@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 @import url('https://fonts.googleapis.com/css?family=Oxygen|Ubuntu');
-
 /* ----------------------------------------- body code ----------------------------------------- */
 
 body {
@@ -10,8 +9,7 @@ body {
   padding: 0;
 }
 
-@media (max-width: 560px) 
-{
+@media (max-width: 560px) {
   .register-form-box-container {
     width: 80%;
   }
@@ -31,10 +29,10 @@ html {
 
 .background-image-index {
   background-image: url("../images/main.jpg");
-  height:100vh;
+  height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; 
+  background-size: cover;
 }
 
 .background-image-accounts {
@@ -63,9 +61,7 @@ h1 {
   font-size: 25vw;
   font-size: 25vh;
   /* background-color: rgba(255,255,255,0.3); */
-  background-color: rgba(0,0,0,0.6);
-
-
+  background-color: rgba(0, 0, 0, 0.6);
   font-family: 'Oxygen', sans-serif;
   font-weight: 100;
 }
@@ -84,8 +80,10 @@ hr {
   border: none;
   height: 1px;
   /* Set the hr color */
-  color: rgb(50,50,50); /* old IE */
-  background-color: rgb(78, 78, 78); /* Modern Browsers */
+  color: rgb(50, 50, 50);
+  /* old IE */
+  background-color: rgb(78, 78, 78);
+  /* Modern Browsers */
   margin-top: 30px;
 }
 
@@ -96,7 +94,7 @@ p {
 
 a, a:visited, a:hover, a:active {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
 }
 
 th {
@@ -108,19 +106,22 @@ th {
   border: 1px solid black;
   color: white;
 }
+
 td {
   border: 1px solid black;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 15px;
   margin-left: auto;
   margin-right: auto;
-  width:100%;
+  width: 100%;
 }
+
 /* ----------------------------------------- index page ----------------------------------------- */
 
 /* 
@@ -134,7 +135,7 @@ table {
 } */
 
 .header-styling {
-  padding: 0 ;
+  padding: 0;
   margin-top: 100px;
   margin-bottom: 0px;
 }
@@ -157,7 +158,7 @@ table {
   display: -webkit-box;
   display: -moz-box;
   display: flex;
-  display: -webkit-flex; 
+  display: -webkit-flex;
   align-content: center;
   justify-content: center;
   overflow: hidden;
@@ -179,28 +180,27 @@ table {
   padding-right: 6px;
 }
 
-.text-align-icon{
+.text-align-icon {
   display: flex;
   align-content: center;
   justify-content: flex-end;
   align-items: center;
 }
 
-.hover-action:hover .icon-rotate{
+.hover-action:hover .icon-rotate {
   transition: 0.2s;
   transform: rotate(90deg);
   transform-origin: center center;
   cursor: pointer;
 }
 
-.hover-action:hover span{
+.hover-action:hover span {
   text-shadow: 0.5px 0 0 white;
 }
 
-
 .wrapper-account {
   display: flex;
-  float:right;
+  float: right;
   /* justify-content: center; */
   margin: 15px 15px 0px 0px;
   align-items: center;
@@ -222,16 +222,15 @@ table {
   width: 300px;
   height: 30px;
   transition: width 0.4s ease-in-out;
-  border:none;
+  border: none;
   border-bottom: 1px solid black;
   text-align: center;
-
   font-size: 16px;
 }
 
 #search-bar:focus {
   width: 60%;
-  outline:none;
+  outline: none;
   border-bottom: 2px solid dodgerblue;
 }
 
@@ -239,11 +238,12 @@ table {
   /* position: relative; */
   margin-left: auto;
   margin-right: auto;
-  text-align:center;
+  text-align: center;
 }
 
 .restaurant-container {
-  display: flex; /*DELETE THIS TO DISPLAY HR FOR POPULAR AND CUISINES*/
+  display: flex;
+  /*DELETE THIS TO DISPLAY HR FOR POPULAR AND CUISINES*/
   margin: auto;
   padding-left: 18%;
   padding-right: 18%;
@@ -271,7 +271,6 @@ table {
   text-align: center;
 }
 
-
 .scroll-image {
   display: inline-block;
   width: 300px;
@@ -287,7 +286,7 @@ table {
   transition: 0.5s;
 }
 
-.scroll-image:hover{
+.scroll-image:hover {
   transform: scale(1.1);
 }
 
@@ -299,9 +298,100 @@ table {
   padding: 10px;
 }
 
-.restaurant-container h1{
+.restaurant-container h1 {
   color: black;
 }
+
+/* ---------------Search--------------- */
+
+#noResults {
+  margin: auto;
+  max-width: 62em;
+  margin-bottom: 50px;
+}
+
+#noResults h2{
+  text-align: center;
+  font-size: 0.9em;
+  color: grey;
+  text-decoration: underline;
+}
+
+#noResults p{
+  text-align: center;
+  font-size: 0.9em;
+  color: grey;
+}
+
+
+
+
+#searchResults {
+  margin: auto;
+  max-width: 62em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+
+#searchImage {
+  float: left;
+}
+
+#resImage {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+}
+
+#searchInfo {
+  margin: 0;
+  padding: 0;
+  padding-left: 50px;
+}
+
+#searchInfo h2 {
+  margin: 0;
+}
+
+#searchInfo p {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: #444;
+}
+
+#address {
+  color: #444;
+  text-decoration: underline;
+}
+
+.fa-map-marker-alt {
+  color: crimson;
+  padding: 5px 10px 5px 0px;
+  margin: 3px 0px 5px 0px;
+}
+
+#rating {
+  margin-bottom: 10px;
+}
+
+#rating h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#rating .fa-star {
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+}
+
+.checked {
+  color: orange;
+}
+
+/* ---------------Footer--------------- */
 
 .spacer {
   padding: 60px;
@@ -311,7 +401,7 @@ table {
   display: flex;
   margin: 0;
   padding: 0;
-  background-color: rgb(10,10,10);
+  background-color: rgb(10, 10, 10);
   color: white;
   padding-top: 15px;
 }
@@ -326,7 +416,7 @@ table {
 }
 
 .footer-section-one {
-  float:left;
+  float: left;
   margin-left: auto;
   margin-right: auto;
 }
@@ -337,7 +427,7 @@ table {
 }
 
 .footer-section-three {
-  float:right;
+  float: right;
   margin-left: auto;
   margin-right: auto;
 }
@@ -350,16 +440,17 @@ table {
 
 .register-form-box-container {
   border-radius: 10px;
-  background-color: rgba(250,247,247,0.95);  
+  background-color: rgba(250, 247, 247, 0.95);
   width: 350px;
   padding: 0;
   text-align: center;
   margin-top: 50px;
 }
+
 .register-form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
 }
 
 .register-form-container h2 {
@@ -392,12 +483,13 @@ table {
   width: 100%;
   margin: auto;
 }
+
 .sign-in-container {
   padding-top: 5px;
   padding-bottom: 20px;
 }
 
-.split-style{
+.split-style {
   margin-top: 20px;
 }
 
@@ -411,7 +503,6 @@ table {
   width: 70%;
   height: 40px;
   cursor: pointer;
-
 }
 
 #primary-style-button:hover {
@@ -457,7 +548,6 @@ table {
   color: white;
 }
 
-
 .fa-google {
   margin: 5px 2px;
   background: #dd4b39;
@@ -485,10 +575,13 @@ table {
 }
 
 /* user profile page  */
+
 /* restarunt accounts page */
 
 /* booking page */
+
 /* search page */
+
 /* sign up and log in modal box */
 
 /* -----------------------------------------accounts page ----------------------------------------- */
@@ -512,7 +605,7 @@ table {
 }
 
 .center-container {
-  padding-top:80px;
+  padding-top: 80px;
 }
 
 .edit-profle-button {
@@ -540,12 +633,12 @@ table {
 }
 
 .username-icon {
-  float:left;
+  float: left;
   text-align: center;
 }
 
 .username-contents {
-  float:right;
+  float: right;
   margin-left: 40px
 }
 

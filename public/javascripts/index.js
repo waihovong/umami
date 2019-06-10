@@ -61,26 +61,49 @@ function scrollToTop() {
 var address;
 function searchBarFunction() {
   keyword = document.getElementById("search-bar").value;
+  console.log(keyword);
   if (event.keyCode == 13) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-  
+
         var resSearch = JSON.parse(this.responseText);
-  
+
         console.log(resSearch);
-  
-        var pdiv = document.getElementById('searchResults');
+
+        var pdiv = document.getElementById('Results');
         pdiv.innerHTML = '';
-  
-        resSearch.forEach(function (element) {
-          pdiv.innerHTML += '<div class="sResult">\n' +
-            '   <span>' + element.name + '</span>\n' +
-            '   <h3>' + element.address + '</h3>\n' +
-            '   <p>' + element.email + '</p>\n' +
-            '<div>\n';
-        });
-  
+        if (resSearch.length == 0) {
+          pdiv.innerHTML += '<div id=noResults>' +
+            '<h2>No results found for "' + keyword + '" </h2>' +
+             '<p>Please try again </p> \n' +
+             '</div>\n'
+
+        } else {
+
+          resSearch.forEach(function (element) {
+            pdiv.innerHTML +=
+              '<div id="searchResults">' +
+              '<div id="searchImage">\n' +
+              '<img id="resImage" src="./images/res1.jpg" alt="restaurant 1"> \n' +
+              '</div> \n' +
+              '<div id="searchInfo"> \n' +
+              '<h2>' + element.name + '</h2> \n' +
+              '<p>#' + element.cuisine + '</p> \n' +
+              '<a id="address" v-bind:href="https://maps.google.com/?q=' + element.address + '" target="_blank" v-cloak><i class="fas fa-map-marker-alt"></i>' + element.address + '</a> \n' +
+              '<div id="rating"> \n' +
+              '<h4>Rating:</h4> \n' +
+              '<span class="fa fa-star checked"></span> \n' +
+              '<span class="fa fa-star checked"></span> \n' +
+              '<span class="fa fa-star checked"></span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span>3/5</span> \n' +
+              '</div> \n' +
+              '</div> \n'; +
+                '<div>\n';
+          });
+        }
       }
     };
     xhttp.open("GET", "/getSearch?q=" + encodeURIComponent(keyword), true);
@@ -88,22 +111,22 @@ function searchBarFunction() {
 
     // window.location.href = "booking.html";
     var main = document.getElementById("main");
-    var menu = document.getElementById("searchResults");
-    if (main.style.display === "none") {
-        main.style.display = "block";
-        searchResults.style.display = "none";
+    var menu = document.getElementById("Results");
+    if (keyword == '') {
+      main.style.display = "block";
+      menu.style.display = "none";
     } else {
-        main.style.display = "none";
-        searchResults.style.display = "block";
+      main.style.display = "none";
+      menu.style.display = "block";
     }
+    return false;
   }
-  return false;
 }
 
 function loadTimes() {
-  var xhttp = new XMLHttpRequest(); 
-  xhttp.onreadystatechange = function() {
-    if(this.readyState == 4 && this.status == 200) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(xhttp.responseText);
       // document.getElementById("openTime1").innerHTML = data.openingTimes;
       myFunction(data);
@@ -118,7 +141,7 @@ function myFunction(data) {
   var i;
 
   // var data = document.getElementsByClassName("openTime");
-  for(i = 0; i < data.length; i++) {
+  for (i = 0; i < data.length; i++) {
     string += '<tr>' + '<th>' + data[i].day + '</th>' + '<td>' + data[i].openingTimes + '</td>' + '</tr>';
   }
   // document.getElementsByClassName("openTime")[1].innerHTML = string;
