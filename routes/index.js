@@ -74,7 +74,7 @@ router.get('/restaurantINFO', function (req, res, next) {
     }
 
 
-    var query = "SELECT * FROM restaurants WHERE restaurantID = 1;";
+    var query = "SELECT * FROM restaurants WHERE restaurantID = 8;";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
