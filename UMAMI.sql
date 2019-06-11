@@ -62,7 +62,7 @@ CREATE TABLE `restaurants` (
   `phone` int(11) DEFAULT NULL,
   `openhours` varchar(30) DEFAULT NULL,
   `rating` varchar(30) DEFAULT NULL,
-  `cusine` varchar(30) DEFAULT NULL,
+  `cuisine` varchar(30) DEFAULT NULL,
   UNIQUE KEY `restaurantID` (`restaurantID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;

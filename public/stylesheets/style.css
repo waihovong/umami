@@ -278,6 +278,7 @@ table {
 
 .text-image-container {
   text-align: center;
+  font-weight: bold;
 }
 
 .scroll-image {
@@ -304,7 +305,8 @@ table {
 }
 
 .secondary-container-images img {
-  padding: 10px;
+  padding: 10px 10px 5px 10px;
+  
 }
 
 .restaurant-container h1 {
