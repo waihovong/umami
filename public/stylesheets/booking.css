@@ -21,6 +21,19 @@ a, a:visited, a:hover, a:active {
     display: none;
 }
 
+@media screen and (max-width: 900px) {
+    .main-container-booking {
+      font-size: 2vw;
+    }
+    .rating-book-right button{
+        background-color: black;
+        text-align: left;
+        float: left;
+    }
+    .book-now {
+        background-color: black;
+    }
+  }
 /* -------------------------BANNER--------------------- */
 
 .banner-img {
@@ -378,3 +391,5 @@ input[type="submit"] {
   .spacer {
     padding: 60px;
   }
+
+  

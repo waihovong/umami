@@ -59,18 +59,139 @@ function scrollToTop() {
 }
 
 var address;
-function searchBarFunction(event) {
-  address = document.getElementById("search-bar").value;
+function searchBarFunction() {
+  keyword = document.getElementById("search-bar").value;
+  console.log(keyword);
   if (event.keyCode == 13) {
-    window.location.href = "booking.html";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+
+        var resSearch = JSON.parse(this.responseText);
+
+        console.log(resSearch);
+
+        var pdiv = document.getElementById('Results');
+        pdiv.innerHTML = '';
+        if (resSearch.length == 0) {
+          pdiv.innerHTML += '<div id=noResults>' +
+            '<h2>No results found for "' + keyword + '" </h2>' +
+            '<p>Please try again </p> \n' +
+            '</div>\n'
+
+        } else {
+
+          resSearch.forEach(function (element) {
+            pdiv.innerHTML +=
+              '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
+              '<div id="searchImage">\n' +
+              '<img id="resImage" src="./images/res1.jpg" alt="restaurant 1"> \n' +
+              '</div> \n' +
+              '<div id="searchInfo"> \n' +
+              '<h2>' + element.name + '</h2> \n' +
+              '<p>#' + element.cuisine + '</p> \n' +
+              '<a id="address" v-bind:href="https://maps.google.com/?q=' + element.address + '" target="_blank" v-cloak><i class="fas fa-map-marker-alt"></i>' + element.address + '</a> \n' +
+              '<div id="rating"> \n' +
+              '<h4>Rating:</h4> \n' +
+              '<span class="fa fa-star checked"></span> \n' +
+              '<span class="fa fa-star checked"></span> \n' +
+              '<span class="fa fa-star checked"></span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span>3/5</span> \n' +
+              '</div> \n' +
+              '</div> \n'; +
+              '</div>\n';
+          });
+        }
+      }
+    };
+    xhttp.open("GET", "/getSearch?q=" + encodeURIComponent(keyword), true);
+    xhttp.send();
+
+    // window.location.href = "booking.html";
+    var main = document.getElementById("main");
+    var menu = document.getElementById("Results");
+    if (keyword == '') {
+      main.style.display = "block";
+      menu.style.display = "none";
+    } else {
+      main.style.display = "none";
+      menu.style.display = "block";
+    }
+    return false;
+  }
+}
+
+var cuisine;
+function searchLink(value) {
+  cuisine = value;
+  console.log(cuisine);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+
+      var resSearch = JSON.parse(this.responseText);
+
+      console.log(resSearch);
+
+      var pdiv = document.getElementById('Results');
+      pdiv.innerHTML = '';
+      if (resSearch.length == 0) {
+        pdiv.innerHTML += '<div id=noResults>' +
+          '<h2>No results found for "' + cuisine + '" </h2>' +
+          '<p>Please try again </p> \n' +
+          '</div>\n'
+      } else {
+
+        resSearch.forEach(function (element) {
+          pdiv.innerHTML +=
+            '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
+            '<div id="searchImage">\n' +
+            '<img id="resImage" src="./images/res1.jpg" alt="restaurant 1"> \n' +
+            '</div> \n' +
+            '<div id="searchInfo"> \n' +
+            '<h2>' + element.name + '</h2> \n' +
+            '<p>#' + element.cuisine + '</p> \n' +
+            '<a id="address" v-bind:href="https://maps.google.com/?q=' + element.address + '" target="_blank" v-cloak><i class="fas fa-map-marker-alt"></i>' + element.address + '</a> \n' +
+            '<div id="rating"> \n' +
+            '<h4>Rating:</h4> \n' +
+            '<span class="fa fa-star checked"></span> \n' +
+            '<span class="fa fa-star checked"></span> \n' +
+            '<span class="fa fa-star checked"></span> \n' +
+            '<span class="fa fa-star"></span> \n' +
+            '<span class="fa fa-star"></span> \n' +
+            '<span>3/5</span> \n' +
+            '</div> \n' +
+            '</div> \n'; +
+            '</div>\n';
+        });
+      }
+    }
+  };
+  xhttp.open("GET", "/getSearch?q=" + encodeURIComponent(cuisine), true);
+  xhttp.send();
+
+
+  // window.location.href = "booking.html";
+  var main = document.getElementById("main");
+  var menu = document.getElementById("Results");
+  if (cuisine == '') {
+    main.style.display = "block";
+    menu.style.display = "none";
+  } else {
+    main.style.display = "none";
+    menu.style.display = "block";
   }
   return false;
 }
 
+
+
 function loadTimes() {
-  var xhttp = new XMLHttpRequest(); 
-  xhttp.onreadystatechange = function() {
-    if(this.readyState == 4 && this.status == 200) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(xhttp.responseText);
       // document.getElementById("openTime1").innerHTML = data.openingTimes;
       myFunction(data);
@@ -85,13 +206,21 @@ function myFunction(data) {
   var i;
 
   // var data = document.getElementsByClassName("openTime");
-  for(i = 0; i < data.length; i++) {
+  for (i = 0; i < data.length; i++) {
     string += '<tr>' + '<th>' + data[i].day + '</th>' + '<td>' + data[i].openingTimes + '</td>' + '</tr>';
   }
   // document.getElementsByClassName("openTime")[1].innerHTML = string;
   document.getElementById("openingHours").innerHTML = string;
 }
 
+// function resPage(rName) {
+
+//   var xhttp = new XMLHttpRequest();
+
+//   xhttp.open("POST", "/saveRes?name=" + encodeURIComponent(rName), true);
+//   xhttp.setRequestHeader('Content-Type', 'application/json');
+//   xhttp.send(rName);
+// }
 
 
 function restaurant() {
@@ -126,40 +255,28 @@ function restaurant() {
     }
   };
   // Open connection
-  xhttp.open("GET", "/restaurantINFO", true);
+  xhttp.open("GET", "/restaurantINFO?name=" + encodeURIComponent(name), true);
 
   // Send request
   xhttp.send();
 }
 
 
-// function getposts() {
+function resSave(resName) {
 
-//   var xhttp = new XMLHttpRequest();
-//   xhttp.onreadystatechange = function () {
-//     if (this.readyState == 4 && this.status == 200) {
+  window.location = "/booking.html";
+  var name = resName;
+  // Create new AJAX request
+  var xhttp = new XMLHttpRequest();
 
-//       var bposts = JSON.parse(this.responseText);
+  // Open connection
+  xhttp.open("GET", "/resLink?name=" + encodeURIComponent(name), true);
 
-//       console.log(bposts);
+  // Send request
+  xhttp.send();
+}
 
-//       var pdiv = document.getElementById('posts');
-//       pdiv.innerHTML = '';
 
-//       bposts.forEach(function (element) {
-//         pdiv.innerHTML += '<div class="blogpost">\n' +
-//           '   <span>' + element.timestamp + '</span>\n' +
-//           '   <h3>' + element.title + '</h3>\n' +
-//           '   <p>' + element.body + '</p>\n' +
-//           '<div>\n';
-//       });
-
-//     }
-//   };
-//   xhttp.open("GET", "/getallposts?q=" + encodeURIComponent(document.getElementById('blogpostsearch').value), true);
-//   xhttp.send();
-
-// }
 
 function onLogin() {
   console.log(1);
@@ -183,29 +300,36 @@ function onLogin() {
 function onSignUp() {
   console.log(2);
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if(this.readyState == 4 && this.status == 200) {
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
       // alert('You have Signed up to UMAMI');
       var success = document.getElementById("logSuccess").innerHTML = "Sign Up Successful";
     } else if (this.readyState == 4 && this.status >= 400) {
       alert('Email address already in use, please use another email!!!!!!!!!!!!!!');
     }
   };
-  
+
   xhttp.open("POST", "/signup", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
-  xhttp.send(JSON.stringify({name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value}))
+  xhttp.send(JSON.stringify({ name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value }))
 }
 
-function checkPasswords() {
+function checkPasswords(value) {
+  var check = value;
   var passCheck2 = document.getElementById("pass2").value;
+  console.log(passCheck2);
   var passCheck3 = document.getElementById("pass3").value;
+  console.log(passCheck3);
 
-  if(passCheck2 !== passCheck3) {
+  if (passCheck2 !== passCheck3) {
     alert("Password does not match");
     return false;
   } else {
+    if(value == 1) {
     onSignUp();
+    } else if(value == 0) {
+      restaurantSignUp();
+    }  
   }
 }
 

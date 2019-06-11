@@ -11,7 +11,6 @@ var usersRouter = require('./routes/users');
 
 var dbConnectionPool = mysql.createPool({
   host: 'localhost',
-  // socketPath: '/tmp/mysql.sock',
   database: 'website'
 });
 
