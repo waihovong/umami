@@ -58,11 +58,13 @@ DROP TABLE IF EXISTS `restaurants`;
 CREATE TABLE `restaurants` (
   `restaurantID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
   `address` varchar(30) DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
   `openhours` varchar(30) DEFAULT NULL,
   `rating` varchar(30) DEFAULT NULL,
-  `cusine` varchar(30) DEFAULT NULL,
+  `cuisine` varchar(30) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
   UNIQUE KEY `restaurantID` (`restaurantID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -73,7 +75,7 @@ CREATE TABLE `restaurants` (
 
 LOCK TABLES `restaurants` WRITE;
 /*!40000 ALTER TABLE `restaurants` DISABLE KEYS */;
-INSERT INTO `restaurants` VALUES (1,'Hawker Walker','Francis St, Adelaide SA 5000',870017778,'11AM-6PM','5/5','Malaysian'),(2,'Dumpling King','Gouger St, Adelaide SA 5000',870017778,'11AM-6PM','3/5','Chinese'),(3,'Shujinko Ramen','Gouger St, Adelaide SA 5000',38912012,'24 Hours','5/5','Japanese'),(4,'Dannys Thai','Franklin St, Adelaide SA 5000',1451200,'11AM-11PM','5/5','Thai'),(5,'Chicco Palms','Adam St, Adelaide SA 5000',131312331,'11AM-10PM','5/5','Italian'),(6,'PHO SA','Gouger St, Adelaide SA 5000',121415151,'10AM-10PM','4/5','Vietnamese'),(7,'BBQ City','Gouger St, Adelaide SA 5000',125151,'10AM-12PM','4/5','Chinese'),(8,'82 Pocha','Grenfell St, Adelaide SA 5000',72611141,'3PM-1AM','5/5','Korean'),(9,'Mandoo','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Korean'),(10,'Sit-Lo','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Vietnamese');
+INSERT INTO `restaurants` VALUES (1,'Hawker Walker','hawkerwalker@gmail.com','Francis St, Adelaide SA 5000',870017778,'11AM-6PM','5/5','Malaysian', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(2,'Dumpling King','dumplingking@gmail.com','Gouger St, Adelaide SA 5000',870017778,'11AM-6PM','3/5','Chinese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(3,'Shujinko Ramen','shujinko@gmail.com','Gouger St, Adelaide SA 5000',38912012,'24 Hours','5/5','Japanese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(4,'Dannys Thai','dannythai@gmail.com','Franklin St, Adelaide SA 5000',1451200,'11AM-11PM','5/5','Thai','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(5,'Chicco Palms','chiccopalms@gmail.com','Adam St, Adelaide SA 5000',131312331,'11AM-10PM','5/5','Italian','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(6,'PHO SA','phosa@gmail.com','Gouger St, Adelaide SA 5000',121415151,'10AM-10PM','4/5','Vietnamese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(7,'BBQ City','bbqcity@gmail.com','Gouger St, Adelaide SA 5000',125151,'10AM-12PM','4/5','Chinese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(8,'82 Pocha','82pocha@gmail.com','Grenfell St, Adelaide SA 5000',72611141,'3PM-1AM','5/5','Korean','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(9,'Mandoo','mandoo@gmail.com','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Korean','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(10,'Sit-Lo','sitlo@gmail.com','Hindley St, Adelaide SA 5000',72611141,'11AM-9PM','5/5','Vietnamese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
 /*!40000 ALTER TABLE `restaurants` ENABLE KEYS */;
 UNLOCK TABLES;
 

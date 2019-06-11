@@ -215,7 +215,7 @@ function managerSignIn() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // alert('Welcome ' + xhttp.responseText);
-      window.location.pathname = "./accounts.html"
+      window.location.pathname = "./index.html"
       // document.getElementById("userSession").innerHTML = "My Account";
       console.log("you're the manager");
 
@@ -226,4 +226,30 @@ function managerSignIn() {
   xhttp.open("POST", "/managerlog", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(JSON.stringify({ email: document.getElementById('email').value, pass: document.getElementById('pass').value }));
+}
+
+function restaurantSignUp() {
+  console.log(4);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      // alert('Welcome ' + xhttp.responseText);
+      var success = document.getElementById("logSuccess").innerHTML = "Sign Up Successful";
+      // document.getElementById("userSession").innerHTML = "My Account";
+      console.log("A new restaurant has been added into the database!");
+
+    } else if (this.readyState == 4 && this.status == 403) {
+      alert('Username or Password Incorrect');
+    }
+  };
+  xhttp.open("POST", "/resRegister", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({ 
+    name: document.getElementById('res_name').value,
+    email: document.getElementById('res_email').value,
+    address: document.getElementById('res_address').value,
+    phone: document.getElementById('res_phone').value, 
+    open: document.getElementById('res_open').value,
+    cuisine: document.getElementById('res_cuisine').value, 
+    pass: document.getElementById('pass2').value }));
 }

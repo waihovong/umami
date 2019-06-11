@@ -72,10 +72,6 @@ router.post('/signup', function(req, res, next) {
     if(err) {
       res.sendStatus(402);
     }
-    // var name = req.body.name;
-    // var email = req.body.email;
-    // var password = req.body.pass2;
-    // var pass = SHA2(password,256);
       var insertQuery = "INSERT INTO Users VALUES (id, ?, ?, SHA2(?,256))";
       connection.query(insertQuery, [req.body.name, req.body.email, req.body.pass ], function(err, rows, fields) {
         connection.release();
@@ -88,5 +84,22 @@ router.post('/signup', function(req, res, next) {
     });
 });
 
+router.post('/resRegister', function(req, res, next) {
+  req.pool.getConnection(function (err, connection) {
+    if(err) {
+      res.sendStatus(402);
+    }
+    var insertQueryRes = "INSERT INTO restaurants (restaurantID, name, email, address, phone, openhours, cuisine, password) VALUES (restaurantID, ?, ?, ?, ?, ?, ?, SHA2(?, 256))";
+    connection.query(insertQueryRes, [req.body.name, req.body.email, req.body.address, req.body.phone, '%' + req.body.open + '%', req.body.cuisine , req.body.pass], function(err, rows, fields) {
+      connection.release();
+      if(err) {
+        res.sendStatus(402);
+      } else {
+        console.log(rows);
+        res.sendStatus(200);
+      }
+    });
+  });
+});
 
 module.exports = router;
