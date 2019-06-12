@@ -1,0 +1,647 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=Oxygen|Ubuntu');
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Oxygen', sans-serif, serif, Arial;
+    background-color: rgb(230, 230, 230);
+    background-image: url("../images/main-press.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* overflow: hidden;  */
+}
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+[v-cloak]
+{
+    display: none;
+}
+
+/* -------------------------BANNER--------------------- */
+
+.banner-img {
+    /*background-image: url("../images/bowl-chopsticks-cuisine-2133989.jpg");*/
+    background-color:black;
+    /* z-index: -1; */
+    position: relative;
+    height: 10vh;
+    opacity: 0.90;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: margin-right 0.5s;
+}
+
+#header {
+    width: 100%;
+    float: left;
+}
+
+#header-left {
+    margin: 15px 0 0 15px;
+    float: left;
+}
+
+#header-right {
+    margin: 15px 15px 0 0;
+    display: flex;
+    float: right;
+    align-items: center;
+}
+
+#header-right:hover span {
+    text-shadow: 0.5px 0 0 white;
+}
+
+#logo {
+    padding: 4px 4px 4px 4px;
+    color: white;
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fa-user-circle {
+    margin-right: 5px;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+#sign-in {
+    color: white;
+    font-size: 1.2em;
+}
+
+/*-------------------------- MAIN CONTAINER----------------------- */
+
+.main-container-booking {
+    box-sizing: border-box;
+    /* max-width: 100vw; */
+    /* float: left; */
+    margin: 40px;
+    transition: margin-right 0.5s;
+}
+
+.main-container * {
+    color: rgb(20, 20, 20);
+}
+
+.left-container {
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    border-right: 1px solid grey;
+}
+
+.right-container {
+    box-sizing: border-box;
+    padding-left: 40px;
+    width: 50%;
+    float: right;
+    margin-top: 80px;
+}
+
+#address {
+    color: #444;
+    text-decoration: underline;
+}
+
+.fa-map-marker-alt {
+    color: crimson;
+    padding: 5px 10px 5px 0px;
+    margin: 3px 0px 5px 0px;
+}
+
+/* Slideshow container */
+
+.images {
+    max-width: 92%;
+}
+
+.slideshow-container {
+    position: relative;
+    margin: auto;
+}
+
+.slides {
+    display: none;
+}
+
+.slideshow-container img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+
+/* Next & previous buttons */
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* The dots/bullets/indicators */
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* -----------------------RIGHT CONTAINER ---------------------- */
+
+#rating-book {
+    width: 400px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+#rating-book-left {
+    float: left;
+}
+
+#rating-book-right {
+    padding: 5px;
+    float: right;
+}
+
+.checked {
+    color: orange;
+}
+
+.book-now {
+    background-color: dodgerblue;
+    padding: 12px 28px;
+    border: none;
+    color: white;
+    text-align: right;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+.right-container table {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.right-container table th {
+    padding-right: 50px;
+}
+
+.right-container table td {
+    font-style: italic;
+}
+
+.fa-phone {
+    color: rgb(49, 149, 199);
+    padding: 5px 10px 0px 0px;
+    margin: 3px 0px 5px 0px;
+}
+
+.fa-envelope {
+    color: rgb(46, 46, 46);
+    padding: 5px 10px 5px 0px;
+    margin: 3px 0px 20px 0px;
+}
+
+.reviews span {
+    font-size: 0.7em;
+    font-style: italic;
+}
+
+.reviews {
+    line-height: 2em;
+    padding-bottom: 10px;
+}
+
+/* ------------------------SIDE BAR ----------------------------- */
+
+.sidemenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-color: #f4f4f4;
+}
+
+.sidemenu a {
+    padding: 5px 5px 5px 32px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.sidemenu .close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 50px;
+}
+
+.close:hover {
+    text-shadow: 1px 0 0 black;
+}
+
+.sm-wrapper {
+    margin: 40px;
+    width: 450px;
+}
+
+form * {
+    font-size: 1.2em;
+    height: 1.4em;
+    font-family: 'Oxygen', sans-serif, serif, Arial;
+    align-items: center;
+    padding-left: 10px;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #333;
+}
+
+.sidemenu h1 {
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background-color: dodgerblue;
+    margin-left: 5px;
+    padding: 0px 10px;
+    height: 1.6em;
+    border: none;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 2px;
+}
+
+
+.footer-section {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(10,10,10);
+    color: white;
+    padding-top: 15px;
+    width: 100%;
+  }
+  
+  .footer-section-two ul {
+    display: inline-block;
+    padding: 20px;
+    list-style: none;
+  }
+  
+  .footer-section-two p {
+    padding-left: 100px;
+  }
+  
+  .footer-section-one {
+    float:left;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-section-two {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-section-three {
+    float:right;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-section-three p {
+    padding-bottom: 16%;
+  }
+
+  .spacer {
+    padding: 60px;
+  }
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------*/
+
+
+  #accountmaindiv{
+    /*margin: centre;*/
+    background-color: rgba(230, 230, 230,0);
+    padding-top: 40px;
+    margin:auto;
+    height: 500px;
+    width: 900px;
+    text-align:center;
+    
+}
+
+#accountinfo {
+    font-family:Helvetica;
+    background-color:rgba(10, 10, 10,0.8);
+    color:white;
+    float:left;
+    text-align:left;
+    margin-left:10px;
+    width:400px;
+    padding-top:20px;
+    padding-left:10px;
+    /*border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    border-width:thin;*/
+}
+
+#userinfo{
+    font-family:Helvetica;
+    background-color:rgba(10, 10, 10,0.8);
+    color:white;
+    text-align:left;
+    
+    margin-left:450px;
+    margin-right:10px;
+    padding-top:20px;
+    padding-left:10px;
+    /*border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    border-width:thin;*/
+    
+}
+
+#textbox{
+    /*border: 2px solid rgb(0, 0, 0);*/
+    background-color:rgba(10,10,10,0);
+    
+    color:white;
+    height:25px;
+    width:200px;
+    font-size:15px;
+    border:none;
+    border-bottom:1px solid;
+    border-color:white;
+    
+}
+
+#accountbooking{
+    background-color: rgba(10, 10, 10,0.8);
+    color:white;
+    /*border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    border-width:thin;*/
+    height:300px;
+    border-bottom:1px solid white;
+    border-top:1px solid white;
+    margin-bottom:80px;
+    
+    overflow: scroll;
+}
+
+#save{
+    margin-bottom:20px;
+    margin-right:15px;
+    float:right;
+    height:30px;
+    width:60px;
+    color:white;
+    background-color:rgba(10,10,10,0.8);
+    
+}
+
+#save2{
+    
+    margin-right:15px;
+    float:right;
+    height:30px;
+    width:60px;
+    color:white;
+    background-color:rgba(10,10,10,0.8);
+    
+}
+
+#edit{
+    height:30px;
+    width:60px;
+    color:white;
+    background-color:rgba(10,10,10,0.8);
+}
+
+#reviewbutton{
+    height:30px;
+    width:120px;
+    color:white;
+    background-color:rgba(10,10,10,0.8);
+}
+
+@media screen and (max-width: 600px) {
+    #accountinfo{
+      width:450px;
+      float:none;
+      height:250px;
+    }
+    #userinfo{
+        margin-top:40px;
+
+        width:450px;
+        
+        margin-left:10px;
+      
+    }
+    #accountbooking{
+        width:490px;
+    }
+    #accountmaindiv{
+        text-align:left;
+        width:200;
+    }
+    #resaccountinfo{
+        width:450px;
+        float:none;
+        height:250px;
+      }
+      #resinfo{
+          margin-top:40px;
+  
+          width:450px;
+          
+          margin-left:10px;
+        
+      }
+      #resbooking{
+          width:490px;
+      }
+      #maindiv{
+          text-align:left;
+          
+      }
+      #accountmaindiv{
+        text-align:left;
+        
+    }
+
+
+  }
+
+  
+
+
+  th, td {
+    padding: 15px;
+  }
+
+
+  
+
+
+  #maindiv{
+    /*margin: centre;*/
+    background-color: rgba(230, 230, 230,0);
+    padding-top: 40px;
+    margin:auto;
+    height: 500px;
+    width: 900px;
+    text-align:center;
+    
+}
+
+#resaccountinfo {
+    font-family:Helvetica;
+    background-color:rgba(10, 10, 10,0.8);
+    color:white;
+    float:left;
+    text-align:left;
+    margin-left:10px;
+    width:400px;
+    padding-top:20px;
+    padding-left:10px;
+    /*border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    border-width:thin;*/
+}
+
+#resinfo{
+    font-family:Helvetica;
+    background-color:rgba(10, 10, 10,0.8);
+    color:white;
+    text-align:left;
+    
+    margin-left:450px;
+    margin-right:10px;
+    padding-top:20px;
+    padding-left:10px;
+    /*border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    border-width:thin;*/
+    
+}
+
+#resbooking{
+    background-color: rgba(10, 10, 10,0.8);
+    color:white;
+    /*border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    border-width:thin;*/
+    height:300px;
+    border-bottom:1px solid white;
+    border-top:1px solid white;
+    margin-bottom:80px;
+    
+    overflow: scroll;
+}
+
+
+
+
+#dateselector{
+    height:30px;
+    width:200px;
+    color:white;
+    font-size:20px;
+    margin-right:700px;
+    background-color:rgba(10,10,10,0.8);
+    margin-bottom:10px;
+}
+
+
+  #postbutton{
+    height:30px;
+    width:100px;
+    color:white;
+    background-color:rgba(10,10,10,0.8);
+    font-size:20px;
+}
+
+#textbox2{
+    height:200px;
+    width:500px;
+    border:none;
+    color:white;
+    background-color:rgba(10,10,10,0.8);
+}
+
+  th, td {
+    padding: 15px;
+  }
