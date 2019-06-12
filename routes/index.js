@@ -109,7 +109,8 @@ router.get('/restaurantINFO', function (req, res, next) {
 
 router.post('/addbooking', function (req, res, next) {
 
-  console.log(req.cookies['resID']);;
+  console.log(req.cookies['resID']);
+  console.log("user id : " + req.cookies['userid']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -175,6 +176,7 @@ router.post('/signin', function (req, res, next) {
       if (rows.length > 0) {
         req.session.userid = rows[0].id;
         console.log(req.session.userid);
+        console.log(rows[0].id, rows[0].name);
         res.send(rows[0].name);
       } else {
         res.sendStatus(403);
@@ -239,6 +241,10 @@ router.post('/resRegister', function (req, res, next) {
 router.post('/checkSession', function(req, res, next) {
   if(req.session.userid !== undefined ) {
     res.send("user");
+    console.log(req.session.userid);
+    res.cookie('userid', req.session.userid, {
+      maxAge: 86400 * 1000, // 24 hours
+    });
   } else {
     res.send("not logged");
   }

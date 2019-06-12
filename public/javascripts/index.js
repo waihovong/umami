@@ -329,6 +329,7 @@ function book() {
   console.log(document.getElementById('datePicker').value);
   console.log(document.getElementById('timePicker').value);
   console.log(document.getElementById('numberPicker').value);
+  
 
   if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
     alert('Missing Input Fields');

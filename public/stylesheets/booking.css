@@ -86,7 +86,7 @@ a, a:visited, a:hover, a:active {
     border-radius: 50%;
 }
 
-#sign-in {
+.sign-in {
     color: white;
     font-size: 1.2em;
 }

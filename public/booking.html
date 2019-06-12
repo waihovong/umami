@@ -12,7 +12,7 @@
     <title>Restaurant</title>
 </head>
 
-<body onload="restaurant() ">
+<body onload="restaurant(); checkSessions();">
     <!-- HEADER -->
     <header class="banner-img">
         <div id="header">
@@ -22,8 +22,8 @@
                 </a>
             </div>
             <div id="header-right">
-                <a href="signin.html"><i class="fas fa-user-circle"></i></a>
-                <span id="sign-in"><a href="signin.html">Log In</a></span>
+                <a href="signin.html"><i id="userIcon" class="fas fa-user-circle"></i></a>
+                <span class="sign-in" id="userSession"><a href="signin.html">Sign In</a></span>
             </div>
         </div>
     </header>
@@ -162,9 +162,9 @@
             <div>
                 <h1>Please select a date, time and number of people:</h1>
                 <form>
-                    <input type="date" id="datePicker" required="required">
-                    <input type="time" id="timePicker" step="1800" required="required">
-                    <input type="number" id="numberPicker" name="quantity" min="1" max="20" value="1" required="required">
+                    <input type="date" id="datePicker">
+                    <input type="time" id="timePicker" step="1800">
+                    <input type="number" id="numberPicker" name="quantity" min="1" max="20" value="1">
                     <br> <br>
                     <input type="button" value="Book Now" onclick="book()"> 
                 </form>
