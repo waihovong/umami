@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <link rel="stylesheet" href="./stylesheets/account.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -29,68 +30,60 @@
         </div>
     </header>
 
-    <div id="accountmaindiv">
-        <div id="accountinfo">
-            <p style="font-size:20px;">Account Information</p><br>
-            <br>
-            
-            <p>Email:</p>
-            <input type="text" name="email" value="waihovong@gmail.com" id="textbox"> <br>
-            <br>
+    <div class="accountContainer">
+        <div id="accountmaindiv">
+            <div id="accountinfo">
+                <h1>Account Information</h1><br>
+                <br>
 
-            <p>Password:</p> 
-            <input type="text" name="email" value="Change Password" id="textbox"> <br>
-            <br>
-            <button type="button" id="save">SAVE</button>
-            
-            
+                <p>Email:</p>
+                <input type="text" name="email" placeholder="waihovong@gmail.com" class="textbox"> <br>
+                <br>
 
+                <p>Password:</p>
+                <br>
+                <input type="text" placeholder="Current Password" class="textbox"> <br>
+                <br>
+                <input type="text" placeholder="New Password" class="textbox"> <br>
+                <br>
+                <input type="text" placeholder="Comfirm New Password" class="textbox"> <br>
+                <br>
+                <button type="button" id="save">SAVE</button>
+
+            </div>
+
+            <div id="userinfo">
+                <h1>User Information</h1>
+                <br>
+                <br>
+                <p>First Name:</p>
+                <input type="text" placeholder="waiho" class="textbox"> <br>
+                <br>
+                <p>Last Name:</p>
+                <input type="text" placeholder="Vong" class="textbox"> <br>
+                <br>
+                <p>Phone:</p>
+                <input type="text" placeholder="12345678" class="textbox"> <br>
+
+                <button type="button" id="save2">SAVE</button>
+                <br>
+                <br>
+                <br>
+            </div>
 
         </div>
 
-        <div id="userinfo">
-            <p style="font-size:20px;">User Information</h4>
-            <br>
-            <br>
-            <p>First Name:</p>
-            <input type="text" name="email" value="waiho" id="textbox"> <br>
-            <br>
-            <p>Last Name:</p>
-            <input type="text" name="email" value="waiho" id="textbox"> <br>
-            <br>
-            <p>Phone:</p>
-            <input type="text" name="email" value="waiho" id="textbox"> <br>
 
-            <button type="button" id="save2">SAVE</button>
-            <br>
-            <br>
-            <br>
-            
-
-        </div>
-        <br>
-        <br>
-        <br>
-        <p style="color:white; font-size:40px;">Upcoming Bookings</p><br>
-        
-
-
+        <h1 id="accountHeader">Upcoming Bookings</h1><br>
         <div id="accountbooking">
-                
-            <table style="width:100%">
+
+            <table>
                 <tr>
-                <th>Restaurant</th>
-                <th>Date</th>
-                <th>Time</th> 
-                <th>Number of people</th>
-                <th></th>
-                </tr>
-                <tr>
-                <td>Hawker Walker</td>
-                <td>05/05/2014</td>
-                <td>7pm</td>
-                <td>3</td>
-                <td><button type="button" id="edit">Edit</button></td>
+                    <th>Restaurant</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Number of people</th>
+                    <th></th>
                 </tr>
                 <tr>
                     <td>Hawker Walker</td>
@@ -100,58 +93,58 @@
                     <td><button type="button" id="edit">Edit</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="edit">Edit</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="edit">Edit</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="edit">Edit</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="edit">Edit</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="edit">Edit</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="edit">Edit</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="edit">Edit</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="edit">Edit</button></td>
                 </tr>
 
             </table>
         </div>
-        
 
-        <p style="color:white; font-size:40px;">Booking History</p><br>
-        
+
+        <h1 id="accountHeader">Booking History</h1><br>
+
 
 
         <div id="accountbooking">
-                
+
             <table style="width:100%">
                 <tr>
-                <th>Restaurant</th>
-                <th>Date</th>
-                <th>Time</th> 
-                <th>Number of people</th>
-                <th></th>
-                </tr>
-                <tr>
-                <td>Hawker Walker</td>
-                <td>05/05/2014</td>
-                <td>7pm</td>
-                <td>3</td>
-                <td><button type="button" id="reviewbutton">Add Review</button></td>
+                    <th>Restaurant</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Number of people</th>
+                    <th></th>
                 </tr>
                 <tr>
                     <td>Hawker Walker</td>
@@ -161,43 +154,48 @@
                     <td><button type="button" id="reviewbutton">Add Review</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="reviewbutton">Add Review</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="reviewbutton">Add Review</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="reviewbutton">Add Review</button></td>
                 </tr>
                 <tr>
-                        <td>Hawker Walker</td>
-                        <td>05/05/2014</td>
-                        <td>7pm</td>
-                        <td>3</td>
-                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+                <tr>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="reviewbutton">Add Review</button></td>
                 </tr>
 
             </table>
         </div>
 
     </div>
-    
-    </div>
-   
 
-    
+
+
     <script src="./javascripts/index.js"></script>
 </body>
 
