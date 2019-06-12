@@ -174,6 +174,7 @@ router.post('/signin', function (req, res, next) {
       console.log(rows);
       if (rows.length > 0) {
         req.session.userid = rows[0].id;
+        console.log(req.session.userid);
         res.send(rows[0].name);
       } else {
         res.sendStatus(403);
@@ -233,6 +234,22 @@ router.post('/resRegister', function (req, res, next) {
       }
     });
   });
+});
+
+router.post('/checkSession', function(req, res, next) {
+  if(req.session.userid !== undefined ) {
+    res.send("user");
+  } else {
+    res.send("not logged");
+  }
+});
+
+router.post('/logoutUser', function(req, res, next) {
+  if(req.session.userid !== undefined) {
+    req.session.destroy();
+  }
+  console.log(req.session.userid);
+  res.sendStatus(200);
 });
 
 module.exports = router;

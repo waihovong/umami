@@ -90,7 +90,7 @@ function searchBarFunction() {
             pdiv.innerHTML +=
               '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
               '<div id="searchImage">\n' +
-              '<img id="resImage" src="./images/res1.jpg" alt="restaurant 1"> \n' +
+              '<img id="resImage" src="./images/res1-compressor.jpg" alt="restaurant 1"> \n' +
               '</div> \n' +
               '<div id="searchInfo"> \n' +
               '<h2>' + element.name + '</h2> \n' +
@@ -160,7 +160,7 @@ function searchLink(value) {
           pdiv.innerHTML +=
             '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
             '<div id="searchImage">\n' +
-            '<img id="resImage" src="./images/res1.jpg" alt="restaurant 1"> \n' +
+            '<img id="resImage" src="./images/res1-compressor.jpg" alt="restaurant 1"> \n' +
             '</div> \n' +
             '<div id="searchInfo"> \n' +
             '<h2>' + element.name + '</h2> \n' +
@@ -207,18 +207,18 @@ function searchLink(value) {
 
 
 
-function loadTimes() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      var data = JSON.parse(xhttp.responseText);
-      // document.getElementById("openTime1").innerHTML = data.openingTimes;
-      myFunction(data);
-    }
-  }
-  xhttp.open("GET", "restaurants.txt");
-  xhttp.send();
-}
+// function loadTimes() {
+//   var xhttp = new XMLHttpRequest();
+//   xhttp.onreadystatechange = function () {
+//     if (this.readyState == 4 && this.status == 200) {
+//       var data = JSON.parse(xhttp.responseText);
+//       // document.getElementById("openTime1").innerHTML = data.openingTimes;
+//       myFunction(data);
+//     }
+//   }
+//   xhttp.open("GET", "restaurants.txt");
+//   xhttp.send();
+// }
 
 function myFunction(data) {
   var string = "";
@@ -445,7 +445,45 @@ function restaurantSignUp() {
     address: document.getElementById('res_address').value,
     phone: document.getElementById('res_phone').value,
     open: document.getElementById('res_open').value,
-    cuisine: document.getElementById('res_cuisine').value,
-    pass: document.getElementById('pass2').value
-  }));
+    cuisine: document.getElementById('res_cuisine').value, 
+    pass: document.getElementById('pass2').value }));
 }
+function logOutUser() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      // alert('Welcome ' + xhttp.responseText);
+      window.location.pathname = "./index.html"
+      console.log("signed out user");
+
+    } else if (this.readyState == 4 && this.status == 403) {
+      alert('failed to sign out');
+    }
+  };
+  xhttp.open("POST", "/logoutUser", true);
+  xhttp.send();    
+}
+
+function checkSessions() {
+  console.log("session");
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200 && this.responseText == "user") {
+      // alert('Welcome ' + xhttp.responseText);
+      // document.getElementById("userSession").innerHTML = "My Account";
+      document.getElementById("userSession").innerHTML = "Sign Out";
+      document.getElementById("userSession").removeAttribute("href"); 
+      document.getElementById("userSession").addEventListener("click", logOutUser);
+      document.getElementById("userIcon").removeAttribute("href");
+      document.getElementById("userIcon").setAttribute("href","./accounts.html");
+      console.log("you're in a session");
+
+    } else if (this.readyState == 4 && this.status == 200 && this.responseText == "not logged") {
+      console.log('Not in a session');
+    }
+  };
+  xhttp.open("POST", "/checkSession", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send();
+}
+
