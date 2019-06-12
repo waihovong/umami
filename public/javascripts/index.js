@@ -293,37 +293,60 @@ function restaurant() {
 }
 
 
-function resSave(resName) {
+// function resSave(resName) {
 
+//   window.location = "/booking.html";
+//   var name = resName;
+//   // Create new AJAX request
+//   var xhttp = new XMLHttpRequest();
+
+//   // Open connection
+//   xhttp.open("GET", "/resLink?name=" + encodeURIComponent(name), true);
+
+//   // Send request
+//   xhttp.send();
+// }
+
+function resSave(resName) {
   window.location = "/booking.html";
   var name = resName;
-  // Create new AJAX request
   var xhttp = new XMLHttpRequest();
 
-  // Open connection
-  xhttp.open("GET", "/resLink?name=" + encodeURIComponent(name), true);
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      alert('save!');
+    } else if (this.readyState == 4 && this.status >= 400) {
+      alert('No save');
+    }
+  };
 
-  // Send request
-  xhttp.send();
+  xhttp.open("POST", "/resLink", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({ restaurantName: name }));
 }
 
 function book() {
   console.log(document.getElementById('datePicker').value);
   console.log(document.getElementById('timePicker').value);
   console.log(document.getElementById('numberPicker').value);
-  var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      alert('booked!');
-    } else if (this.readyState == 4 && this.status >= 400) {
-      alert('Error adding Blog Post. Please try again.');
-    }
-  };
+  if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
+    alert('Missing Input Fields');
+  } else {
+    var xhttp = new XMLHttpRequest();
 
-  xhttp.open("POST", "/addbooking", true);
-  xhttp.setRequestHeader('Content-Type', 'application/json');
-  xhttp.send(JSON.stringify({date: document.getElementById('datePicker').value, time: document.getElementById('timePicker').value, people: document.getElementById('numberPicker').value }));
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        alert('booked!');
+      } else if (this.readyState == 4 && this.status >= 400) {
+        alert('Error adding Blog Post. Please try again.');
+      }
+    };
+
+    xhttp.open("POST", "/addbooking", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(JSON.stringify({ date: document.getElementById('datePicker').value, time: document.getElementById('timePicker').value, people: document.getElementById('numberPicker').value }));
+  }
 }
 
 function onLogin() {
