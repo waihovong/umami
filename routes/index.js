@@ -117,7 +117,7 @@ router.post('/addbooking', function (req, res, next) {
       res.sendStatus(402);
       return;
     }
-    var query = "INSERT INTO bookings (res_id,user_id,date,time,people) VALUES (" + req.cookies['resID'] + "," +req.cookies['userid']+ ",?,?,?)";
+    var query = "INSERT INTO bookings (res_id,user_id,date,time,people) VALUES (" + req.cookies['resID'] + "," + req.cookies['userid'] + ",?,?,?)";
     connection.query(query, [req.body.date, req.body.time, req.body.people], function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
@@ -128,6 +128,51 @@ router.post('/addbooking', function (req, res, next) {
     });
   });
 });
+
+router.get('/getUpcomingBooking', function (req, res, next) {
+
+  //Connect to the database
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      console.log("connection fail");
+      res.sendStatus(402);
+      return;
+    }
+
+    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURDATE() <= bookings.date;";
+    connection.query(query, function (err, rows, fields) {
+      connection.release(); // release connection
+      if (err) {
+        res.status(402).send(err);
+      } else {
+        res.json(rows);
+      }
+    });
+  });
+});
+
+router.get('/getPastBooking', function (req, res, next) {
+
+  //Connect to the database
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      console.log("connection fail");
+      res.sendStatus(402);
+      return;
+    }
+
+    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURDATE() > bookings.date;";
+    connection.query(query, function (err, rows, fields) {
+      connection.release(); // release connection
+      if (err) {
+        res.status(402).send(err);
+      } else {
+        res.json(rows);
+      }
+    });
+  });
+});
+
 
 router.get('/getSearch', function (req, res, next) {
 
@@ -238,8 +283,8 @@ router.post('/resRegister', function (req, res, next) {
   });
 });
 
-router.post('/checkSession', function(req, res, next) {
-  if(req.session.userid !== undefined ) {
+router.post('/checkSession', function (req, res, next) {
+  if (req.session.userid !== undefined) {
     res.cookie('userid', req.session.userid, {
       maxAge: 86400 * 1000, // 24 hours
     });
@@ -250,8 +295,8 @@ router.post('/checkSession', function(req, res, next) {
   }
 });
 
-router.post('/logoutUser', function(req, res, next) {
-  if(req.session.userid !== undefined) {
+router.post('/logoutUser', function (req, res, next) {
+  if (req.session.userid !== undefined) {
     req.session.destroy();
   }
   console.log(req.session.userid);

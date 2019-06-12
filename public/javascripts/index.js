@@ -354,6 +354,86 @@ if (session !== "user")
   }
 }
 
+function loadUpcomingBookings() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+
+      var resBookings = JSON.parse(this.responseText);
+      console.log(resBookings);
+
+      var pdiv = document.getElementById('upcomingBookings');
+      if (resBookings.length == 0) {
+        pdiv.innerHTML += '<p>NO UPCOMING BOOKINGS </p>';
+        
+      } else {
+        pdiv.innerHTML = 
+        '<tr> \n' +
+        '<th>Restaurant</th> \n' +
+        '<th>Date</th> \n' +
+        '<th>Time</th> \n' +
+        '<th>Number of people</th> \n' +
+        '<th></th>' +
+        '</tr>\n';
+        resBookings.forEach(function (element) {
+          pdiv.innerHTML +=
+          '<tr> \n' +
+          '<td>' + element.name + '</td> \n' +
+          '<td>' + element.date + '</td> \n' +
+          '<td>' + element.time + '</td> \n' +
+          '<td>' + element.people + '</td> \n' +
+          '<td><button type="button" id="edit">Edit</button></td> \n'
+          '</tr> \n';
+        });
+      }
+    }
+  };
+  xhttp.open("GET", "/getUpcomingBooking", true);
+  xhttp.send();
+
+  return false;
+}
+
+function loadPastBookings() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+
+      var resBookings = JSON.parse(this.responseText);
+      console.log(resBookings);
+
+      var pdiv = document.getElementById('pastBookings');
+      if (resBookings.length == 0) {
+        pdiv.innerHTML += '<p>NO PAST BOOKINGS </p>';
+        
+      } else {
+        pdiv.innerHTML = 
+        '<tr> \n' +
+        '<th>Restaurant</th> \n' +
+        '<th>Date</th> \n' +
+        '<th>Time</th> \n' +
+        '<th>Number of people</th> \n' +
+        '<th></th>' +
+        '</tr>\n';
+        resBookings.forEach(function (element) {
+          pdiv.innerHTML +=
+          '<tr> \n' +
+          '<td>' + element.name + '</td> \n' +
+          '<td>' + element.date + '</td> \n' +
+          '<td>' + element.time + '</td> \n' +
+          '<td>' + element.people + '</td> \n' +
+          '<td><button type="button" id="reviewbutton">Add Review</button></td> \n'
+          '</tr> \n';
+        });
+      }
+    }
+  };
+  xhttp.open("GET", "/getPastBooking", true);
+  xhttp.send();
+
+  return false;
+}
+
 function onLogin() {
   console.log(1);
   var xhttp = new XMLHttpRequest();

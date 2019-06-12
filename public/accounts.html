@@ -14,7 +14,7 @@
     <title>User Account</title>
 </head>
 
-<body>
+<body onload="loadUpcomingBookings(); loadPastBookings()">
     <!-- HEADER -->
     <header class="banner-img">
         <div id="header">
@@ -31,6 +31,7 @@
     </header>
 
     <div class="accountContainer">
+
         <div id="accountmaindiv">
             <div id="accountinfo">
                 <h1>Account Information</h1><br>
@@ -73,124 +74,17 @@
 
         <h1 id="accountHeader">Upcoming Bookings</h1><br>
         <div id="accountbooking">
-
-            <table>
-                <tr>
-                    <th>Restaurant</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Number of people</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="edit">Edit</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="edit">Edit</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="edit">Edit</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="edit">Edit</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="edit">Edit</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="edit">Edit</button></td>
-                </tr>
-
+            <table id='upcomingBookings'>
             </table>
         </div>
 
-
         <h1 id="accountHeader">Booking History</h1><br>
-
-
-
         <div id="accountbooking">
-
-            <table>
-                <tr>
-                    <th>Restaurant</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Number of people</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="reviewbutton">Add Review</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="reviewbutton">Add Review</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="reviewbutton">Add Review</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="reviewbutton">Add Review</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="reviewbutton">Add Review</button></td>
-                </tr>
-                <tr>
-                    <td>Hawker Walker</td>
-                    <td>05/05/2014</td>
-                    <td>7pm</td>
-                    <td>3</td>
-                    <td><button type="button" id="reviewbutton">Add Review</button></td>
-                </tr>
-
+            <table id="pastBookings">
             </table>
         </div>
 
     </div>
-
 
 
     <script src="./javascripts/index.js"></script>
