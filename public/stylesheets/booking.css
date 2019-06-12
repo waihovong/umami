@@ -86,7 +86,7 @@ a, a:visited, a:hover, a:active {
     border-radius: 50%;
 }
 
-#sign-in {
+.sign-in {
     color: white;
     font-size: 1.2em;
 }
@@ -330,12 +330,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .sidemenu h1 {
+    width: 90%;
     margin-bottom: 20px;
 }
 
-input[type="submit"] {
+input[type="button"] {
     background-color: dodgerblue;
-    margin-left: 5px;
     padding: 0px 10px;
     height: 1.6em;
     border: none;
