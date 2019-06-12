@@ -59,8 +59,13 @@ function scrollToTop() {
 }
 
 var address;
+var rates;
+var sum;
+var start;
 function searchBarFunction() {
   keyword = document.getElementById("search-bar").value;
+  sum = 0;
+  start = 0;
   console.log(keyword);
   if (event.keyCode == 13) {
     var xhttp = new XMLHttpRequest();
@@ -80,7 +85,7 @@ function searchBarFunction() {
             '</div>\n'
 
         } else {
-
+          sum = resSearch[0].rating;
           resSearch.forEach(function (element) {
             pdiv.innerHTML +=
               '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
@@ -93,15 +98,22 @@ function searchBarFunction() {
               '<a id="address" v-bind:href="https://maps.google.com/?q=' + element.address + '" target="_blank" v-cloak><i class="fas fa-map-marker-alt"></i>' + element.address + '</a> \n' +
               '<div id="rating"> \n' +
               '<h4>Rating:</h4> \n' +
-              '<span class="fa fa-star checked"></span> \n' +
-              '<span class="fa fa-star checked"></span> \n' +
-              '<span class="fa fa-star checked"></span> \n' +
               '<span class="fa fa-star"></span> \n' +
               '<span class="fa fa-star"></span> \n' +
-              '<span>3/5</span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span class="fa fa-star"></span> \n' +
+              '<span>' + element.rating + '/5</span> \n' +
               '</div> \n' +
               '</div> \n'; +
-              '</div>\n';
+                '</div>\n';
+
+            var rates = element.rating;
+            sum = start + rates;
+            for (var i = start; i < sum; i++) {
+              document.getElementsByClassName("fa-star")[i].className += ' checked';
+            }
+            start += 5;
           });
         }
       }
@@ -132,7 +144,7 @@ function searchLink(value) {
     if (this.readyState == 4 && this.status == 200) {
 
       var resSearch = JSON.parse(this.responseText);
-
+      start = 0;
       console.log(resSearch);
 
       var pdiv = document.getElementById('Results');
@@ -143,7 +155,7 @@ function searchLink(value) {
           '<p>Please try again </p> \n' +
           '</div>\n'
       } else {
-
+        sum = resSearch[0].rating;
         resSearch.forEach(function (element) {
           pdiv.innerHTML +=
             '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
@@ -161,10 +173,17 @@ function searchLink(value) {
             '<span class="fa fa-star checked"></span> \n' +
             '<span class="fa fa-star"></span> \n' +
             '<span class="fa fa-star"></span> \n' +
-            '<span>3/5</span> \n' +
+            '<span>' + element.rating + '/5</span> \n' +
             '</div> \n' +
             '</div> \n'; +
-            '</div>\n';
+              '</div>\n';
+
+          var rates = element.rating;
+          sum = start + rates;
+          for (var i = start; i < sum; i++) {
+            document.getElementsByClassName("fa-star")[i].className += ' checked';
+          }
+          start += 5;
         });
       }
     }
@@ -238,6 +257,7 @@ function restaurant() {
         var resCuisine = e.cuisine;
         var resPhone = e.phone;
         var resEmail = e.email;
+        var resRating = e.rating;
 
         var vueinst = new Vue({
           el: '.main-container-booking',
@@ -248,9 +268,16 @@ function restaurant() {
             phone: resPhone,
             linkPhone: 'tel:' + resPhone,
             email: resEmail,
-            linkEmail: 'mailto:' + resEmail
+            linkEmail: 'mailto:' + resEmail,
+            rating: resRating + '/5'
           },
         });
+
+        var rates = e.rating;
+        for (var i = 0; i < rates; i++) {
+          document.getElementsByClassName("fa-star")[i].className += ' checked';
+        }
+
       });
     }
   };
@@ -325,11 +352,11 @@ function checkPasswords(value) {
     alert("Password does not match");
     return false;
   } else {
-    if(value == 1) {
-    onSignUp();
-    } else if(value == 0) {
+    if (value == 1) {
+      onSignUp();
+    } else if (value == 0) {
       restaurantSignUp();
-    }  
+    }
   }
 }
 
@@ -368,12 +395,13 @@ function restaurantSignUp() {
   };
   xhttp.open("POST", "/resRegister", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
-  xhttp.send(JSON.stringify({ 
+  xhttp.send(JSON.stringify({
     name: document.getElementById('res_name').value,
     email: document.getElementById('res_email').value,
     address: document.getElementById('res_address').value,
-    phone: document.getElementById('res_phone').value, 
+    phone: document.getElementById('res_phone').value,
     open: document.getElementById('res_open').value,
-    cuisine: document.getElementById('res_cuisine').value, 
-    pass: document.getElementById('pass2').value }));
+    cuisine: document.getElementById('res_cuisine').value,
+    pass: document.getElementById('pass2').value
+  }));
 }
