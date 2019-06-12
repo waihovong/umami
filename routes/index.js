@@ -82,7 +82,7 @@ router.get('/restaurantINFO', function (req, res, next) {
       return;
     }
 
-    var query = "SELECT * FROM restaurants WHERE name LIKE '" + link + "';";
+    var query = "SELECT restaurantID, name, email, address, phone, TIME_FORMAT(openhours, \"%h:%i %p\") openhours, TIME_FORMAT(closehours, \"%h:%i %p\") closehours, rating, cuisine FROM restaurants WHERE name LIKE '" + link + "';";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
@@ -94,6 +94,25 @@ router.get('/restaurantINFO', function (req, res, next) {
   });
 });
 
+router.post('/addbooking', function(req, res, next) {
+  
+  //Connect to the database
+  req.pool.getConnection( function(err,connection) { 
+      if (err) {
+          res.sendStatus(402);
+          return;
+      }
+      var query = "INSERT INTO bookings (date,time,people) VALUES (?,?,?)";
+      connection.query(query, [req.body.date,req.body.time,req.body.people], function(err, rows, fields) { 
+          connection.release(); // release connection
+          if (err) {
+              res.sendStatus(402);
+          } else {
+              res.sendStatus(200);
+          }
+      });
+  });
+});
 
 router.get('/getSearch', function (req, res, next) {
 

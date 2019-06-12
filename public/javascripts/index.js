@@ -250,7 +250,7 @@ function restaurant() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var restDetails = JSON.parse(this.responseText);
-
+      console.log(restDetails);
       restDetails.forEach(e => {
         var resName = e.name;
         var resAddress = e.address;
@@ -258,6 +258,8 @@ function restaurant() {
         var resPhone = e.phone;
         var resEmail = e.email;
         var resRating = e.rating;
+        var resOpen = e.openhours;
+        var resClose = e.closehours;
 
         var vueinst = new Vue({
           el: '.main-container-booking',
@@ -269,7 +271,9 @@ function restaurant() {
             linkPhone: 'tel:' + resPhone,
             email: resEmail,
             linkEmail: 'mailto:' + resEmail,
-            rating: resRating + '/5'
+            rating: resRating + '/5',
+            open: resOpen,
+            close: resClose,
           },
         });
 
@@ -303,7 +307,24 @@ function resSave(resName) {
   xhttp.send();
 }
 
+function book() {
+  console.log(document.getElementById('datePicker').value);
+  console.log(document.getElementById('timePicker').value);
+  console.log(document.getElementById('numberPicker').value);
+  var xhttp = new XMLHttpRequest();
 
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      alert('booked!');
+    } else if (this.readyState == 4 && this.status >= 400) {
+      alert('Error adding Blog Post. Please try again.');
+    }
+  };
+
+  xhttp.open("POST", "/addbooking", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(JSON.stringify({date: document.getElementById('datePicker').value, time: document.getElementById('timePicker').value, people: document.getElementById('numberPicker').value }));
+}
 
 function onLogin() {
   console.log(1);
