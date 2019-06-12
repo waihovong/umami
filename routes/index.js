@@ -117,7 +117,7 @@ router.post('/addbooking', function (req, res, next) {
       res.sendStatus(402);
       return;
     }
-    var query = "INSERT INTO bookings (res_id,date,time,people) VALUES (" + req.cookies['resID'] + ",?,?,?)";
+    var query = "INSERT INTO bookings (res_id,user_id,date,time,people) VALUES (" + req.cookies['resID'] + "," +req.cookies['userid']+ ",?,?,?)";
     connection.query(query, [req.body.date, req.body.time, req.body.people], function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
@@ -240,11 +240,11 @@ router.post('/resRegister', function (req, res, next) {
 
 router.post('/checkSession', function(req, res, next) {
   if(req.session.userid !== undefined ) {
-    res.send("user");
-    console.log(req.session.userid);
     res.cookie('userid', req.session.userid, {
       maxAge: 86400 * 1000, // 24 hours
     });
+    res.send("user");
+    console.log(req.session.userid);
   } else {
     res.send("not logged");
   }

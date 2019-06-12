@@ -329,9 +329,13 @@ function book() {
   console.log(document.getElementById('datePicker').value);
   console.log(document.getElementById('timePicker').value);
   console.log(document.getElementById('numberPicker').value);
+  console.log (session);
   
-
-  if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
+if (session !== "user")
+{
+  alert('Please sign in to book');
+}
+  else if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
     alert('Missing Input Fields');
   } else {
     var xhttp = new XMLHttpRequest();
@@ -465,6 +469,7 @@ function logOutUser() {
   xhttp.send();    
 }
 
+var session;
 function checkSessions() {
   console.log("session");
   var xhttp = new XMLHttpRequest();
@@ -478,13 +483,17 @@ function checkSessions() {
       document.getElementById("userIcon").removeAttribute("href");
       document.getElementById("userIcon").setAttribute("href","./accounts.html");
       console.log("you're in a session");
-
+      session = this.responseText;
+      
     } else if (this.readyState == 4 && this.status == 200 && this.responseText == "not logged") {
       console.log('Not in a session');
+      session = this.responseText;
     }
   };
   xhttp.open("POST", "/checkSession", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send();
+
+  
 }
 
