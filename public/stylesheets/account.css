@@ -8,7 +8,7 @@
 body {
     font-family: 'Oxygen', sans-serif, serif, Arial;
     background-color: rgb(230, 230, 230);
-    background-image: url("../images/main-press.jpg");
+    background-image: url("../images/toa-heftiba-250951-unsplash.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -186,7 +186,7 @@ input[type="submit"] {
     background-color: rgba(230, 230, 230,0);
     padding-top: 40px;
     /* margin:auto; */
-    /* margin-bottom: 100px; */
+    margin-bottom: 50px;
     text-align:center;
     display: flex;
 }
@@ -232,7 +232,7 @@ input[type="submit"] {
     
     color:white;
     height:25px;
-    width:200px;
+    width:70%;
     font-size:15px;
     border:none;
     border-bottom:1px solid;
@@ -240,13 +240,43 @@ input[type="submit"] {
     
 }
 
+#save{
+    position: relative;
+    right: 10px;
+    top: -10px;
+    float:right;
+    height:30px;
+    width:60px;
+    color:white;
+    background-color:rgb(55, 193, 115);
+    border: none;
+    font-weight: bold;
+}
+
+#save2{
+    position: relative;
+    right:10px;
+    top: 50px;
+    float:right;
+    height:30px;
+    width:60px;
+    color:white;
+    background-color:rgb(55, 193, 115);
+    border: none;
+    font-weight: bold;
+}
+
+#accountHeader {
+    text-align: center;
+    color: white;
+}
+    
 #accountbooking{
     background-color: rgba(10, 10, 10,0.8);
     color:white;
     /*border: 2px solid rgb(0, 0, 0);
     border-radius: 5px;
     border-width:thin;*/
-    height:300px;
     border-bottom:1px solid white;
     border-top:1px solid white;
     margin-bottom:80px;
@@ -255,67 +285,68 @@ input[type="submit"] {
     overflow-x: hidden;
 }
 
-#accountHeader {
+table {
+    width: 100%;
     text-align: center;
-    color: white;
 }
 
-#save{
-    margin-bottom:20px;
-    margin-right:15px;
-    float:right;
-    height:30px;
-    width:60px;
-    color:white;
-    background-color:rgba(10,10,10,0.8);
-    
+table th {
+    width: 20%;
 }
 
-#save2{
-    /* margin-right:15px; */
-    top:0;
-    float:right;
-    height:30px;
-    width:60px;
-    color:white;
-    background-color:rgba(10,10,10,0.8);
-    
-}
 
 #edit{
     height:30px;
     width:60px;
     color:white;
-    background-color:rgba(10,10,10,0.8);
+    background-color:rgb(55, 193, 115);
+    border: none;
+    font-weight: bold;
 }
 
 #reviewbutton{
     height:30px;
     width:120px;
     color:white;
-    background-color:rgba(10,10,10,0.8);
+    background-color:rgb(55, 193, 115);
+    border: none;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
+
+    .accountContainer {
+        width: 100%;
+        margin: auto;
+    }
+
     #accountinfo{
-      width:450px;
+      width:90%;
       float:none;
-      height:250px;
+      margin:auto;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
     #userinfo{
         margin-top:40px;
-
-        width:450px;
-        
-        margin-left:10px;
-      
+        width: 90%;
+        float: none;
+        margin: auto;
+        padding-bottom: 50px;
     }
+
+    #save2 {
+        top: 5px;
+    }
+
     #accountbooking{
-        width:490px;
+        width:90%;
+        margin: auto;
     }
     #accountmaindiv{
         text-align:left;
         width:100vw;
+        display: block;
     }
     #resaccountinfo{
         width:450px;
@@ -441,7 +472,3 @@ input[type="submit"] {
     color:white;
     background-color:rgba(10,10,10,0.8);
 }
-
-  th, td {
-    padding: 15px;
-  }
