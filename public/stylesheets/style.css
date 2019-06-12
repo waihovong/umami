@@ -31,13 +31,21 @@ html {
 /* ----------------------------------------- background images ----------------------------------------- */
 
 .background-image {
-  background-image: url("../images/jakub-kapusnak-296881-unsplash.jpg");
+  background-image: url("../images/jakub-kapusnak-296881-unsplash-compressor.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.background-image-manager {
+  background-image: url("../images/bowl-chopsticks-cuisine-2133989-compressor.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
 
 .background-image-index {
-  background-image: url("../images/main.jpg");
+  background-image: url("../images/main-press.jpg");
+  background-image: url("../images/petr-sevcovic-594807-unsplash-compressor.jpg");
+  /* background-image: url("../images/zhaoqi-yu-1130429-unsplash.jpg"); */
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
@@ -46,13 +54,13 @@ html {
 
 .background-image-accounts {
   /* background-image: url("../images/brooke-lark-230140-unsplash.jpg"); */
-  background-image: url("../images/main.jpg");
+  background-image: url("../images/main-press.jpg");
   background-size: cover;
   height: 100vh;
 }
 
 .background-image-register {
-  background-image: url("../images/charles-271645-unsplash.jpg");
+  background-image: url("../images/charles-271645-unsplash-compressor.jpg");
   background-size: cover;
   height: 100vh;
 }
@@ -451,6 +459,10 @@ table {
 
 .footer-section-three p {
   padding-bottom: 16%;
+}
+
+.userSession {
+  cursor: pointer;
 }
 
 /* ----------------------------------------- sign up and sign in ----------------------------------------- */

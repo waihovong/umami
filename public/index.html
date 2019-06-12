@@ -14,10 +14,10 @@
   <title>UMAMI</title>
 </head>
 
-<body>
+<body onload="checkSessions();">
   <div class="background-image-index">
     <div class="wrapper-account hover-action" id="vueinst">
-      <a href="signin.html"><i class="fas fa-user-circle"></i></a>
+      <a id = "userIcon" href="signin.html"><i class="fas fa-user-circle"></i></a>
       <span><a href="signin.html" id="userSession"> Log In </a></span>
       <!-- <span id="userSession">LogIn</span> -->
     </div>
@@ -51,23 +51,23 @@
       </div>
       <div class="secondary-container-images">
         <div class="text-image-container" onclick="resSave('Hawker Walker')">
-          <img class="scroll-image" src="./images/res1.jpg" alt="restaurant 1">
+          <img class="scroll-image" src="./images/res1-compressor.jpg" alt="restaurant 1">
           <span id="cuisineType">Hawker Walker</span>
         </div>
         <div class="text-image-container" onclick="resSave('Dumpling King')">
-          <img class="scroll-image" src="./images/res2.jpg" alt="restaurant 2">
+          <img class="scroll-image" src="./images/res2-compressor.jpg" alt="restaurant 2">
           <span id="cuisineType">Dumpling King</span>
         </div>
         <div class="text-image-container" onclick="resSave('Shujinko Ramen')">
-          <img class="scroll-image" src="./images/res3.jpg" alt="restaurant 3">
+          <img class="scroll-image" src="./images/res3-compressor.jpg" alt="restaurant 3">
           <span id="cuisineType">Shujinko Ramen</span>
         </div>
         <div class="text-image-container" onclick="resSave('Dannys Thai')">
-          <img class="scroll-image" src="./images/res4.jpg" alt="restaurant 4">
+          <img class="scroll-image" src="./images/res4-compressor.jpg" alt="restaurant 4">
           <span id="cuisineType">Dannys Thai</span>
         </div>
         <div class="text-image-container" onclick="resSave('Chicco Palms')">
-          <img class="scroll-image" src="./images/res5.jpg" alt="restaurant 5">
+          <img class="scroll-image" src="./images/res5-compressor.jpg" alt="restaurant 5">
           <span id="cuisineType">Chicco Palms</span>
         </div>
       </div>
@@ -79,19 +79,19 @@
       </div>
       <div class="secondary-container-images">
         <div class="text-image-container" onclick="searchLink('Asian')">
-          <img class="scroll-image-secondary" src="./images/cus3.jpg" alt="asian cuisine">
+          <img class="scroll-image-secondary" src="./images/cus3-press.jpg" alt="asian cuisine">
           <span id="cuisineType">Asian</span>
         </div>
         <div class="text-image-container" onclick="searchLink('Italian')">
-          <img class="scroll-image-secondary" src="./images/cus1.jpg" alt="italian cuisine">
+          <img class="scroll-image-secondary" src="./images/cus1-press.jpg" alt="italian cuisine">
           <span id="cuisineType">Italian</span>
         </div>
         <div class="text-image-container" onclick="searchLink('English')">
-          <img class="scroll-image-secondary" src="./images/cus5.jpg" alt="english cuisine">
+          <img class="scroll-image-secondary" src="./images/cus5-press.jpg" alt="english cuisine">
           <span id="cuisineType">English</span>
         </div>
         <div class="text-image-container" onclick="searchLink('Burgers')">
-          <img class="scroll-image-secondary" src="./images/cus7.jpg" alt="burger">
+          <img class="scroll-image-secondary" src="./images/cus7-press.jpg" alt="burger">
           <span id="cuisineType">Burgers</span>
         </div>
       </div>
