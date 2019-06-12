@@ -1,72 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" media="screen" href="./stylesheets/style.css">
-  <script src="./javascripts/index.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <title>Accounts</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="./stylesheets/account.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./javascripts/index.js"></script>
+    <title>User Account</title>
 </head>
+
 <body>
-  <div class="background-image-accounts">
-  <div class="center-container">
-  <div class="middle-container">
-    <div class="middle-container-content">
-    <div class="username-header-container">
-      <div class="username-icon">
-        <i class="far fa-meh"></i>
-    </div>
-    <div class="username-contents">
-      <p>Username:</p>
-      <p>Email:</p>
-      <p>Phone Number:</p>
-    </div>
-  </div>
-  <button class="edit-profle-button">Edit Profile</button>
-  <div class="history-container">
-    <h2 class="booking-history">Booking History</h2>
-    <table>
-        <tr>
-          <th>Restaurant</th>
-          <th>Date</th> 
-          <th>Time</th>
-          <th>People</th>
-        </tr>
-        <tr>
-          <td>Crack Kitchen</td>
-          <td>19-5-2019</td>
-          <td>4:30pm</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Danny's Thai Bistro</td>
-          <td>19-3-2019</td>
-          <td>7:00pm</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <td>Hawker Walker</td>
-          <td>5-3-2019</td>
-          <td>1:00pm</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Mandoo</td>
-          <td>27-2-2019</td>
-          <td>4:00pm</td>
-          <td>3</td>
-        </tr>
-      </table>
-    </div>
-    <!-- <div class="spacer">
+    <!-- HEADER -->
+    <header class="banner-img">
+        <div id="header">
+            <div id="header-left">
+                <a href="index.html">
+                    <h1 id="logo">U M A M I</h1>
+                </a>
+            </div>
+            <div id="header-right">
+                <a href="signin.html"><i class="fas fa-user-circle"></i></a>
+                <span id="sign-in"><a href="signin.html">Sign In</a></span>
+            </div>
+        </div>
+    </header>
+
+    <div id="accountmaindiv">
+        <div id="accountinfo">
+            <p style="font-size:20px;">Account Information</p><br>
+            <br>
+            
+            <p>Email:</p>
+            <input type="text" name="email" value="waihovong@gmail.com" id="textbox"> <br>
+            <br>
+
+            <p>Password:</p> 
+            <input type="text" name="email" value="Change Password" id="textbox"> <br>
+            <br>
+            <button type="button" id="save">SAVE</button>
+            
+            
+
+
+        </div>
+
+        <div id="userinfo">
+            <p style="font-size:20px;">User Information</h4>
+            <br>
+            <br>
+            <p>First Name:</p>
+            <input type="text" name="email" value="waiho" id="textbox"> <br>
+            <br>
+            <p>Last Name:</p>
+            <input type="text" name="email" value="waiho" id="textbox"> <br>
+            <br>
+            <p>Phone:</p>
+            <input type="text" name="email" value="waiho" id="textbox"> <br>
+
+            <button type="button" id="save2">SAVE</button>
+            <br>
+            <br>
+            <br>
+            
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <p style="color:white; font-size:40px;">Upcoming Bookings</p><br>
         
-    </div> -->
+
+
+        <div id="accountbooking">
+                
+            <table style="width:100%">
+                <tr>
+                <th>Restaurant</th>
+                <th>Date</th>
+                <th>Time</th> 
+                <th>Number of people</th>
+                <th></th>
+                </tr>
+                <tr>
+                <td>Hawker Walker</td>
+                <td>05/05/2014</td>
+                <td>7pm</td>
+                <td>3</td>
+                <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+                <tr>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="edit">Edit</button></td>
+                </tr>
+
+            </table>
+        </div>
+        
+
+        <p style="color:white; font-size:40px;">Booking History</p><br>
+        
+
+
+        <div id="accountbooking">
+                
+            <table style="width:100%">
+                <tr>
+                <th>Restaurant</th>
+                <th>Date</th>
+                <th>Time</th> 
+                <th>Number of people</th>
+                <th></th>
+                </tr>
+                <tr>
+                <td>Hawker Walker</td>
+                <td>05/05/2014</td>
+                <td>7pm</td>
+                <td>3</td>
+                <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+                <tr>
+                    <td>Hawker Walker</td>
+                    <td>05/05/2014</td>
+                    <td>7pm</td>
+                    <td>3</td>
+                    <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+                <tr>
+                        <td>Hawker Walker</td>
+                        <td>05/05/2014</td>
+                        <td>7pm</td>
+                        <td>3</td>
+                        <td><button type="button" id="reviewbutton">Add Review</button></td>
+                </tr>
+
+            </table>
+        </div>
+
     </div>
+    
     </div>
-  </div>
-  </div>
+   
+
+    
+    <script src="./javascripts/index.js"></script>
 </body>
+
 </html>
