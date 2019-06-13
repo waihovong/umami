@@ -189,6 +189,7 @@ input[type="submit"] {
     margin-bottom: 50px;
     text-align:center;
     display: flex;
+    box-sizing: border-box;
 }
 
 #accountmaindiv * {
@@ -288,6 +289,7 @@ input[type="submit"] {
 table {
     width: 100%;
     text-align: center;
+    
 }
 
 table th {
@@ -345,8 +347,9 @@ table th {
     }
     #accountmaindiv{
         text-align:left;
-        width:100vw;
+        width: 95%;
         display: block;
+        margin: auto;
     }
     #resaccountinfo{
         width:450px;
