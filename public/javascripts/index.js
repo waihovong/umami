@@ -504,8 +504,53 @@ function checkSessions() {
   };
   xhttp.open("POST", "/checkSession", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.send(); 
+}
+
+function addreview() {
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          alert('Posted!');
+      } else if (this.readyState == 4 && this.status >= 400) {
+          alert('Error adding review. Please try again.');
+      }
+  };
+
+  xhttp.open("POST", "/addreview", true);
+  xhttp.setRequestHeader('Content-Type','application/json');
+  xhttp.send(JSON.stringify({title:document.getElementById('reviewtitle').value, content:document.getElementById('reviewcontent').value}));
+
+}
+
+//function to grab reviews from database and display them
+function postreview() {
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+          var breviews = JSON.parse(this.responseText);
+
+          console.log(breviews);
+
+          var pdiv = document.getElementById('reviews');
+          pdiv.innerHTML = '';
+
+          breviews.forEach(function(element){
+              pdiv.innerHTML += '<div class="reviewpost">\n'+
+                  '   <span>'+element.timestamp+'</span>\n'+
+                  '   <h3>'+element.review_title+'</h3>\n'+
+                  '   <p>'+element.body+'</p>\n'+
+                  '<div>\n';
+          });
+
+      }
+  };
+  xhttp.open("GET", "/postreview?q="+encodeURIComponent(document.getElementById('reviewsearch').value), true);
   xhttp.send();
 
-  
 }
 
