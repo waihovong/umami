@@ -134,6 +134,7 @@ router.post('/addbooking', function (req, res, next) {
 });
 
 router.get('/getUpcomingBooking', function (req, res, next) {
+  res.clearCookie("upcomingBookingID");
   console.log(req.cookies['userid']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
@@ -150,7 +151,7 @@ router.get('/getUpcomingBooking', function (req, res, next) {
         res.status(402).send(err);
         console.log ("query error");
       } else {
-        res.cookie('upcomingBookingID', rows.bookingID, {
+        res.cookie('upcomingBookingID', rows, {
           maxAge: 86400 * 1000, // 24 hours
         });
         res.json(rows);
@@ -160,19 +161,18 @@ router.get('/getUpcomingBooking', function (req, res, next) {
 });
 
 router.post('/updateUpcomingbooking', function (req, res, next) {
-
-  console.log(req.cookies['upcomingBookingID']);
   console.log("user id : " + req.cookies['userid']);
-  var bookingid = req.body.bookingID;
+  console.log('booking ID: ' + req.cookies['upcomingBookingID[0].booking_id']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(402);
       return;
     }
-    var bookingCookie = 'upcomingBookingID.[' + req.body.bookingID + ']';
+    var bookingCookie = 'upcomingBookingID[' + req.body.bookingID + '].booking_id';
+    console.log("booking:" + req.cookies[bookingCookie]);
     var query = "UPDATE bookings SET date = ?, time = ?, people = ? WHERE booking_id =" + req.cookies[bookingCookie] + ";"
-    connection.query(query, [req.body.bDate, req.bodybTime, req.body.bPeople, req.body.bookingID], function (err, rows, fields) {
+    connection.query(query, [req.body.bDate, req.body.bTime, req.body.bPeople], function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
         res.sendStatus(402);

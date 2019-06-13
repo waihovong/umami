@@ -355,7 +355,7 @@ if (session !== "user")
 }
 
 function loadUpcomingBookings() {
-  var iterate = 0;
+  
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -368,6 +368,7 @@ function loadUpcomingBookings() {
         pdiv.innerHTML += '<p>NO UPCOMING BOOKINGS </p>';
         
       } else {
+        var iterate = 0;
         pdiv.innerHTML = 
         '<tr> \n' +
         '<th>Restaurant</th> \n' +
@@ -400,6 +401,7 @@ var bookID;
 function openSM(value) {
   document.getElementById("mySidemenu").style.width = "450px";
   bookID = value;
+  console.log("bookID: ", bookID);
   // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
 }
 
@@ -407,7 +409,7 @@ function updateUpcomingbook() {
   console.log(document.getElementById('datePicker').value);
   console.log(document.getElementById('timePicker').value);
   console.log(document.getElementById('numberPicker').value);
-  console.log (session);
+  console.log (bookID);
   
 if (session !== "user")
 {
@@ -428,7 +430,7 @@ if (session !== "user")
 
     xhttp.open("POST", "/updateUpcomingbooking", true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
-    xhttp.send(JSON.stringify({bDate: document.getElementById('datePicker').value, bTime: document.getElementById('timePicker').value, bPeople: document.getElementById('numberPicker').value, bookingID: bookID }));
+    xhttp.send(JSON.stringify({bDate: document.getElementById('datePicker').value, bTime: document.getElementById('timePicker').value, bPeople: document.getElementById('numberPicker').value, bookingID: bookID}));
   }
 }
 
