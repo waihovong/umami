@@ -93,7 +93,7 @@ router.get('/restaurantINFO', function (req, res, next) {
     }
 
     if (link != null || link != '') {
-      var query = "SELECT restaurantID, name, email, address, phone, TIME_FORMAT(openhours, \"%h:%i %p\") openhours, TIME_FORMAT(closehours, \"%h:%i %p\") closehours, rating, cuisine FROM restaurants WHERE name LIKE '" + link + "';";
+      var query = "SELECT images.imageurl,images.imageurl2,images.imageurl3,images.imageurl4,images.imageurl5, restaurants.restaurantID, restaurants.name, restaurants.email, restaurants.address, restaurants.phone, TIME_FORMAT(restaurants.openhours, \"%h:%i %p\") openhours, TIME_FORMAT(restaurants.closehours, \"%h:%i %p\") closehours, restaurants.rating, restaurants.cuisine FROM restaurants, images WHERE name LIKE '" + link + "' AND restaurants.restaurantID = images.resID;";
       connection.query(query, function (err, rows, fields) {
         connection.release(); // release connection
         if (err) {
@@ -302,13 +302,14 @@ router.post('/resRegister', function (req, res, next) {
     if (err) {
       res.sendStatus(402);
     }
-    var insertQueryRes = "INSERT INTO restaurants (restaurantID, name, email, address, phone, openhours, cuisine, password) VALUES (restaurantID, ?, ?, ?, ?, ?, ?, SHA2(?, 256))";
-    connection.query(insertQueryRes, [req.body.name, req.body.email, req.body.address, req.body.phone, req.body.open, req.body.cuisine, req.body.pass], function (err, rows, fields) {
+    var insertQueryRes = "INSERT INTO restaurants (restaurantID, name, email, address, phone, openhours, closehours, cuisine, password) VALUES (restaurantID, ?, ?, ?, ?, ?, ?, ?, SHA2(?, 256))";
+    connection.query(insertQueryRes, [req.body.name, req.body.email, req.body.address, req.body.phone, req.body.open, req.body.close, req.body.cuisine, req.body.pass], function (err, rows, fields) {
       connection.release();
       if (err) {
         res.sendStatus(402);
+        console.log("ERROR: " + err.message);
       } else {
-        console.log(rows);
+        // console.log(rows);
         res.sendStatus(200);
       }
     });
