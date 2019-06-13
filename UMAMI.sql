@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.40-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for osx10.14 (x86_64)
 --
--- Host: localhost    Database: website
+-- Host: 127.0.0.1    Database: website
 -- ------------------------------------------------------
--- Server version	10.1.40-MariaDB-0ubuntu0.18.04.1
+-- Server version	10.3.14-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -61,8 +61,8 @@ CREATE TABLE `bookings` (
   `booking_id` int(11) NOT NULL AUTO_INCREMENT,
   `res_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `date` DATE NOT NULL,
-  `time` TIME NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
   `people` int(11) NOT NULL,
   PRIMARY KEY (`booking_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -75,6 +75,33 @@ CREATE TABLE `bookings` (
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `images` (
+  `resID` int(11) DEFAULT NULL,
+  `imageurl` varchar(60) DEFAULT NULL,
+  `imageurl2` varchar(60) DEFAULT NULL,
+  `imageurl3` varchar(60) DEFAULT NULL,
+  `imageurl4` varchar(60) DEFAULT NULL,
+  `imageurl5` varchar(60) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` VALUES (2,'./images/dk.jpg','./images/dk2.jpeg','./images/dk3.jpeg','./images/dk4.jpeg','./images/dk5.jpg'),(3,'./images/sr.jpg','./images/sr2.jpg','./images/sr3.jpg','./images/sr4.jpeg','./images/sr5.jpg'),(4,'./images/dannythai.jpg','./images/dannythai2.jpg','./images/dannythai3.jpg','./images/dannythai4.jpg','./images/dannythai5.jpg'),(5,'./images/cp.jpeg','./images/cp2.jpg','./images/cp3.jpeg','./images/cp4.jpg','./images/cp5.jpg'),(6,'./images/pho.jpg','./images/pho2.jpg','./images/pho3.jpg','./images/pho4.jpeg','./images/pho5.jpg'),(7,'./images/bbq.jpg','./images/bbq2.jpg','./images/bbq3.jpg','./images/bbq4.jpg','./images/bbq5.jpg'),(8,'./images/poc.jpg','./images/poc2.jpg','./images/poc3.jpg','./images/poc4.jpg','./images/poc5.jpg'),(9,'./images/man.jpg','./images/man2.jpg','./images/man3.jpg','./images/man4.jpg','./images/man5.jpg'),(10,'./images/sit.jpg','./images/sit2.jpg','./images/sit3.jpg','./images/sit4.jpg','./images/sit5.jpg'),(1,'./images/hw.jpg','./images/hw2.jpg','./images/hw3.jpg','./images/hw4.jpg','./images/hw5.jpg');
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -115,8 +142,8 @@ CREATE TABLE `restaurants` (
   `email` varchar(60) NOT NULL,
   `address` varchar(30) NOT NULL,
   `phone` int(11) NOT NULL,
-  `openhours` TIME NOT NULL,
-  `closehours` TIME NOT NULL,
+  `openhours` time NOT NULL,
+  `closehours` time NOT NULL,
   `rating` int(11) NOT NULL,
   `cuisine` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL,
@@ -143,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-12 13:31:45
+-- Dump completed on 2019-06-13 14:46:27

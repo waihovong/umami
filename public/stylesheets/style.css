@@ -65,6 +65,12 @@ html {
   height: 100vh;
 }
 
+.background-image-register-res {
+  background-image: url("../images/main-press.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
 #header-left {
   margin: 15px 0 0 15px;
   float: left;
@@ -473,6 +479,26 @@ table {
   width: 350px;
   padding: 0;
   text-align: center;
+}
+.open-close-container {
+  display: flex;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.register-form-box-container-large {
+  width: 400px;
+}
+
+.register-input-open {
+  width: 45%;
+  /* padding-left:10px; */
+  margin-left: 10px;
+}
+
+.register-input-close {
+  width: 45%;
+  margin-left: 10px;
 }
 
 .register-form-container {

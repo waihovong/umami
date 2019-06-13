@@ -241,7 +241,6 @@ function myFunction(data) {
 //   xhttp.send(rName);
 // }
 
-
 function restaurant() {
   // Create new AJAX request
   var xhttp = new XMLHttpRequest();
@@ -260,6 +259,11 @@ function restaurant() {
         var resRating = e.rating;
         var resOpen = e.openhours;
         var resClose = e.closehours;
+        var imagess=e.imageurl;
+        var imagess2=e.imageurl2;
+        var imagess3=e.imageurl3;
+        var imagess4=e.imageurl4;
+        var imagess5=e.imageurl5;
 
         var vueinst = new Vue({
           el: '.main-container-booking',
@@ -274,6 +278,12 @@ function restaurant() {
             rating: resRating + '/5',
             open: resOpen,
             close: resClose,
+            img: imagess,
+            img2: imagess2,
+            img3: imagess3,
+            img4: imagess4,
+            img5: imagess5,
+            
           },
         });
 
@@ -450,9 +460,11 @@ function restaurantSignUp() {
     address: document.getElementById('res_address').value,
     phone: document.getElementById('res_phone').value,
     open: document.getElementById('res_open').value,
+    close: document.getElementById('res_close').value,
     cuisine: document.getElementById('res_cuisine').value, 
     pass: document.getElementById('pass2').value }));
 }
+
 function logOutUser() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {

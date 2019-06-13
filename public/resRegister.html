@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
   <script src="./javascripts/index.js"></script>
 </head>
-<body class="background-image">
+<body class="background-image-register-res">
     <div id="header-left">
         <a href="index.html">
             <h1 id="logo">U M A M I</h1>
         </a>
   </div>
-  <div class="register-form-container">
+  <div class="register-form-container register-form-container-large">
     <div class="register-form-box-container">
     <h2>Register A Restaurant</h2>
       <div class="register-input username-input">
@@ -33,8 +33,13 @@
       <div class="register-input">
         <input type="text" class="form-control" id="res_phone" name="phone" placeholder="Phone Number" required="required">
       </div>
-      <div class="register-input">
-          <input type="text" class="form-control" id="res_open" name="open" placeholder="Opening Hours" required="required">
+      <div class="open-close-container">
+        <div class="register-input register-input-open">
+            <input type="text" class="form-control" id="res_open" name="open" placeholder="Open Hour" required="required">
+        </div>
+        <div class="register-input register-input-close">
+            <input type="text" class="form-control" id="res_close" name="close" placeholder="Close Hour" required="required">
+        </div>
       </div>
       <div class="register-input">
           <input type="text" class="form-control" id="res_cuisine" name="cuisine" placeholder="Cuisine" required="required">
