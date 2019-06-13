@@ -139,7 +139,7 @@ router.get('/getUpcomingBooking', function (req, res, next) {
       return;
     }
 
-    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURDATE() <= bookings.date;";
+    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() <= TIMESTAMP(bookings.date, bookings.time);";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
@@ -161,7 +161,7 @@ router.get('/getPastBooking', function (req, res, next) {
       return;
     }
 
-    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURDATE() > bookings.date;";
+    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() > TIMESTAMP(bookings.date, bookings.time);";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
