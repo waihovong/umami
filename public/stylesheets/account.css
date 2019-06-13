@@ -79,9 +79,87 @@ a, a:visited, a:hover, a:active {
     border-radius: 50%;
 }
 
-#sign-in {
+.sign-in {
     color: black;
     font-size: 1.2em;
+}
+
+/* ------------------------SIDE BAR ----------------------------- */
+
+.sidemenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-color: #f4f4f4;
+}
+
+.sidemenu a {
+    padding: 5px 5px 5px 32px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.sidemenu .close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 50px;
+}
+
+.close:hover {
+    text-shadow: 1px 0 0 black;
+}
+
+.sm-wrapper {
+    margin: 40px;
+    width: 450px;
+}
+
+form * {
+    font-size: 1.2em;
+    height: 1.4em;
+    font-family: 'Oxygen', sans-serif, serif, Arial;
+    align-items: center;
+    padding-left: 10px;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #333;
+}
+
+.sidemenu h1 {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+input[type="button"] {
+    background-color: dodgerblue;
+    padding: 0px 10px;
+    height: 1.6em;
+    border: none;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 2px;
 }
 
 
@@ -108,11 +186,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #333;
 }
 
-.sidemenu h1 {
-    margin-bottom: 20px;
-}
-
-input[type="submit"] {
+/* input[type="submit"] {
     background-color: dodgerblue;
     margin-left: 5px;
     padding: 0px 10px;
@@ -123,7 +197,7 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 1.2em;
     border-radius: 2px;
-}
+} */
 
 
 .footer-section {
@@ -297,7 +371,7 @@ table th {
 }
 
 
-#edit{
+.edit{
     height:30px;
     width:60px;
     color:white;

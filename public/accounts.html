@@ -14,7 +14,7 @@
     <title>User Account</title>
 </head>
 
-<body onload="loadUpcomingBookings(); loadPastBookings()">
+<body onload="checkSessions(); loadUpcomingBookings(); loadPastBookings()">
     <!-- HEADER -->
     <header class="banner-img">
         <div id="header">
@@ -24,8 +24,8 @@
                 </a>
             </div>
             <div id="header-right">
-                <a href="signin.html"><i class="fas fa-user-circle"></i></a>
-                <span id="sign-in"><a href="signin.html">Sign In</a></span>
+                <a href="signin.html"><i id="userIcon" class="fas fa-user-circle"></i></a>
+                <span class="sign-in" id="userSession"><a href="signin.html">Sign In</a></span>
             </div>
         </div>
     </header>
@@ -84,6 +84,23 @@
             </table>
         </div>
 
+    </div>
+
+    <div id="mySidemenu" class="sidemenu">
+        <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
+        <div class="sm-wrapper">
+            <div>
+                <h1>Please select a date, time and number of people:</h1>
+                <form>
+                    <input type="date" id="datePicker">
+                    <input type="time" id="timePicker" step="1800">
+                    <input type="number" id="numberPicker" name="quantity" min="1" max="20" value="1">
+                    <br> <br>
+                    <input type="button" value="Book Now" onclick="book()"> 
+                </form>
+            </div>
+
+        </div>
     </div>
 
 

@@ -90,7 +90,7 @@ function searchBarFunction() {
             pdiv.innerHTML +=
               '<div id="searchResults" onclick="resSave(\'' + element.name + '\')"> \n' +
               '<div id="searchImage">\n' +
-              '<img id="resImage" src="./images/res1-compressor.jpg" alt="restaurant 1"> \n' +
+              '<img id="resImage" src="./images/res' + element.restaurantID + '-compressor.jpg" alt="restaurant 1"> \n' +
               '</div> \n' +
               '<div id="searchInfo"> \n' +
               '<h2>' + element.name + '</h2> \n' +
@@ -355,6 +355,7 @@ if (session !== "user")
 }
 
 function loadUpcomingBookings() {
+  var iterate = 0;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -382,8 +383,9 @@ function loadUpcomingBookings() {
           '<td>' + element.date + '</td> \n' +
           '<td>' + element.time + '</td> \n' +
           '<td>' + element.people + '</td> \n' +
-          '<td><button type="button" id="edit">Edit</button></td> \n'
+          '<td><button type="button" class="edit" onclick="openSM(' + iterate + ')">Edit</button></td> \n'
           '</tr> \n';
+          iterate++;
         });
       }
     }
@@ -392,6 +394,42 @@ function loadUpcomingBookings() {
   xhttp.send();
 
   return false;
+}
+
+var bookID;
+function openSM(value) {
+  document.getElementById("mySidemenu").style.width = "450px";
+  bookID = value;
+  // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
+}
+
+function updateUpcomingbook() {
+  console.log(document.getElementById('datePicker').value);
+  console.log(document.getElementById('timePicker').value);
+  console.log(document.getElementById('numberPicker').value);
+  console.log (session);
+  
+if (session !== "user")
+{
+  alert('Please sign in to book');
+}
+  else if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
+    alert('Missing Input Fields');
+  } else {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        alert('Updated!');
+      } else if (this.readyState == 4 && this.status >= 400) {
+        alert('Error updating booking. Please try again.');
+      }
+    };
+
+    xhttp.open("POST", "/updateUpcomingbooking", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(JSON.stringify({bDate: document.getElementById('datePicker').value, bTime: document.getElementById('timePicker').value, bPeople: document.getElementById('numberPicker').value, bookingID: bookID }));
+  }
 }
 
 function loadPastBookings() {
@@ -422,7 +460,7 @@ function loadPastBookings() {
           '<td>' + element.date + '</td> \n' +
           '<td>' + element.time + '</td> \n' +
           '<td>' + element.people + '</td> \n' +
-          '<td><button type="button" id="reviewbutton">Add Review</button></td> \n'
+          '<td><button type="button" id="reviewbutton" onclick="openSM()">Add Review</button></td> \n'
           '</tr> \n';
         });
       }

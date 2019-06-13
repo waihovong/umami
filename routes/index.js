@@ -92,18 +92,22 @@ router.get('/restaurantINFO', function (req, res, next) {
       return;
     }
 
-    var query = "SELECT restaurantID, name, email, address, phone, TIME_FORMAT(openhours, \"%h:%i %p\") openhours, TIME_FORMAT(closehours, \"%h:%i %p\") closehours, rating, cuisine FROM restaurants WHERE name LIKE '" + link + "';";
-    connection.query(query, function (err, rows, fields) {
-      connection.release(); // release connection
-      if (err) {
-        res.status(402).send(err);
-      } else {
-        res.cookie('resID', rows[0].restaurantID, {
-          maxAge: 86400 * 1000, // 24 hours
-        });
-        res.json(rows); //send response
-      }
-    });
+    if (link != null || link != '') {
+      var query = "SELECT restaurantID, name, email, address, phone, TIME_FORMAT(openhours, \"%h:%i %p\") openhours, TIME_FORMAT(closehours, \"%h:%i %p\") closehours, rating, cuisine FROM restaurants WHERE name LIKE '" + link + "';";
+      connection.query(query, function (err, rows, fields) {
+        connection.release(); // release connection
+        if (err) {
+          res.status(402).send(err);
+        } else {
+          res.cookie('resID', rows[0].restaurantID, {
+            maxAge: 86400 * 1000, // 24 hours
+          });
+          res.json(rows); //send response
+
+        }
+
+      });
+    }
   });
 });
 
@@ -130,7 +134,7 @@ router.post('/addbooking', function (req, res, next) {
 });
 
 router.get('/getUpcomingBooking', function (req, res, next) {
-
+  console.log(req.cookies['userid']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -139,13 +143,41 @@ router.get('/getUpcomingBooking', function (req, res, next) {
       return;
     }
 
-    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() <= TIMESTAMP(bookings.date, bookings.time);";
+    var query = "SELECT restaurants.name, bookings.booking_id, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() <= TIMESTAMP(bookings.date, bookings.time)";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
         res.status(402).send(err);
+        console.log ("query error");
       } else {
+        res.cookie('upcomingBookingID', rows.bookingID, {
+          maxAge: 86400 * 1000, // 24 hours
+        });
         res.json(rows);
+      }
+    });
+  });
+});
+
+router.post('/updateUpcomingbooking', function (req, res, next) {
+
+  console.log(req.cookies['upcomingBookingID']);
+  console.log("user id : " + req.cookies['userid']);
+  var bookingid = req.body.bookingID;
+  //Connect to the database
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(402);
+      return;
+    }
+    var bookingCookie = 'upcomingBookingID.[' + req.body.bookingID + ']';
+    var query = "UPDATE bookings SET date = ?, time = ?, people = ? WHERE booking_id =" + req.cookies[bookingCookie] + ";"
+    connection.query(query, [req.body.bDate, req.bodybTime, req.body.bPeople, req.body.bookingID], function (err, rows, fields) {
+      connection.release(); // release connection
+      if (err) {
+        res.sendStatus(402);
+      } else {
+        res.sendStatus(200);
       }
     });
   });
