@@ -11,14 +11,15 @@ router.get('/', function (req, res, next) {
 //Review functions and stuff
 //post request to send reviews to the database
 router.post('/addreview', function (req, res, next) {
-
+  var reviewCookie = req.cookies['pastBookings'];
+  var resID = reviewCookie[req.body.res_ID].restaurantID;
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(402);
       return;
     }
-    var query = "INSERT INTO reviews (review_title, content, post_time) VALUES (?, ?, NOW())";
-    connection.query(query, [req.body.title, req.body.content], function (err, rows, fields) {
+    var query = "INSERT INTO reviews (res_id, review_title, content, rating, post_time) VALUES (" + resID + ", ?, ?, ?, NOW())";
+    connection.query(query, [req.body.title, req.body.content, req.body.rating], function (err, rows, fields) {
       connection.release();
       if (err) {
         res.sendStatus(402);
@@ -72,7 +73,6 @@ router.get('/postreview', function (req, res, next) {
 // });
 
 router.post('/resLink', function (req, res, next) {
-
   //Connect to the database
   link = req.body.restaurantName;
 });
@@ -152,6 +152,30 @@ router.get('/getUpcomingBooking', function (req, res, next) {
   });
 });
 
+router.get('/getUpcomingBooking', function (req, res, next) {
+  res.clearCookie("upcomingBookingID");
+  //Connect to the database
+  req.pool.getConnection(function (err, connection) {
+    if (err) {
+      res.sendStatus(402);
+      return;
+    }
+
+    var query = "SELECT restaurants.name, bookings.booking_id, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() <= TIMESTAMP(bookings.date, bookings.time)";
+    connection.query(query, function (err, rows, fields) {
+      connection.release(); // release connection
+      if (err) {
+        res.status(402).send(err);
+      } else {
+        res.cookie('upcomingBookingID', rows, {
+          maxAge: 86400 * 1000, // 24 hours
+        });
+        res.json(rows);
+      }
+    });
+  });
+});
+
 router.post('/updateUpcomingbooking', function (req, res, next) {
   var bookingCookie = req.cookies['upcomingBookingID'];
   var bookID = bookingCookie[req.body.bookingID].booking_id;
@@ -176,7 +200,7 @@ router.post('/updateUpcomingbooking', function (req, res, next) {
 });
 
 router.get('/getPastBooking', function (req, res, next) {
-
+  res.clearCookie("pastBookings");
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -184,12 +208,15 @@ router.get('/getPastBooking', function (req, res, next) {
       return;
     }
 
-    var query = "SELECT restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() > TIMESTAMP(bookings.date, bookings.time);";
+    var query = "SELECT restaurants.restaurantID, restaurants.name, DATE_FORMAT(bookings.date, \"%d/%m/%Y\") date, TIME_FORMAT(bookings.time, \"%h:%i %p\") time, bookings.people FROM bookings, restaurants WHERE bookings.user_id = " + req.cookies['userid'] + " AND restaurants.restaurantID = bookings.res_id AND CURRENT_TIMESTAMP() > TIMESTAMP(bookings.date, bookings.time);";
     connection.query(query, function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
         res.status(402).send(err);
       } else {
+        res.cookie('pastBookings', rows, {
+          maxAge: 86400 * 1000, // 24 hours
+        });
         res.json(rows);
       }
     });
@@ -289,8 +316,12 @@ router.post('/resRegister', function (req, res, next) {
     if (err) {
       res.sendStatus(402);
     }
+
     var insertQueryRes = "INSERT INTO restaurants (restaurantID, name, email, address, phone, openhours, closehours, cuisine, password) VALUES (restaurantID, ?, ?, ?, ?, ?, ?, ?, SHA2(?, 256))";
     connection.query(insertQueryRes, [req.body.name, req.body.email, req.body.address, req.body.phone, req.body.open, req.body.close, req.body.cuisine, req.body.pass], function (err, rows, fields) {
+    });
+    var insertResAccount = "INSERT INTO res_account (res_id, res_name, email, password) VALUES (res_id, ?, ?, SHA2(?, 256))";
+    connection.query(insertResAccount, [req.body.name, req.body.email, req.body.pass], function (err, rows, fields) {
       connection.release();
       if (err) {
         res.sendStatus(402);

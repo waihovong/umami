@@ -9,14 +9,8 @@ body {
   padding: 0;
 }
 
-@media (max-width: 560px) {
-  .register-form-box-container {
-    width: 80%;
-  }
-}
-
 @media only screen and (max-width: 900px) {
-  .main-container h1{
+  .main-container h1 {
     font-size: 20vw;
   }
   .booking-content {
@@ -326,7 +320,6 @@ table {
 
 .secondary-container-images img {
   padding: 10px 10px 5px 10px;
-  
 }
 
 .restaurant-container h1 {
@@ -341,21 +334,18 @@ table {
   margin-bottom: 50px;
 }
 
-#noResults h2{
+#noResults h2 {
   text-align: center;
   font-size: 0.9em;
   color: grey;
   text-decoration: underline;
 }
 
-#noResults p{
+#noResults p {
   text-align: center;
   font-size: 0.9em;
   color: grey;
 }
-
-
-
 
 #searchResults {
   margin: auto;
@@ -364,7 +354,6 @@ table {
   align-items: center;
   margin-bottom: 50px;
 }
-
 
 #searchImage {
   float: left;
@@ -480,6 +469,7 @@ table {
   padding: 0;
   text-align: center;
 }
+
 .open-close-container {
   display: flex;
   padding-left: 35px;
@@ -489,6 +479,7 @@ table {
 .register-form-box-container-large {
   width: 400px;
 }
+
 
 .register-input-open {
   width: 45%;
@@ -504,14 +495,16 @@ table {
 .register-form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   width: 100vw;
 }
 
 .register-form-container-register {
-  display: flex;
-  align-items: center;  
-  margin-left: 190px;
+  /* display: flex; */
+  align-items: center;
+  /* margin-left: 190px; */
+  width: 100vw;
+  text-align: center;
 }
 
 .register-form-container h2 {
@@ -523,13 +516,13 @@ table {
 .register-form-box-left {
   margin-right: 25px;
   display: inline-block;
-  margin-top:200px
+  margin-top: 200px;
 }
 
 .register-form-box-right {
   margin-left: 25px;
   display: inline-block;
-  margin-top:200px
+  margin-top: 200px;
 }
 
 .register-input {
@@ -726,4 +719,19 @@ table {
   padding-top: 20px;
   padding-bottom: 5px;
   height: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .register-form-container-register {
+    width: 80%;
+    margin: auto;
+  }
+
+  .register-form-box-container
+  {
+    vertical-align: center;
+    margin: 0px;
+    width: 100%;
+    margin-top: 100px;
+  }
 }

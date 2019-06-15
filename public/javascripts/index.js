@@ -594,7 +594,6 @@ function checkSessions() {
 }
 
 function addreview() {
-
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
@@ -607,8 +606,7 @@ function addreview() {
 
   xhttp.open("POST", "/addreview", true);
   xhttp.setRequestHeader('Content-Type','application/json');
-  xhttp.send(JSON.stringify({title:document.getElementById('reviewtitle').value, content:document.getElementById('reviewcontent').value}));
-
+  xhttp.send(JSON.stringify({title:document.getElementById('reviewtitle').value, content:document.getElementById('reviewcontent').value, rating: document.getElementById('rating').value, res_ID: reviewID}));
 }
 
 //function to grab reviews from database and display them
@@ -636,6 +634,5 @@ function postreview() {
   };
   xhttp.open("GET", "/postreview?q="+encodeURIComponent(document.getElementById('reviewsearch').value), true);
   xhttp.send();
-
 }
 

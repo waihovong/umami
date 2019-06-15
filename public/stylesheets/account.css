@@ -59,7 +59,7 @@ a, a:visited, a:hover, a:active {
 }
 
 #header-right:hover span {
-    text-shadow: 0.5px 0 0 white;
+    text-shadow: 0.5px 0 0 black;
 }
 
 #logo {
