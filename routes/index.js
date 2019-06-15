@@ -41,8 +41,8 @@ router.get('/postreview', function (req, res, next) {
 
     if ('q' in req.query) {
 
-      var query = "SELECT review_id AS id, review_title, content AS body, post_time AS timestamp FROM reviews WHERE review_title LIKE ? OR content LIKE ?";
-      connection.query(query, ['%' + req.query.q + '%', '%' + req.query.q + '%'], function (err, rows, fields) {
+      var query1 = "SELECT review_id AS id, review_title, content AS body, post_time AS timestamp FROM reviews WHERE review_title LIKE ? OR content LIKE ?";
+      connection.query(query1, ['%' + req.query.q + '%', '%' + req.query.q + '%'], function (err, rows, fields) {
         connection.release(); // release connection
         if (err) {
           res.status(402).send(err);
@@ -83,16 +83,13 @@ router.post('/resLink', function (req, res, next) {
 router.get('/restaurantINFO', function (req, res, next) {
   //Connect to the database
 
-  console.log(link);
-  var res;
   req.pool.getConnection(function (err, connection) {
     if (err) {
-      console.log("fail");
       res.sendStatus(402);
       return;
     }
 
-    if (link != null || link != '') {
+    if (link !== null || link != '') {
       var query = "SELECT images.imageurl,images.imageurl2,images.imageurl3,images.imageurl4,images.imageurl5, restaurants.restaurantID, restaurants.name, restaurants.email, restaurants.address, restaurants.phone, TIME_FORMAT(restaurants.openhours, \"%h:%i %p\") openhours, TIME_FORMAT(restaurants.closehours, \"%h:%i %p\") closehours, restaurants.rating, restaurants.cuisine FROM restaurants, images WHERE name LIKE '" + link + "' AND restaurants.restaurantID = images.resID;";
       connection.query(query, function (err, rows, fields) {
         connection.release(); // release connection
@@ -113,8 +110,6 @@ router.get('/restaurantINFO', function (req, res, next) {
 
 router.post('/addbooking', function (req, res, next) {
 
-  console.log(req.cookies['resID']);
-  console.log("user id : " + req.cookies['userid']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -135,11 +130,9 @@ router.post('/addbooking', function (req, res, next) {
 
 router.get('/getUpcomingBooking', function (req, res, next) {
   res.clearCookie("upcomingBookingID");
-  console.log(req.cookies['userid']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
-      console.log("connection fail");
       res.sendStatus(402);
       return;
     }
@@ -149,7 +142,6 @@ router.get('/getUpcomingBooking', function (req, res, next) {
       connection.release(); // release connection
       if (err) {
         res.status(402).send(err);
-        console.log ("query error");
       } else {
         res.cookie('upcomingBookingID', rows, {
           maxAge: 86400 * 1000, // 24 hours
@@ -161,8 +153,6 @@ router.get('/getUpcomingBooking', function (req, res, next) {
 });
 
 router.post('/updateUpcomingbooking', function (req, res, next) {
-  console.log("user id : " + req.cookies['userid']);
-  console.log('booking ID: ' + req.cookies['upcomingBookingID[0].booking_id']);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
@@ -170,8 +160,7 @@ router.post('/updateUpcomingbooking', function (req, res, next) {
       return;
     }
     var bookingCookie = 'upcomingBookingID[' + req.body.bookingID + '].booking_id';
-    console.log("booking:" + req.cookies[bookingCookie]);
-    var query = "UPDATE bookings SET date = ?, time = ?, people = ? WHERE booking_id =" + req.cookies[bookingCookie] + ";"
+    var query = "UPDATE bookings SET date = ?, time = ?, people = ? WHERE booking_id =" + req.cookies[bookingCookie] + ";";
     connection.query(query, [req.body.bDate, req.body.bTime, req.body.bPeople], function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {
@@ -188,7 +177,6 @@ router.get('/getPastBooking', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
-      console.log("connection fail");
       res.sendStatus(402);
       return;
     }
@@ -211,7 +199,6 @@ router.get('/getSearch', function (req, res, next) {
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
-      console.log("connection fail");
       res.sendStatus(402);
       return;
     }
@@ -228,8 +215,8 @@ router.get('/getSearch', function (req, res, next) {
       });
 
     } else {
-      var query = "SELECT * FROM restaurants";
-      connection.query(query, function (err, rows, fields) {
+      var query3 = "SELECT * FROM restaurants";
+      connection.query(query3, function (err, rows, fields) {
         connection.release(); // release connection
         if (err) {
           res.status(402).send(err);
@@ -249,11 +236,8 @@ router.post('/signin', function (req, res, next) {
     var query = "SELECT id, name FROM Users WHERE email = ? AND password_hash = SHA2(?, 256)";
     connection.query(query, [req.body.email, req.body.pass], function (err, rows, fields) {
       connection.release();
-      console.log(rows);
       if (rows.length > 0) {
         req.session.userid = rows[0].id;
-        console.log(req.session.userid);
-        console.log(rows[0].id, rows[0].name);
         res.send(rows[0].name);
       } else {
         res.sendStatus(403);
@@ -307,9 +291,7 @@ router.post('/resRegister', function (req, res, next) {
       connection.release();
       if (err) {
         res.sendStatus(402);
-        console.log("ERROR: " + err.message);
       } else {
-        // console.log(rows);
         res.sendStatus(200);
       }
     });
@@ -322,7 +304,6 @@ router.post('/checkSession', function (req, res, next) {
       maxAge: 86400 * 1000, // 24 hours
     });
     res.send("user");
-    console.log(req.session.userid);
   } else {
     res.send("not logged");
   }
@@ -332,7 +313,6 @@ router.post('/logoutUser', function (req, res, next) {
   if (req.session.userid !== undefined) {
     req.session.destroy();
   }
-  console.log(req.session.userid);
   res.sendStatus(200);
 });
 

@@ -1,8 +1,8 @@
--- MySQL dump 10.17  Distrib 10.3.14-MariaDB, for osx10.14 (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.40-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1    Database: website
+-- Host: localhost    Database: website
 -- ------------------------------------------------------
--- Server version	10.3.14-MariaDB
+-- Server version	10.1.40-MariaDB-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `Users` (
   `password_hash` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','admin@example.example','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(2,'John','John@example.example','4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
+INSERT INTO `Users` VALUES (1,'admin','admin@example.example','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(2,'John','John@example.example','4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2'),(3,'ha','haha@example.example','8693873cd8f8a2d9c7c596477180f851e525f4eaf55a4f637b445cb442a5e340'),(4,'ben','ben@exmaple.example','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `bookings` (
   `time` time NOT NULL,
   `people` int(11) NOT NULL,
   PRIMARY KEY (`booking_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
+INSERT INTO `bookings` VALUES (1,1,1,'2019-06-13','03:32:00',1),(2,3,3,'2019-06-13','13:13:00',4),(3,1,1,'2019-06-14','13:30:00',3),(4,1,1,'2019-06-14','03:30:00',3);
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +149,7 @@ CREATE TABLE `restaurants` (
   `cuisine` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL,
   UNIQUE KEY `restaurantID` (`restaurantID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,8 +158,34 @@ CREATE TABLE `restaurants` (
 
 LOCK TABLES `restaurants` WRITE;
 /*!40000 ALTER TABLE `restaurants` DISABLE KEYS */;
-INSERT INTO `restaurants` VALUES (1,'Hawker Walker','hawkerwalker@gmail.com','Francis St, Adelaide SA 5000',870017778,'11:00:00','18:00:00',5,'Malaysian','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(2,'Dumpling King','dumplingking@gmail.com','Gouger St, Adelaide SA 5000',870017778,'11:00:00','18:00:00',3,'Chinese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(3,'Shujinko Ramen','shujinko@gmail.com','Gouger St, Adelaide SA 5000',38912012,'00:00:00','00:00:00',5,'Japanese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(4,'Dannys Thai','dannythai@gmail.com','Franklin St, Adelaide SA 5000',1451200,'11:00:00','23:00:00',5,'Thai','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(5,'Chicco Palms','chiccopalms@gmail.com','Adam St, Adelaide SA 5000',131312331,'11:00:00','22:00:00',5,'Italian','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(6,'PHO SA','phosa@gmail.com','Gouger St, Adelaide SA 5000',121415151,'10:00:00','22:00:00',4,'Vietnamese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(7,'BBQ City','bbqcity@gmail.com','Gouger St, Adelaide SA 5000',125151,'10:00:00','16:00:00',4,'Chinese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(8,'82 Pocha','82pocha@gmail.com','Grenfell St, Adelaide SA 5000',72611141,'15:00:00','01:00:00',5,'Korean','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(9,'Mandoo','mandoo@gmail.com','Hindley St, Adelaide SA 5000',72611141,'11:00:00','21:00:00',5,'Korean','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(10,'Sit-Lo','sitlo@gmail.com','Hindley St, Adelaide SA 5000',72611141,'11:00:00','21:00:00',5,'Vietnamese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+INSERT INTO `restaurants` VALUES (1,'Hawker Walker','hawkerwalker@gmail.com','Francis St, Adelaide SA 5000',870017778,'11:00:00','18:00:00',5,'Malaysian','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(2,'Dumpling King','dumplingking@gmail.com','Gouger St, Adelaide SA 5000',870017778,'11:00:00','18:00:00',3,'Chinese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(3,'Shujinko Ramen','shujinko@gmail.com','Gouger St, Adelaide SA 5000',38912012,'00:00:00','00:00:00',5,'Japanese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(4,'Dannys Thai','dannythai@gmail.com','Franklin St, Adelaide SA 5000',1451200,'11:00:00','23:00:00',5,'Thai','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(5,'Chicco Palms','chiccopalms@gmail.com','Adam St, Adelaide SA 5000',131312331,'11:00:00','22:00:00',5,'Italian','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(6,'PHO SA','phosa@gmail.com','Gouger St, Adelaide SA 5000',121415151,'10:00:00','22:00:00',4,'Vietnamese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(7,'BBQ City','bbqcity@gmail.com','Gouger St, Adelaide SA 5000',125151,'10:00:00','16:00:00',4,'Chinese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(8,'82 Pocha','82pocha@gmail.com','Grenfell St, Adelaide SA 5000',72611141,'15:00:00','01:00:00',5,'Korean','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(9,'Mandoo','mandoo@gmail.com','Hindley St, Adelaide SA 5000',72611141,'11:00:00','21:00:00',5,'Korean','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(10,'Sit-Lo','sitlo@gmail.com','Hindley St, Adelaide SA 5000',72611141,'11:00:00','21:00:00',5,'Vietnamese','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),(11,'maccas','maccas@example.example','5 North Tce, Adelaide 5000',1234,'12:00:00','14:00:00',0,'Fast Food','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 /*!40000 ALTER TABLE `restaurants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reviews`
+--
+
+DROP TABLE IF EXISTS `reviews`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reviews` (
+  `review_id` int(11) NOT NULL AUTO_INCREMENT,
+  `review_title` varchar(250) DEFAULT NULL,
+  `content` text,
+  `post_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`review_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reviews`
+--
+
+LOCK TABLES `reviews` WRITE;
+/*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
+INSERT INTO `reviews` VALUES (1,'wdc','wcd','2019-06-13 15:18:57');
+/*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -170,4 +197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-13 14:46:27
+-- Dump completed on 2019-06-15 13:57:01

@@ -1,9 +1,5 @@
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
 
 var slideIndex = 1;
@@ -62,11 +58,11 @@ var address;
 var rates;
 var sum;
 var start;
+var keyword;
 function searchBarFunction() {
   keyword = document.getElementById("search-bar").value;
   sum = 0;
   start = 0;
-  console.log(keyword);
   if (event.keyCode == 13) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -74,15 +70,13 @@ function searchBarFunction() {
 
         var resSearch = JSON.parse(this.responseText);
 
-        console.log(resSearch);
-
         var pdiv = document.getElementById('Results');
         pdiv.innerHTML = '';
         if (resSearch.length == 0) {
           pdiv.innerHTML += '<div id=noResults>' +
             '<h2>No results found for "' + keyword + '" </h2>' +
             '<p>Please try again </p> \n' +
-            '</div>\n'
+            '</div>\n';
 
         } else {
           sum = resSearch[0].rating;
@@ -138,14 +132,12 @@ function searchBarFunction() {
 var cuisine;
 function searchLink(value) {
   cuisine = value;
-  console.log(cuisine);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
 
       var resSearch = JSON.parse(this.responseText);
       start = 0;
-      console.log(resSearch);
 
       var pdiv = document.getElementById('Results');
       pdiv.innerHTML = '';
@@ -153,7 +145,7 @@ function searchLink(value) {
         pdiv.innerHTML += '<div id=noResults>' +
           '<h2>No results found for "' + cuisine + '" </h2>' +
           '<p>Please try again </p> \n' +
-          '</div>\n'
+          '</div>\n';
       } else {
         sum = resSearch[0].rating;
         resSearch.forEach(function (element) {
@@ -249,8 +241,7 @@ function restaurant() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var restDetails = JSON.parse(this.responseText);
-      console.log(restDetails);
-      restDetails.forEach(e => {
+      restDetails.forEach(function(e) {
         var resName = e.name;
         var resAddress = e.address;
         var resCuisine = e.cuisine;
@@ -336,16 +327,12 @@ function resSave(resName) {
 }
 
 function book() {
-  console.log(document.getElementById('datePicker').value);
-  console.log(document.getElementById('timePicker').value);
-  console.log(document.getElementById('numberPicker').value);
-  console.log (session);
   
 if (session !== "user")
 {
   alert('Please sign in to book');
 }
-  else if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
+  else if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value === null) {
     alert('Missing Input Fields');
   } else {
     var xhttp = new XMLHttpRequest();
@@ -371,7 +358,6 @@ function loadUpcomingBookings() {
     if (this.readyState == 4 && this.status == 200) {
 
       var resBookings = JSON.parse(this.responseText);
-      console.log(resBookings);
 
       var pdiv = document.getElementById('upcomingBookings');
       if (resBookings.length == 0) {
@@ -394,7 +380,7 @@ function loadUpcomingBookings() {
           '<td>' + element.date + '</td> \n' +
           '<td>' + element.time + '</td> \n' +
           '<td>' + element.people + '</td> \n' +
-          '<td><button type="button" class="edit" onclick="openSM(' + iterate + ')">Edit</button></td> \n'
+          '<td><button type="button" class="edit" onclick="openSMB(' + iterate + ')">Edit</button></td> \n' +
           '</tr> \n';
           iterate++;
         });
@@ -408,24 +394,20 @@ function loadUpcomingBookings() {
 }
 
 var bookID;
-function openSM(value) {
+function openSMB(value) {
   document.getElementById("mySidemenu").style.width = "450px";
   bookID = value;
-  console.log("bookID: ", bookID);
   // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
 }
 
 function updateUpcomingbook() {
-  console.log(document.getElementById('datePicker').value);
-  console.log(document.getElementById('timePicker').value);
-  console.log(document.getElementById('numberPicker').value);
-  console.log (bookID);
+
   
 if (session !== "user")
 {
   alert('Please sign in to book');
 }
-  else if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value == null) {
+  else if (document.getElementById('datePicker').value == 0 || document.getElementById('timePicker').value == 0 || document.getElementById('numberPicker').value === null) {
     alert('Missing Input Fields');
   } else {
     var xhttp = new XMLHttpRequest();
@@ -450,7 +432,6 @@ function loadPastBookings() {
     if (this.readyState == 4 && this.status == 200) {
 
       var resBookings = JSON.parse(this.responseText);
-      console.log(resBookings);
 
       var pdiv = document.getElementById('pastBookings');
       if (resBookings.length == 0) {
@@ -472,7 +453,7 @@ function loadPastBookings() {
           '<td>' + element.date + '</td> \n' +
           '<td>' + element.time + '</td> \n' +
           '<td>' + element.people + '</td> \n' +
-          '<td><button type="button" id="reviewbutton" onclick="openSM()">Add Review</button></td> \n'
+          '<td><button type="button" id="reviewbutton" onclick="openSM()">Add Review</button></td> \n' +
           '</tr> \n';
         });
       }
@@ -485,14 +466,12 @@ function loadPastBookings() {
 }
 
 function onLogin() {
-  console.log(1);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // alert('Welcome ' + xhttp.responseText);
-      window.location.pathname = "./index.html"
+      window.location.pathname = "./index.html";
       // document.getElementById("userSession").innerHTML = "My Account";
-      console.log("account");
 
     } else if (this.readyState == 4 && this.status == 403) {
       alert('Username or Password Incorrect');
@@ -504,7 +483,6 @@ function onLogin() {
 }
 
 function onSignUp() {
-  console.log(2);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -517,15 +495,13 @@ function onSignUp() {
 
   xhttp.open("POST", "/signup", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
-  xhttp.send(JSON.stringify({ name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value }))
+  xhttp.send(JSON.stringify({ name: document.getElementById('name2').value, email: document.getElementById('email2').value, pass: document.getElementById('pass2').value }));
 }
 
 function checkPasswords(value) {
   var check = value;
   var passCheck2 = document.getElementById("pass2").value;
-  console.log(passCheck2);
   var passCheck3 = document.getElementById("pass3").value;
-  console.log(passCheck3);
 
   if (passCheck2 !== passCheck3) {
     alert("Password does not match");
@@ -540,14 +516,12 @@ function checkPasswords(value) {
 }
 
 function managerSignIn() {
-  console.log(3);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // alert('Welcome ' + xhttp.responseText);
-      window.location.pathname = "./index.html"
+      window.location.pathname = "./index.html";
       // document.getElementById("userSession").innerHTML = "My Account";
-      console.log("you're the manager");
 
     } else if (this.readyState == 4 && this.status == 403) {
       alert('Username or Password Incorrect');
@@ -559,14 +533,12 @@ function managerSignIn() {
 }
 
 function restaurantSignUp() {
-  console.log(4);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // alert('Welcome ' + xhttp.responseText);
       var success = document.getElementById("logSuccess").innerHTML = "Sign Up Successful";
       // document.getElementById("userSession").innerHTML = "My Account";
-      console.log("A new restaurant has been added into the database!");
 
     } else if (this.readyState == 4 && this.status == 403) {
       alert('Username or Password Incorrect');
@@ -590,8 +562,7 @@ function logOutUser() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       // alert('Welcome ' + xhttp.responseText);
-      window.location.pathname = "./index.html"
-      console.log("signed out user");
+      window.location.pathname = "./index.html";
 
     } else if (this.readyState == 4 && this.status == 403) {
       alert('failed to sign out');
@@ -603,7 +574,6 @@ function logOutUser() {
 
 var session;
 function checkSessions() {
-  console.log("session");
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200 && this.responseText == "user") {
@@ -614,11 +584,9 @@ function checkSessions() {
       document.getElementById("userSession").addEventListener("click", logOutUser);
       document.getElementById("userIcon").removeAttribute("href");
       document.getElementById("userIcon").setAttribute("href","./accounts.html");
-      console.log("you're in a session");
       session = this.responseText;
       
     } else if (this.readyState == 4 && this.status == 200 && this.responseText == "not logged") {
-      console.log('Not in a session');
       session = this.responseText;
     }
   };
@@ -654,7 +622,6 @@ function postreview() {
 
           var breviews = JSON.parse(this.responseText);
 
-          console.log(breviews);
 
           var pdiv = document.getElementById('reviews');
           pdiv.innerHTML = '';

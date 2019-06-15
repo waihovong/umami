@@ -86,18 +86,24 @@
 
     </div>
 
-
-
-
+    <div id="mySidemenu" class="sidemenu">
+        <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
+        <div class="sm-wrapper">
+            <div>
+                <h1>Please select a date, time and number of people:</h1>
+                <form>
+                    <input type="date" id="datePicker">
+                    <input type="time" id="timePicker" step="1800">
+                    <input type="number" id="numberPicker" name="quantity" min="1" max="20" value="1">
+                    <br> <br>
+                    <input type="button" value="Book Now" onclick="updateUpcomingbook()"> 
+                </form>
+            </div>
 
     <div id="mySidemenu" class="sidemenu">
         <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
         <div class="sm-wrapper">
             <div>
-
-
-
-
                 <h1>Leave a review:</h1>         
                     <form>
                     Title <br>
@@ -114,7 +120,7 @@
                         <option value = "5">5</option>
                     </select> 
                     <br> <br>
-                    <input type="button"; value="Add Review" onclick="addreview();">
+                    <input type="button" value="Add Review" onclick="addreview()">
                 </form>
                   
 
@@ -134,19 +140,6 @@
         </div>
     </div>
 
-    <div id="mySidemenu" class="sidemenu">
-        <a href="javascript:void(0)" class="close" onclick="closeSM()">&times;</a>
-        <div class="sm-wrapper">
-            <div>
-                <h1>Please select a date, time and number of people:</h1>
-                <form>
-                    <input type="date" id="datePicker">
-                    <input type="time" id="timePicker" step="1800">
-                    <input type="number" id="numberPicker" name="quantity" min="1" max="20" value="1">
-                    <br> <br>
-                    <input type="button" value="Book Now" onclick="updateUpcomingbook()"> 
-                </form>
-            </div>
 
         </div>
     </div>
