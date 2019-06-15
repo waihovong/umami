@@ -153,14 +153,17 @@ router.get('/getUpcomingBooking', function (req, res, next) {
 });
 
 router.post('/updateUpcomingbooking', function (req, res, next) {
+  var bookingCookie = req.cookies['upcomingBookingID'];
+  var bookID = bookingCookie[req.body.bookingID].booking_id;
+  console.log(bookID);
   //Connect to the database
   req.pool.getConnection(function (err, connection) {
     if (err) {
       res.sendStatus(402);
       return;
     }
-    var bookingCookie = 'upcomingBookingID[' + req.body.bookingID + '].booking_id';
-    var query = "UPDATE bookings SET date = ?, time = ?, people = ? WHERE booking_id =" + req.cookies[bookingCookie] + ";";
+    console.log("bookingID:" + bookID);
+    var query = "UPDATE bookings SET date = ?, time = ?, people = ? WHERE booking_id =" + bookID + ";"
     connection.query(query, [req.body.bDate, req.body.bTime, req.body.bPeople], function (err, rows, fields) {
       connection.release(); // release connection
       if (err) {

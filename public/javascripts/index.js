@@ -33,7 +33,7 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
 }
 
-var bookSide = document.getElementById("mySidemenu");
+// var bookSide = document.getElementById("mySidemenu");
 function openSM() {
   document.getElementById("mySidemenu").style.width = "450px";
   // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
@@ -293,21 +293,6 @@ function restaurant() {
   xhttp.send();
 }
 
-
-// function resSave(resName) {
-
-//   window.location = "/booking.html";
-//   var name = resName;
-//   // Create new AJAX request
-//   var xhttp = new XMLHttpRequest();
-
-//   // Open connection
-//   xhttp.open("GET", "/resLink?name=" + encodeURIComponent(name), true);
-
-//   // Send request
-//   xhttp.send();
-// }
-
 function resSave(resName) {
   window.location = "/booking.html";
   var name = resName;
@@ -364,7 +349,7 @@ function loadUpcomingBookings() {
         pdiv.innerHTML += '<p>NO UPCOMING BOOKINGS </p>';
         
       } else {
-        var iterate = 0;
+        var iterateEdit = 0;
         pdiv.innerHTML = 
         '<tr> \n' +
         '<th>Restaurant</th> \n' +
@@ -380,9 +365,9 @@ function loadUpcomingBookings() {
           '<td>' + element.date + '</td> \n' +
           '<td>' + element.time + '</td> \n' +
           '<td>' + element.people + '</td> \n' +
-          '<td><button type="button" class="edit" onclick="openSMB(' + iterate + ')">Edit</button></td> \n' +
+          '<td><button type="button" class="editbutton" onclick="accountEditopenSM(' + iterateEdit + ')">Edit</button></td> \n'
           '</tr> \n';
-          iterate++;
+          iterateEdit++;
         });
       }
     }
@@ -393,16 +378,21 @@ function loadUpcomingBookings() {
   return false;
 }
 
+
 var bookID;
-function openSMB(value) {
-  document.getElementById("mySidemenu").style.width = "450px";
+function accountEditopenSM(value) {
+  document.getElementsByClassName("mySidemenu")[0].style.width = "450px";
   bookID = value;
-  // document.getElementsByClassName("banner-img")[0].style.marginRight = "450px";
+}
+
+function CloseSM() {
+  document.getElementsByClassName("mySidemenu")[0].style.width = "0";
+  document.getElementsByClassName("mySidemenu")[1].style.width = "0";
+  // document.getElementsByClassName("banner-img")[0].style.marginRight = "0";
 }
 
 function updateUpcomingbook() {
 
-  
 if (session !== "user")
 {
   alert('Please sign in to book');
@@ -427,6 +417,7 @@ if (session !== "user")
 }
 
 function loadPastBookings() {
+  var iterateReview = 0;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -453,8 +444,9 @@ function loadPastBookings() {
           '<td>' + element.date + '</td> \n' +
           '<td>' + element.time + '</td> \n' +
           '<td>' + element.people + '</td> \n' +
-          '<td><button type="button" id="reviewbutton" onclick="openSM()">Add Review</button></td> \n' +
+          '<td><button type="button" class="reviewbutton" onclick="accountReviewopenSM(' + iterateReview + ')">Add Review</button></td> \n'
           '</tr> \n';
+          iterateReview++;
         });
       }
     }
@@ -463,6 +455,12 @@ function loadPastBookings() {
   xhttp.send();
 
   return false;
+}
+
+var reviewID;
+function accountReviewopenSM(value) {
+  document.getElementsByClassName("mySidemenu")[1].style.width = "450px";
+  reviewID = value;
 }
 
 function onLogin() {
